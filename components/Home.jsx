@@ -1,5 +1,5 @@
 //Home Page
-import {SafeAreaView, Text, Image, TextInput} from "react-native"
+import {SafeAreaView, Text, Image, TextInput, Button} from "react-native"
 import { useState } from "react";
 import { StyleSheet } from "react-native";
 
@@ -17,7 +17,7 @@ const styles=StyleSheet.create({
     }
 });
 
-export default function Home(){
+export default function Home({navigation}){
     const [name,setName]=useState("");
     const [surname,setSurname]=useState("");
     const [age,setAge]=useState("");
@@ -33,6 +33,9 @@ export default function Home(){
             <TextInput style={styles.input} value={age} keyboardType = 'numeric' placeholder="Enter your age" onChangeText={(e) => setAge(e)}/>
             {/*Trouver comment faire un select avec react native */}
             <TextInput style={styles.input} value={gender} placeholder="Enter your gender" onChangeText={(e) => setGender(e)}/>
+            <Button title="Submit" onPress={() => {navigation.navigate('BodyInfos',
+                {name:{name}})
+            }}/>
         </SafeAreaView>
     );
 }

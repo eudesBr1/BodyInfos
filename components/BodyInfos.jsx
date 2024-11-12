@@ -19,14 +19,18 @@ const styles=StyleSheet.create({
     }
 });
 
-export default function BodyInfos(){
+export default function BodyInfos({route,navigation}){
     //const for the body proportions to calculate the BMI and the BMR
     const [weight,setWeight]=useState("");
     const [height,setHeight]=useState("");
 
+    const {name}= route.params;
+    //const {surname}= route.params;
+
     return(
         <SafeAreaView>
             <Text style={styles.container}>Here is all your body informations</Text>
+            <Text> Hello {(name.name)} </Text>
             <TextInput style={styles.input} value={weight} keyboardType = 'numeric' placeholder="Enter your weight" onChangeText={(e) => setWeight(e)}/>
             <TextInput style={styles.input} value={height} keyboardType = 'numeric' placeholder="Enter your height" onChangeText={(e) => setHeight(e)}/>
         </SafeAreaView>
