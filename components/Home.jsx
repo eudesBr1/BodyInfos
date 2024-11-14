@@ -1,7 +1,47 @@
 //Home Page
 import {SafeAreaView, Text, Image, TextInput, Button} from "react-native"
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { StyleSheet } from "react-native";
+//import { RadioGroup } from "react-native-radio-buttons-group";
+import RadioGroup from 'react-native-radio-buttons-group';
+
+
+export default function Home(){
+    
+    const [diet,setDiet]=useState("");
+
+    //radio buttons to select the Dietary 
+    const radioButtonsDiet = useMemo(()=>([
+        {
+            id: '1',
+            label:'Regular',
+            label:'Regular',
+        },
+        {
+            id: '2',
+            label:'Vegan',
+            label:'Vegan',
+        },
+        {
+            id:'3',
+            label:'Vegetarian',
+            label:'Vegetarian',
+        }
+    ]))
+
+    return(
+        <SafeAreaView >
+            <Text style={styles.container}> Welcome to the Home page ! </Text>
+            
+            <Text> Choose your diet :</Text>
+            <RadioGroup radioButtons={radioButtonsDiet} onPress={setDiet} selectedId={diet}/>
+            
+            {/*<Button title="Submit" onPress={() => {navigation.navigate('BodyInfos',
+                {name:{name}})
+            }}/>*/}
+        </SafeAreaView>
+    );
+}
 
 const styles=StyleSheet.create({
     container :{
@@ -16,26 +56,3 @@ const styles=StyleSheet.create({
         marginBottom: 10,
     }
 });
-
-export default function Home({navigation}){
-    const [name,setName]=useState("");
-    const [surname,setSurname]=useState("");
-    const [age,setAge]=useState("");
-    const [gender,setGender]=useState("");
-
-    return(
-        <SafeAreaView >
-            <Text style={styles.container}> Welcome to the Home page ! </Text>
-            {/* probably change the form, the start is not that pretty */}
-            <TextInput style={styles.input} value={name} placeholder="Enter your name" onChangeText={(e) => setName(e)}/> 
-            <TextInput style={styles.input} value={surname} placeholder="Enter your surname" onChangeText={(e) => setSurname(e)}/>
-            {/*Trouver comment rendre ca plus jolie */}
-            <TextInput style={styles.input} value={age} keyboardType = 'numeric' placeholder="Enter your age" onChangeText={(e) => setAge(e)}/>
-            {/*Trouver comment faire un select avec react native */}
-            <TextInput style={styles.input} value={gender} placeholder="Enter your gender" onChangeText={(e) => setGender(e)}/>
-            <Button title="Submit" onPress={() => {navigation.navigate('BodyInfos',
-                {name:{name}})
-            }}/>
-        </SafeAreaView>
-    );
-}

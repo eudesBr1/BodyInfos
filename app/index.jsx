@@ -3,6 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
 
+import Inscription from "../components/Inscription";
 import Home from "../components/Home";
 import BodyInfos from "../components/BodyInfos";
 
@@ -14,9 +15,10 @@ export default function Index() {
   
   return (
     <NavigationContainer independent={true}>
-        <Drawer.Navigator initialRouteName="Home">
-            <Drawer.Screen name="Home" component={Home}/>
-            <Drawer.Screen name="BodyInfos" component={BodyInfos}/>
+        <Drawer.Navigator initialRouteName="Inscription">
+          <Drawer.Screen name="Inscription" component={Inscription}/>
+          <Drawer.Screen name="Home" component={Home}/>
+          <Drawer.Screen name="BodyInfos" component={BodyInfos}/>
         </Drawer.Navigator>
     </NavigationContainer>
   );

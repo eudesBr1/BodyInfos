@@ -1,10 +1,13 @@
-//this is the page about the body informations the client has putted : height, weight, BMR, BMI
+/*this is the page about the body informations the client has putted 
+: height, weight, BMR, BMI*/
+
 import {SafeAreaView, Text, Image, TextInput} from "react-native";
 import React from 'react';
 import {useState} from 'react';
 import { StyleSheet } from "react-native";
 
 
+// CHANGER LE CSS C'EST IMMONDE : FLEXOX !
 const styles=StyleSheet.create({
     container :{
         textAlign: 'center',
