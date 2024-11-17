@@ -1,5 +1,5 @@
 //Home Page
-import {SafeAreaView, Text, Image, TextInput, Button} from "react-native"
+import {SafeAreaView, Text, TextInput, Button} from "react-native"
 import { useMemo, useState } from "react";
 import { StyleSheet } from "react-native";
 //import { RadioGroup } from "react-native-radio-buttons-group";
@@ -19,17 +19,17 @@ export default function Home(){
         {
             id: '1',
             label:'Regular',
-            label:'Regular',
+            value:'Regular',
         },
         {
             id: '2',
             label:'Vegan',
-            label:'Vegan',
+            value:'Vegan',
         },
         {
             id:'3',
             label:'Vegetarian',
-            label:'Vegetarian',
+            value:'Vegetarian',
         }
     ]))
 
@@ -63,6 +63,8 @@ const styles=StyleSheet.create({
         borderColor: 'gray',
         width: 200,
         height: 40,
-        marginBottom: 10,
+        borderRadius: 5,
+        padding: 10,
+        marginBottom: 15,
     }
 });

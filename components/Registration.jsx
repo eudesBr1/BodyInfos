@@ -1,5 +1,5 @@
 //Home Page
-import {SafeAreaView, Text, Image, TextInput, Button} from "react-native"
+import {SafeAreaView, Text, TextInput, Button} from "react-native"
 import { useMemo, useState } from "react";
 import { StyleSheet } from "react-native";
 //import { RadioGroup } from "react-native-radio-buttons-group";
@@ -18,12 +18,12 @@ export default function Home({navigation}){
         {
             id: '1', 
             label: 'Female',
-            value: 'Female'
+            value: 'Female',
         },
         {
             id: '2',
             label: 'Male',
-            value: 'Male'
+            value: 'Male',
         }
     ]), []);
 

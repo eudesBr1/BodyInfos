@@ -1,26 +1,11 @@
 /*this is the page about the body informations the client has putted 
 : height, weight, BMR, BMI*/
 
-import {SafeAreaView, Text, Image, TextInput} from "react-native";
+import {SafeAreaView, Text, TextInput} from "react-native";
 import React from 'react';
 import {useState} from 'react';
 import { StyleSheet } from "react-native";
 
-
-// CHANGER LE CSS C'EST IMMONDE : FLEXOX !
-const styles=StyleSheet.create({
-    container :{
-        textAlign: 'center',
-        marginBottom: 20,
-    },
-    input:{
-        borderWidth: 1,
-        borderColor: 'gray',
-        width: 200,
-        height: 40,
-        marginBottom: 10,
-    }
-});
 
 export default function BodyInfos({route,navigation}){
     //const for the body proportions to calculate the BMI and the BMR
@@ -39,3 +24,19 @@ export default function BodyInfos({route,navigation}){
         </SafeAreaView>
     );
 }
+
+const styles=StyleSheet.create({
+    container :{
+        textAlign: 'center',
+        marginBottom: 20,
+    },
+    input:{
+        borderWidth: 1,
+        borderColor: 'gray',
+        width: 200,
+        height: 40,
+        borderRadius: 5,
+        padding: 10,
+        marginBottom: 15,
+    }
+});

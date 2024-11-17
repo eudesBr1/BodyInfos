@@ -1,12 +1,12 @@
-import { Text, View, TextInput, Button, StyleSheet, SafeAreaView, Image } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
 
-import Inscription from "../components/Inscription";
+import Inscription from "../components/Registration";
 import Home from "../components/Home";
 import BodyInfos from "../components/BodyInfos";
 import Meal from "../components/Meal";
+import Registration from "../components/Registration";
 
 export default function Index() {
 
@@ -18,6 +18,7 @@ export default function Index() {
           <Drawer.Screen name="Home" component={Home}/>
           <Drawer.Screen name="BodyInfos" component={BodyInfos}/>
           <Drawer.Screen name="Meal" component={Meal}/>
+          <Drawer.Screen name="Registration" component={Registration}/>
         </Drawer.Navigator>
     </NavigationContainer>
   );
