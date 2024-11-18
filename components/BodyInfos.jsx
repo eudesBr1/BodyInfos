@@ -36,7 +36,7 @@ export default function BodyInfos({ route, navigation }) {
             <Text style={styles.info}>Weight: {weight} kg</Text>
             <Text style={styles.info}>BMI: {bmi}</Text>
             <Text style={styles.info}>BMR: {bmr}</Text>
-            <Button title="Go Back" onPress={() => navigation.navigate('Home')} />
+            <Button title="Go Back to Registration" onPress={() => navigation.navigate('Registration')} />
         </SafeAreaView>
     );
 }
