@@ -1,0 +1,79 @@
+<!--https://www.pluralsight.com/resources/blog/guides/fetch-and-populate-xml-data-in-react-native-->
+<!--SITE OU J'AI PRIS LES INFOS-->
+<!--https://jsonformatter.org/xml-to-typescript-->
+<!--SITE POUR CONVERTIR XML TO TYPESCRIPT-->
+
+<?xml version="1.0" encoding="utf-8"?>
+<person>
+  <fname>Anna</fname> <!--first name-->
+  <lname>Putod</lname> <!--last name-->
+  <contacts>
+    <personal>
+      <phone>12345678900</phone>
+    </personal>
+  </contacts>
+</person>
+<person>
+  <fname>Apolline</fname> <!--first name-->
+  <lname>Jacquier</lname> <!--last name-->
+  <contacts>
+    <personal>
+      <phone>00987654321</phone>
+    </personal>
+  </contacts>
+</person>
+
+<!--FETCH API : -->
+<!-- fetch('C:\Users\MAJ\Desktop\BodyInfos\app\XMLResponse.xml')
+    .then((response) => response.text())
+    .then((textResponse) => console.log('response is ', textResponse))
+    .catch((error) => {
+        console.log(error);
+    }); -->
+
+<!-- The above fetch call will return a Promise that is combined with a then call to process the asynchronous response. 
+The text() function call also returns the Promise object that is combined with another then function to log the text response.
+The above code can be simplified using async/await: -->
+
+ <!-- async getXMLResponse() {
+    const response = await fetch('https://gist.githubusercontent.com/Pavneet-Sing/3a69eb13677eba270264579bf0aa2121/raw/8a7cddd4c4dad77ba09f9e59e97b87cc04cf09fa/ParseXMLResponse.xml')
+    console.log('response is', await response.text());
+}    -->
+
+<!-- import { parse } from 'fast-xml-parser';
+
+getXMLResponse = () => {
+    fetch('https://gist.githubusercontent.com/Pavneet-Sing/d0f3324f2cd3244a6ac8ffc5e8550102/raw/8ebc801b3e4d4987590958978ae58d3f931193a3/XMLResponse.xml')
+        .then((response) => response.text())
+        .then((textResponse) => {
+            let obj = parse(textResponse);
+            let fname = obj.person.fname;
+            let lname = obj.person.lname;
+            let phone = obj.person.contacts.personal.phone;
+            this.setState({ fname: fname, lname: lname, phone: phone })
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+} -->
+
+
+<!--Est-ce qu'il faudrait mettre ça dans un component ? -->
+<!-- export interface Welcome8 {
+    person: Person;
+}
+
+export interface Person {
+    fname:    string;
+    lname:    string;
+    contacts: Contacts;
+}
+
+export interface Contacts {
+    personal: Personal;
+}
+
+export interface Personal {
+    phone: string;
+} -->
+
