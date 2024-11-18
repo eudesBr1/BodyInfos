@@ -1,42 +1,60 @@
-/*this is the page about the body informations the client has putted 
-: height, weight, BMR, BMI*/
-
-import {SafeAreaView, Text, TextInput} from "react-native";
 import React from 'react';
-import {useState} from 'react';
-import { StyleSheet } from "react-native";
+import { SafeAreaView, Text, Button, StyleSheet } from 'react-native';
 
+export default function BodyInfos({ route, navigation }) {
+    const { name, surname, age, gender, height, weight } = route.params;
 
-export default function BodyInfos({route,navigation}){
-    //const for the body proportions to calculate the BMI and the BMR
-    const [weight,setWeight]=useState("");
-    const [height,setHeight]=useState("");
+    const calculateBMI = (weight, height) => {
+        if (weight && height) {
+            const heightInMeters = height / 100;
+            return (weight / (heightInMeters * heightInMeters)).toFixed(2);
+        }
+        return 0;
+    };
 
-    const {name}= route.params;
-    //const {surname}= route.params;
+    const calculateBMR = (age, weight, height, gender) => {
+        if (age && weight && height) {
+            if (gender === '2') {
+                return (66.5 + (13.75 * weight) + (5.003 * height) - (6.75 * age)).toFixed(2); // Homme
+            } else if (gender === '1') {
+                return (655 + (9.563 * weight) + (1.850 * height) - (4.676 * age)).toFixed(2); // Femme
+            }
+        }
+        return 0;
+    };
 
-    return(
-        <SafeAreaView>
-            <Text style={styles.container}>Here is all your body informations</Text>
-            <Text> Hello {(name.name)} </Text>
-            <TextInput style={styles.input} value={weight} keyboardType = 'numeric' placeholder="Enter your weight" onChangeText={(e) => setWeight(e)}/>
-            <TextInput style={styles.input} value={height} keyboardType = 'numeric' placeholder="Enter your height" onChangeText={(e) => setHeight(e)}/>
+    const bmi = calculateBMI(weight, height);
+    const bmr = calculateBMR(age, weight, height, gender);
+
+    return (
+        <SafeAreaView style={styles.container}>
+            <Text style={styles.header}>Body Information</Text>
+            <Text style={styles.info}>Name: {name} {surname}</Text>
+            <Text style={styles.info}>Age: {age}</Text>
+            <Text style={styles.info}>Gender: {gender === '2' ? 'Male' : 'Female'}</Text>
+            <Text style={styles.info}>Height: {height} cm</Text>
+            <Text style={styles.info}>Weight: {weight} kg</Text>
+            <Text style={styles.info}>BMI: {bmi}</Text>
+            <Text style={styles.info}>BMR: {bmr}</Text>
+            <Button title="Go Back" onPress={() => navigation.navigate('Home')} />
         </SafeAreaView>
     );
 }
 
-const styles=StyleSheet.create({
-    container :{
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        padding: 20,
+        justifyContent: 'center',
+    },
+    header: {
+        fontSize: 24,
+        fontWeight: 'bold',
         textAlign: 'center',
         marginBottom: 20,
     },
-    input:{
-        borderWidth: 1,
-        borderColor: 'gray',
-        width: 200,
-        height: 40,
-        borderRadius: 5,
-        padding: 10,
-        marginBottom: 15,
-    }
+    info: {
+        fontSize: 18,
+        marginBottom: 10,
+    },
 });
