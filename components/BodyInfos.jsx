@@ -37,6 +37,8 @@ export default function BodyInfos({ route, navigation }) {
             <Text style={styles.info}>BMI: {bmi}</Text>
             <Text style={styles.info}>BMR: {bmr}</Text>
             <Button title="Go Back to Registration" onPress={() => navigation.navigate('Registration')} />
+            <Text style={styles.info}></Text>
+            <Button title="Choose my meal plan" onPress={() => navigation.navigate('Meal')} />
         </SafeAreaView>
     );
 }
@@ -56,5 +58,6 @@ const styles = StyleSheet.create({
     info: {
         fontSize: 18,
         marginBottom: 10,
+        
     },
 });
