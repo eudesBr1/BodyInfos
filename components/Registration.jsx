@@ -1,4 +1,4 @@
-import { SafeAreaView, Text, TextInput, Button } from "react-native";
+import { SafeAreaView, Text, TextInput, Button,View } from "react-native";
 import { useMemo, useState } from "react";
 import { StyleSheet } from "react-native";
 import RadioGroup from 'react-native-radio-buttons-group';
@@ -29,71 +29,42 @@ export default function Home({ navigation }) {
         <SafeAreaView style={styles.container}>
             <Text style={styles.header}>Welcome to the Home Page!</Text>
             
+            <View style={styles.box}>
+                <Text style={styles.text}>Personnal Informations :</Text>
             <TextInput 
                 style={styles.input} 
                 value={name} 
-                placeholder="Enter your name" 
+                placeholder="Name" 
                 onChangeText={(e) => setName(e)} 
             /> 
             
             <TextInput 
                 style={styles.input} 
                 value={surname} 
-                placeholder="Enter your surname" 
+                placeholder="Surname" 
                 onChangeText={(e) => setSurname(e)} 
             />
             
-            <TextInput 
-                style={styles.input} 
-                value={age} 
-                keyboardType="numeric" 
-                placeholder="Enter your age" 
-                onChangeText={(e) => setAge(e)} 
-            />
+            <TextInput style={styles.input} placeholder="Age" value={age} keyboardType="numeric" onChangeText={(e) => setAge(e)}/>
             
-            <Text>Choose your gender:</Text>
-            <RadioGroup 
-                radioButtons={radioButtonsGender} 
-                onPress={setGender} 
-                selectedId={gender} 
-            />
+            <Text style={styles.text}>Choose your gender:</Text>
+            <RadioGroup radioButtons={radioButtonsGender} onPress={setGender} selectedId={gender} />
 
-            <TextInput 
-                style={styles.input} 
-                value={height} 
-                keyboardType="numeric" 
-                placeholder="Enter your height (cm)" 
-                onChangeText={(e) => setHeight(e)} 
-            />
+            <Text style={styles.text}>Body Informations :</Text>
+            <TextInput style={styles.input}  placeholder=" Height (cm)" value={height} keyboardType="numeric" onChangeText={(e) => setHeight(e)}/>
 
-            <TextInput 
-                style={styles.input} 
-                value={weight} 
-                keyboardType="numeric" 
-                placeholder="Enter your weight (kg)" 
-                onChangeText={(e) => setWeight(e)} 
-            />
+            <TextInput style={styles.input} placeholder="Weight (kg)" value={weight} keyboardType="numeric" onChangeText={(e) => setWeight(e)} />
 
-            <Button 
-                title="Go to BodyInfos" 
-                onPress={() => {
-                    navigation.navigate('BodyInfos', {
-                        name,
-                        surname,
-                        age,
-                        gender,
-                        height,
-                        weight,
-                    });
-                }} 
-            />
+            <Button title="Go to BodyInfos" onPress={() => {navigation.navigate('BodyInfos', {
+                        name, surname, age, gender, height, weight,});
+                }}/>
+            </View>
         </SafeAreaView>
     );
 }
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
         justifyContent: "center",
         padding: 20,
     },
@@ -103,13 +74,36 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         marginBottom: 20,
     },
+    //FAIRE TEXTE EN BOLD
+    text: {
+        fontSize: 14,
+        fontWeight: 'bold',
+
+    },
     input: {
         borderWidth: 1,
         borderColor: 'gray',
         width: 200,
         height: 40,
         marginBottom: 10,
+        margin: 10,
         paddingLeft: 8,
     },
+    box : {
+        backgroundColor:'plum', 
+        //BORDERCOLOR MARCHE PAS
+        borderColor: 'black',
+        borderRadius: 20,
+        display: 'flex',
+        flexDirection: 'column',
+        padding: 15,
+
+        //SHADOW CA FAIT RIENé
+        shadowColor:'red',
+        shadowOffset : {width:0, height: 12},
+        shadowOpacity: 10,
+        shadowRadius: 3,
+    },
+
 });
     
