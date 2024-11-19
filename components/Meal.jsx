@@ -1,10 +1,11 @@
 //Meal Page
-import {SafeAreaView, Text, TextInput, Button, View, Image, Pressable,ScrollView} from "react-native"
+import {SafeAreaView, Text, TextInput, Button, View, Image, Pressable,ScrollView,useWindowDimensions} from "react-native"
 import { useMemo, useState } from "react";
 import { StyleSheet } from "react-native";
 //import { RadioGroup } from "react-native-radio-buttons-group";
 import RadioGroup from 'react-native-radio-buttons-group';
 import { useNavigation } from "@react-navigation/native";
+import { FontAwesome } from "@expo/vector-icons";
 
 import b1_1 from '../assets/images/B1SCRAMBLES.jpg';
 import b1_2 from '../assets/images/B1PEAR.jpg';
@@ -31,10 +32,34 @@ import l5_2 from '../assets/images/L5SALAD.jpg';
 import l5_1 from '../assets/images/L5SMOOTHIE.jpg';
 import l6_1 from '../assets/images/L6SAND.jpg';
 import l6_2 from '../assets/images/L6SLAW.jpg';
-import { FontAwesome } from "@expo/vector-icons";
+
+import d1_1 from '../assets/images/D1CHICKEN.jpg';
+import d1_2 from '../assets/images/D1HUMMUS.jpg';
+import d2_1 from '../assets/images/D2PATATOES.jpg';
+import d2_2 from '../assets/images/D2SHRIMP.jpg';
+import d3_1 from '../assets/images/D3CHICKEN.jpg';
+import d3_2 from '../assets/images/D3SPINACH.jpg';
+import d4_1 from '../assets/images/D4SLAW.jpg';
+import d4_2 from '../assets/images/D4TEMPEH.jpg';
+import d5_2 from '../assets/images/D5CHICKEN.jpg';
+import d5_1 from '../assets/images/D5SALAD.jpg';
+import d6_1 from '../assets/images/D6SALAD.jpg';
+import d6_2 from '../assets/images/D6STEACK.jpg';
+
+import s1_1 from '../assets/images/S1PEACH.jpg';
+import s2_1 from '../assets/images/S2WRAP.jpg';
+import s3_1 from '../assets/images/S3PLATE.jpg';
+import s4_1 from '../assets/images/S4TABOULI.jpg';
+import s5_1 from '../assets/images/S5MOUSSE.jpg';
+import s6_1 from '../assets/images/S6TOAST.jpg';
+
+
 
 //IL FAUT QUE SI ON APPUIE SUR UN BOUTON IL NOUS EMMENE SUR LA PAGE DU MEAL TOUT SEUL 
 export default function ChoiceMeal(){
+    
+    const {height1, width1} = useWindowDimensions();
+
     const navigation = useNavigation(); 
     
     const [breakfast,setBreakfast]=useState("");
@@ -87,6 +112,7 @@ export default function ChoiceMeal(){
             imageLink2:b6_2,
         }
     ]))
+   
     const radioButtonsLunch = useMemo(()=>([
         {
             id: '1',
@@ -129,6 +155,96 @@ export default function ChoiceMeal(){
             value:'Tomato and hummus pocket sandwich + brussels sprout slaw (555 kcal)',
             imageLink1:l6_1,
             imageLink2:l6_2,
+        }
+    ]))
+
+    const radioButtonsDinner = useMemo(()=>([
+        {
+            id: '1',
+            label:'Thai Basil Chicken + Brocccoli with hummus and sesame seeds (402 kcal)',
+            value:'Thai Basil Chicken + Brocccoli with hummus and sesame seeds (402 kcal)',
+            imageLink1:d1_1,
+            imageLink2:d1_2,
+        },
+        {
+            id: '2',
+            label:'Simple spicy garlic shrimp + Sour Cream and parsley mashed potatoes (448 kcal)',
+            value:'Simple spicy garlic shrimp + Sour Cream and parsley mashed potatoes (448 kcal)',
+            imageLink1:d2_1,
+            imageLink2:d2_2,
+        },
+        {
+            id:'3',
+            label:'BBQ Chicken salad + easy sautéed spinach (634 kcal)',
+            value:'BBQ Chicken salad + easy sautéed spinach (634 kcal)',
+            imageLink1:d3_1,
+            imageLink2:d3_2,
+        },
+        {
+            id:'4',
+            label:'Tempeh Strips with almond sauce + edamame slaw (527 kcal)',
+            value:'Tempeh Strips with almond sauce + edamame slaw (527 kcal)',
+            imageLink1:d4_1,
+            imageLink2:d4_2,
+        },
+        {
+            id:'5',
+            label:'White bean and chicken Stir fry + green salad (730 kcal)',
+            value:'White bean and chicken Stir fry + green salad (730 kcal)',
+            imageLink1:d5_1,
+            imageLink2:d5_2,
+        },
+        {
+            id:'6',
+            label:'Portobello steaks with avocado chimichurri + kale Avocado salad (684 kcal)',
+            value:'Portobello steaks with avocado chimichurri + kale Avocado salad (684 kcal)',
+            imageLink1:d6_1,
+            imageLink2:d6_2,
+        }
+    ]))
+
+    const radioButtonsSnack = useMemo(()=>([
+        {
+            id: '1',
+            label:'Peaches and almond butter on toast (198 kcal)',
+            value:'Peaches and almond butter on toast (198 kcal)',
+            imageLink1:s1_1,
+            
+        },
+        {
+            id: '2',
+            label:'Avocado lettuce wrap (194 kcal)',
+            value:'Avocado lettuce wrap (194 kcal)',
+            imageLink1:s2_1,
+            
+        },
+        {
+            id:'3',
+            label:'Fruit & Vegetable Plate with Almonds & Cheese (270 kcal)',
+            value:'Fruit & Vegetable Plate with Almonds & Cheese (270) kcal)',
+            imageLink1:s3_1,
+        
+        },
+        {
+            id:'4',
+            label:'Raw Cauliflower tabouli (219 kcal)',
+            value:'Raw Cauliflower tabouli (219 kcal)',
+            imageLink1:s4_1,
+            
+        },
+        {
+            id:'5',
+            label:'Light peanut butter mousse (301 kcal)',
+            value:'Light peanut butter mousse (301) kcal)',
+            imageLink1:s5_1,
+        
+        },
+        {
+            id:'6',
+            label:'Hummus avocado toast (306 kcal)',
+            value:'Hummus avocado toast (306 kcal)',
+            imageLink1:s6_1,
+            
         }
     ]))
 
@@ -201,6 +317,57 @@ export default function ChoiceMeal(){
                     })}
                 </View>
             </View>
+
+            <View style={styles.container}>
+                <Text style={styles.topHeading}>Choose a Dinner : </Text>
+                <View style={styles.radioImagecolumn}>
+                    {radioButtonsDinner.map((item)=> {
+                        return(
+                            <Pressable
+                            key={item.value}
+                            onPress={()=>setDinner(item.value)}
+                            style={styles.imageMain}>
+                                {dinner===item.value? <View style={styles.imageFontMain}>
+                                    <FontAwesome name='check-circle' size={20} color="white"/>
+                                </View>:null}
+                                <View style={{flexDirection:'row'}}>
+                                    <Image source={item.imageLink1} style={styles.ImageStyle}/>
+                                    <Image source={item.imageLink2} style={styles.ImageStyle}/>
+                                </View>
+                                
+                                <Text style={styles.titles}>{item.value}{`\n`}{`\n`}</Text>
+                                
+                            </Pressable>
+                            
+                        )
+                    })}
+                </View>
+            </View>
+
+            <View style={styles.container}>
+                <Text style={styles.topHeading}>Choose a Snack : </Text>
+                <View style={styles.radioImagecolumn}>
+                    {radioButtonsSnack.map((item)=> {
+                        return(
+                            <Pressable
+                            key={item.value}
+                            onPress={()=>setSnack(item.value)}
+                            style={styles.imageMain}>
+                                {snack===item.value? <View style={styles.imageFontMain}>
+                                    <FontAwesome name='check-circle' size={20} color="white"/>
+                                </View>:null}
+                                <View style={{flexDirection:'row'}}>
+                                    <Image source={item.imageLink1} style={styles.ImageStyle}/>
+                                </View>
+                                
+                                <Text style={styles.titles}>{item.value}{`\n`}{`\n`}</Text>
+                                
+                            </Pressable>
+                            
+                        )
+                    })}
+                </View>
+            </View>
             
             
             {/* Button to navigate to the "Meal" page */}
@@ -217,14 +384,20 @@ export default function ChoiceMeal(){
     );
 }
 
+
+
+
+
 const styles=StyleSheet.create({
     container :{
         flex : 1,
-        backgroundColor: '#fff',
+        backgroundColor: 'plum',
         alignItems: 'center',
         justifyContent:'center',
         textAlign: 'center',
         //marginBottom: 10,
+        
+
         
     },
     input:{
@@ -238,13 +411,19 @@ const styles=StyleSheet.create({
     },
     topHeading:{
         fontSize : 20,
+        fontWeight:'bold',
+        backgroundColor:'white',
+        padding:10,
+        borderRadius:15,
+        margin:2,
     },
     imageMain:{
-        marginHorizontal:20,
-        borderBottomWidth:1,
-        borderTopWidth:1,
-        borderBlockColor: 'pink',
+        width:350,
+        backgroundColor:"white",
+        borderWidth:2,
+       margin:2,
         padding:10,
+        borderRadius:20,
     },
     radioImagecolumn:{
         flexDirection:'column',
@@ -255,7 +434,7 @@ const styles=StyleSheet.create({
         height:100,
         borderRadius:5,
         alignSelf:'center',
-        margin:20,
+        margin:3,
     },
     titles:{
         fontSize:15,
@@ -268,7 +447,7 @@ const styles=StyleSheet.create({
         zIndex:1,
         justifyContent:'right',
         alignItems:'center',
-        top:25,
+        bottom:15,
         right: 25,
         borderRadius:50,
         backgroundColor:'plum',
