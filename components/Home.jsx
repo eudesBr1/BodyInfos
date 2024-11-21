@@ -1,5 +1,5 @@
 //Home Page
-import {SafeAreaView, Text, TextInput, Button} from "react-native"
+import {SafeAreaView, Text, TextInput, Button, View} from "react-native"
 import { useMemo, useState } from "react";
 import { StyleSheet } from "react-native";
 //import { RadioGroup } from "react-native-radio-buttons-group";
@@ -34,29 +34,46 @@ export default function Home(){
     ]))
 
     return(
-        <SafeAreaView >
-            <Text style={styles.container}> Welcome to the Home page ! </Text>
+        <SafeAreaView style={styles.container}>
+            <Text style={styles.header}> Welcome to the Home page ! </Text>
             
-            <Text> Choose your diet :</Text>
+            <View style={styles.box}>
+            <Text style={styles.text}> Choose your diet :</Text>
             <RadioGroup radioButtons={radioButtonsDiet} onPress={setDiet} selectedId={diet}/>
             
             {/* Button to navigate to the "Meal" page */}
-            <Button
-                title="Go to Meal Page"
+            
+            <Text/>
+            <Button title="My body informations" color="plum"
                 onPress={() => navigation.navigate('Meal', { diet })}
             />
+            <Text/>
+            <Button title="Change my meal plan" color="plum"
+                onPress={() => navigation.navigate('Meal', { diet })}
+            />
+             </View>
 
-            {/*<Button title="Submit" onPress={() => {navigation.navigate('BodyInfos',
-                {name:{name}})
-            }}/>*/}
         </SafeAreaView>
     );
 }
 
 const styles=StyleSheet.create({
     container :{
+        flex: 1,
         textAlign: 'center',
         marginBottom: 20,
+        backgroundColor: 'plum',
+        paddingBottom: 100,
+    },
+    header: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        marginBottom: 20,
+    },
+    text:{
+        fontSize: 14,
+        fontWeight: 'bold',
     },
     input:{
         borderWidth: 1,
@@ -66,5 +83,25 @@ const styles=StyleSheet.create({
         borderRadius: 5,
         padding: 10,
         marginBottom: 15,
-    }
+    },
+    box: {
+        backgroundColor: 'white',
+        borderColor: 'black',
+        borderWidth: 1,
+        borderRadius: 20,
+        display: 'flex',
+        flexDirection: 'column',
+        padding: 15,
+        // ios shadows
+        shadowColor: "#700070",
+        shadowOffset: {
+            width: 0,
+            height: 4,
+        },
+        shadowOpacity: 0.3,
+        shadowRadius: 4,
+
+        // android shadows
+        elevation: 8,
+    },
 });
