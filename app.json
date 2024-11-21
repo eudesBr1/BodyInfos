@@ -3,10 +3,12 @@
     "name": "project",
     "slug": "project",
     "version": "1.0.0",
+    "newArchEnabled": true,
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
+    "assetBundlePatterns": ["assets/**/*"],
     "splash": {
       "image": "./assets/images/splash.png",
       "resizeMode": "contain",
@@ -28,7 +30,8 @@
     },
     "plugins": [
       "expo-router",
-      "expo-font"
+      "expo-font",
+      "expo-asset"
     ],
     "experiments": {
       "typedRoutes": true

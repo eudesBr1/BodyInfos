@@ -4,24 +4,27 @@
 <!--SITE POUR CONVERTIR XML TO TYPESCRIPT-->
 
 <?xml version="1.0" encoding="utf-8"?>
-<person>
-  <fname>Anna</fname> <!--first name-->
-  <lname>Putod</lname> <!--last name-->
-  <contacts>
-    <personal>
-      <phone>12345678900</phone>
-    </personal>
-  </contacts>
-</person>
-<person>
-  <fname>Apolline</fname> <!--first name-->
-  <lname>Jacquier</lname> <!--last name-->
-  <contacts>
-    <personal>
-      <phone>00987654321</phone>
-    </personal>
-  </contacts>
-</person>
+<people>
+  <person>
+    <fname>Anna</fname>
+    <lname>Putod</lname>
+    <contacts>
+      <personal>
+        <phone>12345678900</phone>
+      </personal>
+    </contacts>
+  </person>
+  <person>
+    <fname>Apolline</fname>
+    <lname>Jacquier</lname>
+    <contacts>
+      <personal>
+        <phone>00987654321</phone>
+      </personal>
+    </contacts>
+  </person>
+</people>
+
 
 <!--FETCH API : -->
 <!-- fetch('C:\Users\MAJ\Desktop\BodyInfos\app\XMLResponse.xml')
