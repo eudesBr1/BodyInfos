@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeAreaView, Text, Button, StyleSheet } from 'react-native';
+import { SafeAreaView, Text, Button, StyleSheet, View } from 'react-native';
 
 export default function BodyInfos({ route, navigation }) {
     const { name, surname, age, gender, height, weight } = route.params;
@@ -28,17 +28,26 @@ export default function BodyInfos({ route, navigation }) {
 
     return (
         <SafeAreaView style={styles.container}>
-            <Text style={styles.header}>Body Information</Text>
-            <Text style={styles.info}>Name: {name} {surname}</Text>
-            <Text style={styles.info}>Age: {age}</Text>
-            <Text style={styles.info}>Gender: {gender === '2' ? 'Male' : 'Female'}</Text>
-            <Text style={styles.info}>Height: {height} cm</Text>
-            <Text style={styles.info}>Weight: {weight} kg</Text>
-            <Text style={styles.info}>BMI: {bmi}</Text>
-            <Text style={styles.info}>BMR: {bmr}</Text>
-            <Button title="Go Back to Registration" onPress={() => navigation.navigate('Registration')} />
-            <Text style={styles.info}></Text>
-            <Button title="Choose my meal plan" onPress={() => navigation.navigate('Meal')} />
+            <View style={styles.box}>
+                <Text style={styles.header}>Body Informations</Text>
+                <Text style={styles.text}>Name:</Text>
+                <Text style={styles.info}>{name} {surname}</Text>
+                <Text style={styles.text}>Age:</Text>
+                <Text style={styles.info}>{age}</Text>
+                <Text style={styles.text}>Gender:</Text>
+                <Text style={styles.info}>{gender === '2' ? 'Male' : 'Female'}</Text>
+                <Text style={styles.text}>Height:</Text>
+                <Text style={styles.info}>{height} cm</Text>
+                <Text style={styles.text}>Weight:</Text>
+                <Text style={styles.info}>{weight} kg</Text>
+                <Text style={styles.text}>BMI:</Text>
+                <Text style={styles.info}>{bmi}</Text>
+                <Text style={styles.text}>BMR:</Text>
+                <Text style={styles.info}>{bmr}</Text>
+                <Button color="plum" title="Go Back to Registration" onPress={() => navigation.navigate('Registration')} />
+                <Text></Text>
+                <Button color="plum" title="Choose my meal plan" onPress={() => navigation.navigate('Meal')} />
+            </View>
         </SafeAreaView>
     );
 }
@@ -48,16 +57,46 @@ const styles = StyleSheet.create({
         flex: 1,
         padding: 20,
         justifyContent: 'center',
+        backgroundColor: 'plum',
+        paddingBottom: 100,
     },
     header: {
-        fontSize: 24,
+        fontSize: 20,
         fontWeight: 'bold',
         textAlign: 'center',
         marginBottom: 20,
     },
+
+    box: {
+        backgroundColor: 'white',
+        borderColor: 'black',
+        borderWidth: 1,
+        borderRadius: 20,
+        display: 'flex',
+        flexDirection: 'column',
+        padding: 15,
+        // ios shadows
+        shadowColor: "#700070",
+        shadowOffset: {
+            width: 0,
+            height: 4,
+        },
+        shadowOpacity: 0.3,
+        shadowRadius: 4,
+
+        // android shadows
+        elevation: 8,
+    },
+    text:{
+        fontSize: 14,
+        fontWeight: 'bold',
+    },
     info: {
-        fontSize: 18,
         marginBottom: 10,
+        borderWidth: 1,
+        borderColor: 'plum',
+        borderRadius: 20,
+        paddingLeft: 10,
         
     },
 });
