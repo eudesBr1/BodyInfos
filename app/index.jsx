@@ -5,6 +5,8 @@ import Home from "../components/Home";
 import BodyInfos from "../components/BodyInfos";
 import Meal from "../components/Meal";
 import Registration from "../components/Registration";
+import Connexion from "../components/Connexion"
+
 
 export default function Index() {
 
@@ -17,6 +19,7 @@ export default function Index() {
           <Drawer.Screen name="BodyInfos" component={BodyInfos}/>
           <Drawer.Screen name="Meal" component={Meal}/>
           <Drawer.Screen name="Registration" component={Registration}/>
+          <Drawer.Screen name="Connexion" component={Connexion}/>
         </Drawer.Navigator>
     </NavigationContainer>
   );

@@ -1,38 +1,42 @@
-//PAGE DE CONNEXION AVEC LA BDD
-import {SafeAreaView, Text, TextInput, Button} from "react-native"
-import { useRef } from "react";
+import { Asset } from 'expo-asset';
+import * as FileSystem from 'expo-file-system';
+import xmlJs from 'xml-js';
+import React, { useEffect, useState } from 'react';
+import { View, Text } from 'react-native';
 
-export default function Connexion({navigation}){
-    const email=useRef("");
-    const password=useRef("");
+const XMLDisplay = () => {
+  const [xmlData, setXmlData] = useState(null);
 
-    return(
-        <SafeAreaView>
-            <TextInput style={styles.input} ref={email} placeholder="E-mail :"/>
-            <TextInput style={styles.input} type="password "ref={password} placeholder="Password :" />
-            <Button title="Submit" onPress={() => {navigation.navigate('Home')}}/>
-            <Text>You don't have an account ? </Text>
-            <Button
-                title="Registration"
-                onPress={() => navigation.navigate('Registration')}
-            />
-        </SafeAreaView>
+  useEffect(() => {
+    const loadXML = async () => {
+      try {
+        // Charge le fichier XML à partir des assets
+        const asset = Asset.fromModule(require('../assets/XMLResponse.xml'));
+        await asset.downloadAsync(); // S'assure que le fichier est disponible localement
 
-    );
-}
+        // Lis le contenu du fichier
+        const xmlContent = await FileSystem.readAsStringAsync(asset.localUri);
 
-const styles=StyleSheet.create({
-    container :{
-        textAlign: 'center',
-        marginBottom: 20,
-    },
-    input:{
-        borderWidth: 1,
-        borderColor: 'gray',
-        width: 200,
-        height: 40,
-        borderRadius: 5,
-        padding: 10,
-        marginBottom: 15,
-    }
-});
+        // Convertir le contenu XML en JSON
+        const jsonData = JSON.parse(xmlJs.xml2json(xmlContent, { compact: true, spaces: 4 }));
+        setXmlData(jsonData);
+      } catch (error) {
+        console.error('Erreur lors du chargement du fichier XML :', error);
+      }
+    };
+
+    loadXML();
+  }, []);
+
+  return (
+    <View>
+      {xmlData ? (
+        <Text>{JSON.stringify(xmlData, null, 2)}</Text>
+      ) : (
+        <Text>Chargement...</Text>
+      )}
+    </View>
+  );
+};
+
+export default XMLDisplay;
