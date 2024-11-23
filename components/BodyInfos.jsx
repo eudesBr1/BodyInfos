@@ -2,7 +2,7 @@ import React from 'react';
 import { SafeAreaView, Text, Button, StyleSheet, View } from 'react-native';
 
 export default function BodyInfos({ route, navigation }) {
-    const { name, surname, age, gender, height, weight } = route.params;
+    const { name, surname, age, gender, height, weight,diet } = route.params;
 
     const calculateBMI = (weight, height) => {
         if (weight && height) {
@@ -22,6 +22,8 @@ export default function BodyInfos({ route, navigation }) {
         }
         return 0;
     };
+    
+   
 
     const bmi = calculateBMI(weight, height);
     const bmr = calculateBMR(age, weight, height, gender);
@@ -44,6 +46,16 @@ export default function BodyInfos({ route, navigation }) {
                 <Text style={styles.info}>{bmi}</Text>
                 <Text style={styles.text}>BMR:</Text>
                 <Text style={styles.info}>{bmr}</Text>
+                <Text style={styles.text}>Diet:</Text>
+                if(diet===1){
+                    <Text style={styles.info}>Regular</Text>
+                }
+                if(diet===2){
+                    <Text style={styles.info}>Vegan</Text>
+                }
+                if(diet===3){
+                    <Text style={styles.info}>Vegetarian</Text>
+                }
                 <Button color="plum" title="Go Back to Registration" onPress={() => navigation.navigate('Registration')} />
                 <Text></Text>
                 <Button color="plum" title="Choose my meal plan" onPress={() => navigation.navigate('Meal')} />

@@ -10,6 +10,7 @@ export default function Home({ navigation }) {
     const [gender, setGender] = useState("");
     const [height, setHeight] = useState(""); // Taille
     const [weight, setWeight] = useState(""); // Poids
+    const [diet,setDiet]=useState("");// Regime
 
     // Radio buttons pour choisir le genre
     const radioButtonsGender = useMemo(() => ([
@@ -24,6 +25,24 @@ export default function Home({ navigation }) {
             value: 'Male',
         }
     ]), []);
+
+    const radioButtonsDiet = useMemo(()=>([
+        {
+            id: '1',
+            label:'Regular',
+            value:'Regular',
+        },
+        {
+            id: '2',
+            label:'Vegan',
+            value:'Vegan',
+        },
+        {
+            id:'3',
+            label:'Vegetarian',
+            value:'Vegetarian',
+        }
+    ]))
 
     return (
         <SafeAreaView>
@@ -46,10 +65,12 @@ export default function Home({ navigation }) {
                         <TextInput style={styles.input} placeholder="Height (cm)" value={height} keyboardType="numeric" onChangeText={(e) => setHeight(e)} />
 
                         <TextInput style={styles.input} placeholder="Weight (kg)" value={weight} keyboardType="numeric" onChangeText={(e) => setWeight(e)} />
+                        <Text style={styles.text}> Choose your diet :</Text>
+                        <RadioGroup radioButtons={radioButtonsDiet} onPress={setDiet} selectedId={diet}/>
 
                         <Button color="plum" title="Go to BodyInfos" onPress={() => {
                             navigation.navigate('BodyInfos', {
-                                name, surname, age, gender, height, weight,
+                                name, surname, age, gender, height, weight,diet,
                             });
                         }} />
                     </View>
