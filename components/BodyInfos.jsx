@@ -58,7 +58,11 @@ export default function BodyInfos({ route, navigation }) {
                 }
                 <Button color="plum" title="Go Back to Registration" onPress={() => navigation.navigate('Registration')} />
                 <Text></Text>
-                <Button color="plum" title="Choose my meal plan" onPress={() => navigation.navigate('Meal')} />
+                <Button color="plum" title="Choose my meal plan" onPress={() => {
+                            navigation.navigate('Meal', {
+                                name, surname, age, gender, height, weight,diet,
+                            });
+                        }} />
             </View>
         </SafeAreaView>
     );
