@@ -8,23 +8,22 @@
     "icon": "./assets/images/icon.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
-    "assetBundlePatterns": [
-      "assets/**/*"
-    ],
+    "assetBundlePatterns": ["assets/**/*"],
     "splash": {
       "image": "./assets/images/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
     "ios": {
+      "googleServicesFile":"./googleServicesFile-Info.plist",
       "supportsTablet": true
     },
     "android": {
+      "googleServicesFile":"google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      },
-      "package": "com.anonymous.project"
+      }
     },
     "web": {
       "bundler": "metro",
@@ -34,7 +33,17 @@
     "plugins": [
       "expo-router",
       "expo-font",
-      "expo-asset"
+      "expo-asset",
+      "./node_modules/expo-sample-pedometer/expo-sample-pedometer-plugin.js",
+      "@react-native-firebase/app",
+      [
+        "expo-build-properties",
+        {
+            "ios":{
+              "useFrameworks":"static"
+            }
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true
