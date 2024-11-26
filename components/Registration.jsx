@@ -1,4 +1,4 @@
-import { SafeAreaView, Text, TextInput, Button, View, ScrollView } from "react-native";
+import { SafeAreaView, Text, TextInput, Button, View, ScrollView, Touchable, TouchableOpacity } from "react-native";
 import { useMemo, useState } from "react";
 import { StyleSheet } from "react-native";
 import RadioGroup from 'react-native-radio-buttons-group';
@@ -12,19 +12,6 @@ export default function Home({ navigation }) {
     const [weight, setWeight] = useState(""); // Poids
     const [diet,setDiet]=useState("");// Regime
 
-    // Radio buttons pour choisir le genre
-    const radioButtonsGender = useMemo(() => ([
-        {
-            id: '1',
-            label: 'Female',
-            value: 'Female',
-        },
-        {
-            id: '2',
-            label: 'Male',
-            value: 'Male',
-        }
-    ]), []);
 
     const radioButtonsDiet = useMemo(()=>([
         {
@@ -59,7 +46,10 @@ export default function Home({ navigation }) {
                         <TextInput style={styles.input} placeholder="Age" value={age} keyboardType="numeric" onChangeText={(e) => setAge(e)} />
 
                         <Text style={styles.text}>Choose your gender:</Text>
-                        <RadioGroup radioButtons={radioButtonsGender} onPress={setGender} selectedId={gender} />
+                        <View style={styles.row}>
+                            <TouchableOpacity style={[styles.touchable, gender==="Female" ? styles.select : styles.unselect]} onPress={()=> setGender("Female")}> <Text> Female </Text> </TouchableOpacity>
+                            <TouchableOpacity style={[styles.touchable, gender==="Male" ? styles.select : styles.unselect]} onPress={()=> setGender("Male")}> <Text> Male </Text> </TouchableOpacity>
+                        </View>
 
                         <Text style={styles.text}>Body Informations :</Text>
                         <TextInput style={styles.input} placeholder="Height (cm)" value={height} keyboardType="numeric" onChangeText={(e) => setHeight(e)} />
@@ -106,6 +96,28 @@ const styles = StyleSheet.create({
         margin: 10,
         paddingLeft: 8,
         borderRadius: 20,
+    },
+    touchable:{
+        borderWidth:1,
+        borderColor:'black',
+        borderRadius:20,
+        width:150,
+        paddingLeft:8,
+        height:30,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginHorizontal: 5,
+    },
+    select:{
+        backgroundColor:'plum',
+    },
+    unselect:{
+        backgroundColor:'white',
+    },
+    row: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        marginVertical: 10,
     },
     box: {
         backgroundColor: 'white',
