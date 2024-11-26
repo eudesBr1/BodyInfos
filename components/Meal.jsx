@@ -335,7 +335,7 @@ export default function ChoiceMeal({route}){
             
 
                 {showComponent1 && (<View style={styles.radioImagecolumn}>
-                    {diet==='1' ?<View> {radioButtonsBreakfast.map((item)=> {
+                    {diet==='Regular' ?<View> {radioButtonsBreakfast.map((item)=> {
                        return(
                         <Pressable
                         key={item.value}
@@ -354,7 +354,7 @@ export default function ChoiceMeal({route}){
                         </Pressable>
                     )
                     })}</View>:null}
-                    {diet==='2' ?<View> {radioButtonsBreakfast.filter(item=>item.veg).map((item)=> {
+                    {diet==='Vegan' ?<View> {radioButtonsBreakfast.filter(item=>item.veg).map((item)=> {
                        return(
                         <Pressable
                         key={item.value}
@@ -373,7 +373,7 @@ export default function ChoiceMeal({route}){
                         </Pressable>
                     )
                     })}</View>:null}
-                    {diet==='3' ?<View> {radioButtonsBreakfast.filter(item=>item.vege).map((item)=> {
+                    {diet==='Vegetarian' ?<View> {radioButtonsBreakfast.filter(item=>item.vege).map((item)=> {
                        return(
                         <Pressable
                         key={item.value}
@@ -414,7 +414,7 @@ export default function ChoiceMeal({route}){
             </TouchableOpacity>
             
             {showComponent2 && (<View style={styles.radioImagecolumn}>
-                {diet==='1' ?<View> {radioButtonsLunch.map((item)=> {
+                {diet==='Regular' ?<View> {radioButtonsLunch.map((item)=> {
                         return(
                             <Pressable
                             key={item.value}
@@ -434,7 +434,7 @@ export default function ChoiceMeal({route}){
                             
                         )
                     })}</View>:null}
-                {diet==='2' ?<View> {radioButtonsLunch.filter(item=>item.veg).map((item)=> {
+                {diet==='Vegan' ?<View> {radioButtonsLunch.filter(item=>item.veg).map((item)=> {
                         return(
                             <Pressable
                             key={item.value}
@@ -454,7 +454,7 @@ export default function ChoiceMeal({route}){
                             
                         )
                     })}</View>:null}
-                    {diet==='3' ?<View> {radioButtonsLunch.filter(item=>item.vege).map((item)=> {
+                    {diet==='Vegetarian' ?<View> {radioButtonsLunch.filter(item=>item.vege).map((item)=> {
                         return(
                             <Pressable
                             key={item.value}
@@ -494,7 +494,7 @@ export default function ChoiceMeal({route}){
                     <Text > Options for Dinner </Text>
             </TouchableOpacity>
             {showComponent3 && (<View style={styles.radioImagecolumn}>
-                {diet==='1' ?<View> {radioButtonsDinner.map((item)=> {
+                {diet==='Regular' ?<View> {radioButtonsDinner.map((item)=> {
                         return(
                             <Pressable
                             key={item.value}
@@ -514,7 +514,7 @@ export default function ChoiceMeal({route}){
                             
                         )
                     })}</View>:null}
-                    {diet==='2' ?<View> {radioButtonsDinner.filter(item=>item.veg).map((item)=> {
+                    {diet==='Vegan' ?<View> {radioButtonsDinner.filter(item=>item.veg).map((item)=> {
                         return(
                             <Pressable
                             key={item.value}
@@ -534,7 +534,7 @@ export default function ChoiceMeal({route}){
                             
                         )
                     })}</View>:null}
-                    {diet==='3' ?<View> {radioButtonsDinner.filter(item=>item.vege).map((item)=> {
+                    {diet==='Vegetarian' ?<View> {radioButtonsDinner.filter(item=>item.vege).map((item)=> {
                         return(
                             <Pressable
                             key={item.value}
@@ -587,7 +587,7 @@ export default function ChoiceMeal({route}){
                         <Text > Options for Snack  </Text>
                 </TouchableOpacity>
                 {showComponent4 && ( <View style={styles.radioImagecolumn}>
-                    {diet==='1' ?<View> {radioButtonsSnack.map((item)=> {
+                    {diet==='Regular' ?<View> {radioButtonsSnack.map((item)=> {
                       return(
                         <Pressable
                         key={item.value}
@@ -606,7 +606,7 @@ export default function ChoiceMeal({route}){
                         
                     )
                     })}</View>:null}
-                    {diet==='2' ?<View> {radioButtonsSnack.filter(item=>item.veg).map((item)=> {
+                    {diet==='Vegan' ?<View> {radioButtonsSnack.filter(item=>item.veg).map((item)=> {
                       return(
                         <Pressable
                         key={item.value}
@@ -625,7 +625,7 @@ export default function ChoiceMeal({route}){
                         
                     )
                     })}</View>:null}
-                    {diet==='3' ?<View> {radioButtonsSnack.filter(item=>item.vege).map((item)=> {
+                    {diet==='Vegetarian' ?<View> {radioButtonsSnack.filter(item=>item.vege).map((item)=> {
                       return(
                         <Pressable
                         key={item.value}
