@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeAreaView, Text, Button, StyleSheet, View } from 'react-native';
+import { SafeAreaView, Text, Button, StyleSheet, View, ScrollView } from 'react-native';
 
 export default function BodyInfos({ route, navigation }) {
     const { name, surname, age, gender, height, weight,diet } = route.params;
@@ -30,40 +30,35 @@ export default function BodyInfos({ route, navigation }) {
 
     return (
         <SafeAreaView style={styles.container}>
-            <View style={styles.box}>
-                <Text style={styles.header}>Body Informations</Text>
-                <Text style={styles.text}>Name:</Text>
-                <Text style={styles.info}>{name} {surname}</Text>
-                <Text style={styles.text}>Age:</Text>
-                <Text style={styles.info}>{age}</Text>
-                <Text style={styles.text}>Gender:</Text>
-                <Text style={styles.info}>{gender === '2' ? 'Male' : 'Female'}</Text>
-                <Text style={styles.text}>Height:</Text>
-                <Text style={styles.info}>{height} cm</Text>
-                <Text style={styles.text}>Weight:</Text>
-                <Text style={styles.info}>{weight} kg</Text>
-                <Text style={styles.text}>BMI:</Text>
-                <Text style={styles.info}>{bmi}</Text>
-                <Text style={styles.text}>BMR:</Text>
-                <Text style={styles.info}>{bmr}</Text>
-                <Text style={styles.text}>Diet:</Text>
-                if(diet===1){
-                    <Text style={styles.info}>Regular</Text>
-                }
-                if(diet===2){
-                    <Text style={styles.info}>Vegan</Text>
-                }
-                if(diet===3){
-                    <Text style={styles.info}>Vegetarian</Text>
-                }
-                <Button color="plum" title="Go Back to Registration" onPress={() => navigation.navigate('Registration')} />
-                <Text></Text>
-                <Button color="plum" title="Choose my meal plan" onPress={() => {
-                            navigation.navigate('Meal', {
-                                name, surname, age, gender, height, weight,diet,
-                            });
-                        }} />
-            </View>
+            <ScrollView>
+                <View style={styles.box}>
+                    <Text style={styles.header}>Body Informations</Text>
+                    <Text style={styles.text}>Name:</Text>
+                    <Text style={styles.info}>{name} {surname}</Text>
+                    <Text style={styles.text}>Age:</Text>
+                    <Text style={styles.info}>{age}</Text>
+                    <Text style={styles.text}>Gender:</Text>
+                    <Text style={styles.info}>{gender === '2' ? 'Male' : 'Female'}</Text>
+                    <Text style={styles.text}>Height:</Text>
+                    <Text style={styles.info}>{height} cm</Text>
+                    <Text style={styles.text}>Weight:</Text>
+                    <Text style={styles.info}>{weight} kg</Text>
+                    <Text style={styles.text}>BMI:</Text>
+                    <Text style={styles.info}>{bmi}</Text>
+                    <Text style={styles.text}>BMR:</Text>
+                    <Text style={styles.info}>{bmr}</Text>
+                    <Text style={styles.text}>Diet:</Text>
+                    <Text style={styles.info}>{diet}</Text>
+                    
+                    <Button color="plum" title="Go Back to Registration" onPress={() => navigation.navigate('Registration')} />
+                
+                    <Button color="plum" title="Choose my meal plan" onPress={() => {
+                                navigation.navigate('Meal', {
+                                    name, surname, age, gender, height, weight,diet,
+                                });
+                            }} />
+                </View>
+            </ScrollView>
         </SafeAreaView>
     );
 }

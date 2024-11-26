@@ -28,17 +28,17 @@ export default function Home({ navigation }) {
 
     const radioButtonsDiet = useMemo(()=>([
         {
-            id: '1',
+            id: 'Regular',
             label:'Regular',
             value:'Regular',
         },
         {
-            id: '2',
+            id: 'Vegan',
             label:'Vegan',
             value:'Vegan',
         },
         {
-            id:'3',
+            id:'Vegetarian',
             label:'Vegetarian',
             value:'Vegetarian',
         }
