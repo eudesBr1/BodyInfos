@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { View, Text, TextInput, Button, SafeAreaView } from 'react-native';
+import { View, Text, TextInput, Button, SafeAreaView, ScrollView } from 'react-native';
 import { Asset } from 'expo-asset';
 import * as FileSystem from 'expo-file-system';
 import xmlJs from 'xml-js';
@@ -52,51 +52,67 @@ export default function Connexion({ navigation }) {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.box}>
-        <TextInput
-          style={styles.input}
-          value={email}
-          onChangeText={setEmail}
-          placeholder="E-mail :"
-        />
-        <TextInput
-          style={styles.input}
-          value={password}
-          onChangeText={setPassword}
-          secureTextEntry
-          placeholder="Password :"
-        />
-        <Button title="Submit" onPress={handleLogin} />
-        <Text>You don't have an account?</Text>
-        <Button
-          title="Registration"
-          onPress={() => navigation.navigate('Registration')}
-        />
-      </View>
+    <SafeAreaView>
+      <ScrollView>
+        <View  style={styles.container}>
+          <Text style={styles.header}>Welcome to the connexion page !</Text>
+          <View style={styles.box}>
+            <Text style={styles.text}>Connexion</Text>
+            <TextInput style={styles.input} value={email} onChangeText={setEmail} placeholder="E-mail :"/>
+            <TextInput style={styles.input} value={password} onChangeText={setPassword} secureTextEntry placeholder="Password :"/>
+            <Button title="Submit" color="plum" onPress={handleLogin}/>
+            <Text/>
+            <Text>You don't have an account?</Text>
+            <Button color="plum" title="Registration" onPress={() => navigation.navigate('Registration')}/>
+          </View>
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
 }
 
 const styles = {
   container: {
+    justifyContent: "center",
+    padding: 20,
+    backgroundColor: 'plum',
+    paddingBottom: 320,
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+  },
+  header: {
+    textAlign: 'center',
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 20,
+  },  
+  text:{
+    fontSize:14,
+    fontWeight:'bold',
   },
   box: {
-    width: '80%',
-    padding: 20,
-    backgroundColor: '#fff',
-    borderRadius: 8,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.1,
-    shadowRadius: 8,
+    backgroundColor: 'white',
+    borderColor: 'black',
+    borderWidth: 1,
+    borderRadius: 20,
+    display: 'flex',
+    flexDirection: 'column',
+    padding: 15,
+
+    // ios shadows
+    shadowColor: "#700070",
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.3,
+    shadowRadius: 4,
+
+    // android shadows
+    elevation: 8,
   },
   input: {
     height: 40,
-    borderColor: '#ccc',
+    borderColor: 'black',
     borderWidth: 1,
     marginBottom: 10,
     paddingLeft: 10,
