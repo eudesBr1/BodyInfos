@@ -45,7 +45,8 @@ export default function Connexion({ navigation }) {
 
     if (user) {
       // If user found, navigate to 'Home' screen
-      navigation.navigate('Home');
+      const pref=user.diet;
+      navigation.navigate('Home',{pref});
     } else {
       alert('Invalid email or password');
     }
