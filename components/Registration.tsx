@@ -10,7 +10,6 @@ import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
 export default function Home() {
   const [name, setName] = useState("");  // Ajout du champ name
-  const [surname, setSurname] = useState("");
   const [age, setAge] = useState("");
   const [gender, setGender] = useState("");
   const [height, setHeight] = useState(""); // Taille
@@ -25,16 +24,7 @@ export default function Home() {
     try {
       // Enregistrer toutes les informations dans Firebase Realtime Database
       await set(ref(db, '/users/' + user.uid), {
-        name,
-        surname,
-        age,
-        gender,
-        height,
-        weight,
-        diet,
-        email,
-        password
-      });
+        name, age, gender, height, weight, diet, email, password });
       console.log("Profile created successfully!");
     } catch (error) {
       console.error("Error creating profile:", error);
@@ -83,99 +73,55 @@ export default function Home() {
     <SafeAreaView>
       <ScrollView>
         <View style={styles.container}>
-          <Text style={styles.header}>Welcome to the Home Page!</Text>
+          <Text style={styles.header}>Welcome to the Registration Page !</Text>
 
           <View style={styles.box}>
             <Text style={styles.text}>Personal Information:</Text>
             
             {/* Nouveau champ pour le nom */}
-            <TextInput
-              style={styles.input}
-              value={name}
-              placeholder="Name"
-              onChangeText={(e) => setName(e)}
-            />
+            <TextInput style={styles.input} value={name} placeholder="Name" onChangeText={(e) => setName(e)}/>
 
-            <TextInput
-              style={styles.input}
-              value={email}
-              placeholder="Email"
-              onChangeText={(e) => setEmail(e)}
-            />
+            <TextInput style={styles.input} value={email} placeholder="Email" onChangeText={(e) => setEmail(e)}/>
 
-            <TextInput
-              style={styles.input}
-              value={password}
-              placeholder="Password"
-              secureTextEntry
-              onChangeText={(e) => setPassword(e)}
-            />
+            <TextInput style={styles.input} value={password} placeholder="Password" secureTextEntry 
+            onChangeText={(e) => setPassword(e)}/>
 
-            <TextInput
-              style={styles.input}
-              placeholder="Age"
-              value={age}
-              keyboardType="numeric"
-              onChangeText={(e) => setAge(e)}
-            />
+            <TextInput style={styles.input} placeholder="Age" value={age} keyboardType="numeric" 
+            onChangeText={(e) => setAge(e)}/>
 
             <Text style={styles.text}>Choose your gender:</Text>
             <View style={styles.row}>
-              <TouchableOpacity
-                style={[styles.touchable, gender === "Female" ? styles.select : styles.unselect]}
-                onPress={() => setGender("Female")}
-              >
+              <TouchableOpacity style={[styles.touchable, gender === "Female" ? styles.select : styles.unselect]}
+                onPress={() => setGender("Female")}>
                 <Text> Female </Text>
               </TouchableOpacity>
+
               <TouchableOpacity
                 style={[styles.touchable, gender === "Male" ? styles.select : styles.unselect]}
-                onPress={() => setGender("Male")}
-              >
+                onPress={() => setGender("Male")}>
                 <Text> Male </Text>
               </TouchableOpacity>
             </View>
 
             <Text style={styles.text}>Body Information:</Text>
-            <TextInput
-              style={styles.input}
-              placeholder="Height (cm)"
-              value={height}
-              keyboardType="numeric"
-              onChangeText={(e) => setHeight(e)}
-            />
+            <TextInput style={styles.input} placeholder="Height (cm)" value={height} keyboardType="numeric" 
+            onChangeText={(e) => setHeight(e)}/>
 
-            <TextInput
-              style={styles.input}
-              placeholder="Weight (kg)"
-              value={weight}
-              keyboardType="numeric"
-              onChangeText={(e) => setWeight(e)}
-            />
+            <TextInput style={styles.input} placeholder="Weight (kg)" value={weight} keyboardType="numeric"
+              onChangeText={(e) => setWeight(e)}/>
 
             <Text style={styles.text}>Choose your diet:</Text>
             <RadioGroup radioButtons={radioButtonsDiet} onPress={setDiet} selectedId={diet} />
 
-            <Button
-              color="plum"
-              title="Go to BodyInfos"
-              onPress={() => {
-                navigation.navigate('BodyInfos', {
-                  name,
-                  surname,
-                  age,
-                  gender,
-                  height,
-                  weight,
-                  diet,
-                });
-              }}
-            />
+            <Text/>
 
-            <Button
-              color="plum"
-              title="Register and Go to Main"
-              onPress={registerAndGoToMainFlow} // Call registration function
-            />
+            <Button color="plum" title="Go to BodyInfos" onPress={() => { navigation.navigate('BodyInfos', {
+                  name, age, gender, height, weight, diet,});}}/>
+
+            <Text/>
+
+            <Button color="plum" title="Register and Go to Main" onPress={registerAndGoToMainFlow}/> // Call registration function
+            
           </View>
         </View>
       </ScrollView>
