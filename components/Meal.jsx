@@ -65,7 +65,7 @@ export default function ChoiceMeal({route}){
 
     const navigation = useNavigation(); 
 
-    const{diet}=route.params;
+    const{diet,kcal}=route.params;
     
     const [breakfast,setBreakfast]=useState('Oatmeal and apples + Cucumber avocado toast (519 kcal)');
     const [lunch,setLunch]=useState("Quick and easy vegan ceasar salad + pineapple raspberry smoothie (527 kcal)");
@@ -84,6 +84,7 @@ export default function ChoiceMeal({route}){
             imageLink2:b1_2,
             veg:false,
             vege:true,
+            light:true,
         },
         {
             id: '2',
@@ -93,6 +94,7 @@ export default function ChoiceMeal({route}){
             imageLink2:b2_2,
             veg:false,
             vege:true,
+            light:true,
         },
         {
             id:'3',
@@ -102,6 +104,7 @@ export default function ChoiceMeal({route}){
             imageLink2:b3_2,
             veg:false,
             vege:false,
+            
         },
         {
             id:'4',
@@ -143,6 +146,7 @@ export default function ChoiceMeal({route}){
             imageLink2:l1_2,
             veg:false,
             vege:true,
+            light:true,
         },
         {
             id: '2',
@@ -152,6 +156,7 @@ export default function ChoiceMeal({route}){
             imageLink2:l2_2,
             veg:false,
             vege:true,
+            light:true,
         },
         {
             id:'3',
@@ -170,6 +175,7 @@ export default function ChoiceMeal({route}){
             imageLink2:l4_2,
             veg:true,
             vege:true,
+            
         },
         {
             id:'5',
@@ -202,6 +208,7 @@ export default function ChoiceMeal({route}){
             imageLink2:d1_2,
             veg:false,
             vege:false,
+            light:true,
         },
         {
             id: '2',
@@ -211,6 +218,7 @@ export default function ChoiceMeal({route}){
             imageLink2:d2_2,
             veg:false,
             vege:true,
+            light:true,
         },
         {
             id:'3',
@@ -240,6 +248,7 @@ export default function ChoiceMeal({route}){
             veg:false,
             vege:false,
             big:true,
+            
         },
         {
             id:'6',
@@ -250,6 +259,7 @@ export default function ChoiceMeal({route}){
             veg:true,
             vege:true,
             big:true,
+            
         }
     ]))
 
@@ -261,6 +271,7 @@ export default function ChoiceMeal({route}){
             imageLink1:s1_1,
             veg:true,
             vege:true,
+            light:true,
         },
         {
             id: '2',
@@ -269,6 +280,7 @@ export default function ChoiceMeal({route}){
             imageLink1:s2_1,
             veg:true,
             vege:true,
+            light:true,
         },
         {
             id:'3',
@@ -294,6 +306,7 @@ export default function ChoiceMeal({route}){
             veg:false,
             vege:true,
             big:true,
+            
         },
         {
             id:'6',
@@ -303,6 +316,7 @@ export default function ChoiceMeal({route}){
             veg:true,
             vege:true,
             big:true,
+            
         }
     ]))
    

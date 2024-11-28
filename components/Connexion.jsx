@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react';
-import { View, Text, TextInput, Button, SafeAreaView } from 'react-native';
+import { View, Text, TextInput, Button, SafeAreaView, ScrollView } from 'react-native';
+import { Asset } from 'expo-asset';
+import * as FileSystem from 'expo-file-system';
+import xmlJs from 'xml-js';
 import { getDatabase, ref, get } from 'firebase/database'; // Import Firebase database functions
 
 export default function Connexion({ navigation }) {
@@ -107,23 +110,46 @@ export default function Connexion({ navigation }) {
 
 const styles = {
   container: {
+    justifyContent: "center",
+    padding: 20,
+    backgroundColor: 'plum',
+    paddingBottom: 320,
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+  },
+  header: {
+    textAlign: 'center',
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 20,
+  },  
+  text:{
+    fontSize:14,
+    fontWeight:'bold',
   },
   box: {
-    width: '80%',
-    padding: 20,
-    backgroundColor: '#fff',
-    borderRadius: 8,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.1,
-    shadowRadius: 8,
+    backgroundColor: 'white',
+    borderColor: 'black',
+    borderWidth: 1,
+    borderRadius: 20,
+    display: 'flex',
+    flexDirection: 'column',
+    padding: 15,
+
+    // ios shadows
+    shadowColor: "#700070",
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.3,
+    shadowRadius: 4,
+
+    // android shadows
+    elevation: 8,
   },
   input: {
     height: 40,
-    borderColor: '#ccc',
+    borderColor: 'black',
     borderWidth: 1,
     marginBottom: 10,
     paddingLeft: 10,
