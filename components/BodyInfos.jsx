@@ -53,7 +53,8 @@ export default function BodyInfos({ route, navigation }) {
                     <Text style={styles.text}>Age:</Text>
                     <Text style={styles.info}>{age}</Text>
                     <Text style={styles.text}>Gender:</Text>
-                    <Text style={styles.info}>{gender === '2' ? 'Male' : 'Female'}</Text>
+                    {/*<Text style={styles.info}>{gender === '2' ? 'Male' : 'Female'}</Text>*/}
+                    <Text style={styles.info}>{gender}</Text>
                     <Text style={styles.text}>Height:</Text>
                     <Text style={styles.info}>{height} cm</Text>
                     <Text style={styles.text}>Weight:</Text>

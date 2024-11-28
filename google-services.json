@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "184466964060",
+    "project_id": "deal-planner",
+    "storage_bucket": "deal-planner.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:184466964060:android:ef486c28e8f6af5480b099",
+        "android_client_info": {
+          "package_name": "com.machu.mealplanner"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkn2Gep_K_HfxobNV5vuuQwveTqOftURY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

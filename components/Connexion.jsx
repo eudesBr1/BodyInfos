@@ -3,42 +3,48 @@ import { View, Text, TextInput, Button, SafeAreaView } from 'react-native';
 import { Asset } from 'expo-asset';
 import * as FileSystem from 'expo-file-system';
 import xmlJs from 'xml-js';
+import { getDatabase, ref, get } from 'firebase/database'; // Import Firebase database functions
+
 export default function Connexion({ navigation }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [xmlData, setXmlData] = useState(null);
+  const [userData, setUserData] = useState(null);
 
-  // Load and parse the XML file with user data
-  useEffect(() => {
-    const loadXML = async () => {
-      try {
-        const asset = Asset.fromModule(require('../assets/XMLResponse.xml'));
-        await asset.downloadAsync();
-        const xmlContent = await FileSystem.readAsStringAsync(asset.localUri);
-        const jsonData = JSON.parse(xmlJs.xml2json(xmlContent, { compact: true, spaces: 4 }));
-        setXmlData(jsonData);
-      } catch (error) {
-        console.error('Erreur lors du chargement du fichier XML :', error);
+  // Function to load user data from Firebase Realtime Database
+  const loadUserData = async () => {
+    try {
+      const db = getDatabase();
+      const usersRef = ref(db, 'users');  // Reference to the users node in your Firebase database
+      const snapshot = await get(usersRef);
+      if (snapshot.exists()) {
+        setUserData(snapshot.val());  // Set all user data if available
+      } else {
+        console.log('No data available');
       }
-    };
-    loadXML();
+    } catch (error) {
+      console.error('Error loading user data:', error);
+    }
+  };
+
+  // Load user data when the component mounts
+  useEffect(() => {
+    loadUserData();
   }, []);
 
+  // Handle login logic
   const handleLogin = () => {
-    if (!xmlData) {
-      console.error("Data not loaded yet.");
+    if (!userData) {
+      console.error("User data not loaded yet.");
       return;
     }
 
-    console.log('Données XML chargées:', xmlData); // Vérifie la structure ici
-
-    // Recherche de l'utilisateur dans les données XML
-    const user = xmlData.people.person.find(
-      (person) => person.email && person.email._text === email && person.password && person.password._text === password
+    // Search for the user in the Firebase data
+    const user = Object.values(userData).find(
+      (person) => person.email === email && person.password === password
     );
 
     if (user) {
-      // Si un utilisateur est trouvé, on navigue vers l'écran 'Home'
+      // If user found, navigate to 'Home' screen
       navigation.navigate('Home');
     } else {
       alert('Invalid email or password');
