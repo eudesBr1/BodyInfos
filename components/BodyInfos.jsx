@@ -2,7 +2,7 @@ import React from 'react';
 import { SafeAreaView, Text, Button, StyleSheet, View, ScrollView } from 'react-native';
 
 export default function BodyInfos({ route, navigation }) {
-    const { name, surname, age, gender, height, weight,diet } = route.params;
+    const { name, surname, age, gender, height, weight,diet,sport } = route.params;
 
     const calculateBMI = (weight, height) => {
         if (weight && height) {
@@ -22,11 +22,26 @@ export default function BodyInfos({ route, navigation }) {
         }
         return 0;
     };
-    
+
+    const calculateKcal = (bmr,sport) => {
+        if (sport==='none') {
+            return (bmr*1.2); // LITTLE TO NO EXERCISE
+        } else if (sport==='light'){
+            return (bmr*1.375); // LIGHT EXERCISE
+        } else if (sport==='moderate'){
+            return (bmr*1.55); // MODERATE EXERCISE (3-5 DAYS)
+        } else if (sport==='active'){
+            return (bmr*1.725); // VERY ACTIVE EXERCISE (6-7 DAYS)
+        } else if (sport==='extra'){
+            return (bmr*1.9); // EXTRA ACTIVE EXERCISE
+        }
+        return 0;
+    };
    
 
     const bmi = calculateBMI(weight, height);
-    const bmr = calculateBMR(age, weight, height, gender);
+    const bmr = calculateBMR(age, weight, height, gender);   
+    const kcal = calculateKcal(bmr,sport);
 
     return (
         <SafeAreaView style={styles.container}>
@@ -49,12 +64,14 @@ export default function BodyInfos({ route, navigation }) {
                     <Text style={styles.info}>{bmr}</Text>
                     <Text style={styles.text}>Diet:</Text>
                     <Text style={styles.info}>{diet}</Text>
+                    <Text style={styles.text}>Total calorie recommended:</Text>
+                    <Text style={styles.info}>{kcal}</Text>
                     
                     <Button color="plum" title="Go Back to Registration" onPress={() => navigation.navigate('Registration')} />
                     <Text>  </Text>
                     <Button color="plum" title="Choose my meal plan" onPress={() => {
                                 navigation.navigate('Meal', {
-                                    name, surname, age, gender, height, weight,diet,
+                                    name, surname, age, gender, height, weight,diet,kcal,
                                 });
                             }} />
                 </View>
