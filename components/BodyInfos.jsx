@@ -1,65 +1,64 @@
-import React from 'react';
-import { SafeAreaView, Text, Button, StyleSheet, View, ScrollView } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { SafeAreaView, Text, StyleSheet, View } from 'react-native';
+import { getDatabase, ref, get } from 'firebase/database';
 
-export default function BodyInfos({ route, navigation }) {
-    const { name, surname, age, gender, height, weight,diet } = route.params;
+export default function BodyInfos({ navigation, route }) {
+    const [userData, setUserData] = useState({});
+    const [loading, setLoading] = useState(true);
 
-    const calculateBMI = (weight, height) => {
-        if (weight && height) {
-            const heightInMeters = height / 100;
-            return (weight / (heightInMeters * heightInMeters)).toFixed(2);
-        }
-        return 0;
-    };
+    // Récupération de l'ID utilisateur passé via la navigation
+    const { userId } = route.params; // Récupérer l'ID de l'utilisateur passé par la page de connexion
 
-    const calculateBMR = (age, weight, height, gender) => {
-        if (age && weight && height) {
-            if (gender === '2') {
-                return (66.5 + (13.75 * weight) + (5.003 * height) - (6.75 * age)).toFixed(2); // Homme
-            } else if (gender === '1') {
-                return (655 + (9.563 * weight) + (1.850 * height) - (4.676 * age)).toFixed(2); // Femme
+    useEffect(() => {
+        const fetchUserData = async () => {
+            const db = getDatabase();
+            const userRef = ref(db, `users/${userId}`); // Utilisation du userId dynamique
+
+            try {
+                const snapshot = await get(userRef);
+                if (snapshot.exists()) {
+                    console.log('Données utilisateur récupérées :', snapshot.val());
+                    setUserData(snapshot.val()); // Mise à jour des données utilisateur
+                } else {
+                    console.log('Aucune donnée trouvée pour l\'utilisateur :', userId);
+                }
+            } catch (error) {
+                console.error('Erreur lors de la récupération des données utilisateur :', error);
+            } finally {
+                setLoading(false);
             }
-        }
-        return 0;
-    };
-    
-   
+        };
 
-    const bmi = calculateBMI(weight, height);
-    const bmr = calculateBMR(age, weight, height, gender);
+        fetchUserData();
+    }, [userId]); // Refetch les données quand l'userId change
+
+    if (loading) {
+        return (
+            <SafeAreaView style={styles.container}>
+                <Text>Loading...</Text>
+            </SafeAreaView>
+        );
+    }
+
+    const { name, surname, age, gender, height, weight, diet } = userData;
 
     return (
         <SafeAreaView style={styles.container}>
-            <ScrollView>
-                <View style={styles.box}>
-                    <Text style={styles.header}>Body Informations</Text>
-                    <Text style={styles.text}>Name:</Text>
-                    <Text style={styles.info}>{name} {surname}</Text>
-                    <Text style={styles.text}>Age:</Text>
-                    <Text style={styles.info}>{age}</Text>
-                    <Text style={styles.text}>Gender:</Text>
-                    {/*<Text style={styles.info}>{gender === '2' ? 'Male' : 'Female'}</Text>*/}
-                    <Text style={styles.info}>{gender}</Text>
-                    <Text style={styles.text}>Height:</Text>
-                    <Text style={styles.info}>{height} cm</Text>
-                    <Text style={styles.text}>Weight:</Text>
-                    <Text style={styles.info}>{weight} kg</Text>
-                    <Text style={styles.text}>BMI:</Text>
-                    <Text style={styles.info}>{bmi}</Text>
-                    <Text style={styles.text}>BMR:</Text>
-                    <Text style={styles.info}>{bmr}</Text>
-                    <Text style={styles.text}>Diet:</Text>
-                    <Text style={styles.info}>{diet}</Text>
-                    
-                    <Button color="plum" title="Go Back to Registration" onPress={() => navigation.navigate('Registration')} />
-                    <Text>  </Text>
-                    <Button color="plum" title="Choose my meal plan" onPress={() => {
-                                navigation.navigate('Meal', {
-                                    name, surname, age, gender, height, weight,diet,
-                                });
-                            }} />
-                </View>
-            </ScrollView>
+            <View style={styles.box}>
+                <Text style={styles.header}>Body Informations</Text>
+                <Text style={styles.text}>Name:</Text>
+                <Text style={styles.info}>{name} {surname}</Text>
+                <Text style={styles.text}>Age:</Text>
+                <Text style={styles.info}>{age}</Text>
+                <Text style={styles.text}>Gender:</Text>
+                <Text style={styles.info}>{gender === '2' ? 'Male' : 'Female'}</Text>
+                <Text style={styles.text}>Height:</Text>
+                <Text style={styles.info}>{height} cm</Text>
+                <Text style={styles.text}>Weight:</Text>
+                <Text style={styles.info}>{weight} kg</Text>
+                <Text style={styles.text}>Diet:</Text>
+                <Text style={styles.info}>{diet}</Text>
+            </View>
         </SafeAreaView>
     );
 }
@@ -70,7 +69,6 @@ const styles = StyleSheet.create({
         padding: 20,
         justifyContent: 'center',
         backgroundColor: 'plum',
-        paddingBottom: 100,
     },
     header: {
         fontSize: 20,
@@ -78,28 +76,14 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         marginBottom: 20,
     },
-
     box: {
         backgroundColor: 'white',
         borderColor: 'black',
         borderWidth: 1,
         borderRadius: 20,
-        display: 'flex',
-        flexDirection: 'column',
         padding: 15,
-        // ios shadows
-        shadowColor: "#700070",
-        shadowOffset: {
-            width: 0,
-            height: 4,
-        },
-        shadowOpacity: 0.3,
-        shadowRadius: 4,
-
-        // android shadows
-        elevation: 8,
     },
-    text:{
+    text: {
         fontSize: 14,
         fontWeight: 'bold',
     },
@@ -109,6 +93,5 @@ const styles = StyleSheet.create({
         borderColor: 'plum',
         borderRadius: 20,
         paddingLeft: 10,
-        
     },
 });
