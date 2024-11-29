@@ -82,8 +82,8 @@ export default function BodyInfos({ navigation, route }) {
   const kcal = calculateKcal(bmr, sport);
 
   return (
-    <SafeAreaView style={styles.container}>
-      <ScrollView>
+    <ScrollView>
+      <SafeAreaView style={styles.container}>
         <View style={styles.box}>
           <Text style={styles.header}>Body Information</Text>
           <Text style={styles.text}>Name:</Text>
@@ -121,8 +121,8 @@ export default function BodyInfos({ navigation, route }) {
             }}
           />
         </View>
-      </ScrollView>
-    </SafeAreaView>
+      </SafeAreaView>
+    </ScrollView>
   );
 }
 
