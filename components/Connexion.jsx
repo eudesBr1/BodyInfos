@@ -1,16 +1,18 @@
+//importing the librairies we need to use the components and informations from react native and firebase
 import { useState, useEffect } from 'react';
 import { View, Text, TextInput, Button, SafeAreaView, ScrollView } from 'react-native';
-import { Asset } from 'expo-asset';
-import * as FileSystem from 'expo-file-system';
-import xmlJs from 'xml-js';
-import { getDatabase, ref, get } from 'firebase/database'; // Import Firebase database functions
+import { getDatabase, ref, get } from 'firebase/database'; 
+
+//creating the connexion function that will allow the users to connect in the app
 
 export default function Connexion({ navigation }) {
+  //we are defining our variables to nothing to store the informations we need (email,password and the user data from our database)
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [userData, setUserData] = useState(null);
 
-  // Function to load user data from Firebase Realtime Database
+  //we are creating the function to load the user data from the firebase database
+  //DEMANDER A EUDES DE COMMENTER CETTE PARTIE DU CODE
   const loadUserData = async () => {
     try {
       const db = getDatabase();
@@ -26,25 +28,28 @@ export default function Connexion({ navigation }) {
     }
   };
 
-  // Load user data when the component mounts
+  //we are using the useEffect function to load the user data at the beginning
   useEffect(() => {
     loadUserData();
-  }, []);
+  }, []); //we are using the empty [] to make sure that we load the data only once
 
-  // Handle login logic
+  
+  //function to handle the login into the user account
   const handleLogin = () => {
+    //if the data hasn't been loaded there is an error
     if (!userData) {
       console.error("User data not loaded yet.");
       return;
     }
 
-    // Search for the user in the Firebase data
+    //we are looking for the user in our database with the email and the password
     const user = Object.values(userData).find(
       (person) => person.email === email && person.password === password
     );
 
+    //if the user is found then we navigate into the home page with the user's chosed diet
+    //if we can't find the user we alert the user that maybe the email of password is wrong
     if (user) {
-      // If user found, navigate to 'Home' screen
       const pref=user.diet;
       navigation.navigate('Home',{pref});
     } else {
