@@ -41,7 +41,7 @@ export default function Home() {
 
         if (user) {
           await createProfile(user);  // Enregistrer les informations utilisateur dans Firebase
-          navigation.navigate("Main"); // Naviguer vers la page principale après l'inscription
+          navigation.navigate("Meal"); // Naviguer vers la page principale après l'inscription
         }
       } catch (error) {
         console.error("Registration error:", error);
