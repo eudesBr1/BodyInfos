@@ -1,20 +1,18 @@
-//importing the librairies we need to use the components and informations from react native and firebase
 import { useState, useEffect } from 'react';
 import { View, Text, TextInput, Button, SafeAreaView, ScrollView } from 'react-native';
-import { getDatabase, ref, get } from 'firebase/database'; 
-
-//creating the connexion function that will allow the users to connect in the app
+import { Asset } from 'expo-asset';
+import * as FileSystem from 'expo-file-system';
+import xmlJs from 'xml-js';
+import { getDatabase, ref, get } from 'firebase/database'; // Import Firebase database functions
 
 export default function Connexion({ navigation }) {
-  //we are defining our variables to nothing to store the informations we need (email,password and the user data from our database)
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);  // To handle loading state
   const [error, setError] = useState(null);  // To handle error messages
 
-  //we are creating the function to load the user data from the firebase database
-  //DEMANDER A EUDES DE COMMENTER CETTE PARTIE DU CODE
+  // Function to load user data from Firebase Realtime Database
   const loadUserData = async () => {
     try {
       const db = getDatabase();
@@ -35,13 +33,12 @@ export default function Connexion({ navigation }) {
     }
   };
 
-  //we are using the useEffect function to load the user data at the beginning
+  // Load user data when the component mounts
   useEffect(() => {
     loadUserData();
-  }, []); //we are using the empty [] to make sure that we load the data only once
+  }, []);
 
-  
-  //function to handle the login into the user account
+  // Handle login logic
   const handleLogin = () => {
     if (!email || !password) {
       alert('Please enter both email and password');
@@ -63,8 +60,6 @@ export default function Connexion({ navigation }) {
       ([uid, person]) => person.email === email && person.password === password
     );
 
-    //if the user is found then we navigate into the home page with the user's chosed diet
-    //if we can't find the user we alert the user that maybe the email of password is wrong
     if (user) {
       const [userId, userInfo] = user;
       // If user found, navigate to 'BodyInfos' screen and pass the userId (uid)
