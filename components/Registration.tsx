@@ -15,8 +15,10 @@ export default function Home() {
   const [height, setHeight] = useState(""); // Taille
   const [weight, setWeight] = useState(""); // Poids
   const [diet, setDiet] = useState(""); // Régime
+  const [sport,setSport]=useState("");// Intensité de sport
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  let [userId, userInfo] = ""; 
   
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
 
@@ -24,7 +26,7 @@ export default function Home() {
     try {
       // Enregistrer toutes les informations dans Firebase Realtime Database
       await set(ref(db, '/users/' + user.uid), {
-        name, age, gender, height, weight, diet, email, password });
+        name, age, gender, height, weight, diet, email, password,sport });
       console.log("Profile created successfully!");
     } catch (error) {
       console.error("Error creating profile:", error);
@@ -32,7 +34,7 @@ export default function Home() {
     }
   };
 
-  const registerAndGoToMainFlow = async () => {
+  const registerAndGoToConnectFlow = async () => {
     if (email && password) {
       try {
         const response = await createUserWithEmailAndPassword(auth, email, password);
@@ -40,6 +42,7 @@ export default function Home() {
 
         if (user) {
           await createProfile(user);  // Enregistrer les informations utilisateur dans Firebase
+          
           navigation.navigate("Connexion"); // Naviguer vers la page principale après l'inscription
         }
       } catch (error) {
@@ -50,24 +53,6 @@ export default function Home() {
       Alert.alert("Please fill all fields correctly");
     }
   };
-
-  const radioButtonsDiet = [
-    {
-      id: 'Regular',
-      label: 'Regular',
-      value: 'Regular',
-    },
-    {
-      id: 'Vegan',
-      label: 'Vegan',
-      value: 'Vegan',
-    },
-    {
-      id: 'Vegetarian',
-      label: 'Vegetarian',
-      value: 'Vegetarian',
-    },
-  ];
 
   return (
     <SafeAreaView>
@@ -99,28 +84,81 @@ export default function Home() {
               <TouchableOpacity
                 style={[styles.touchable, gender === "2" ? styles.select : styles.unselect]}
                 onPress={() => setGender("2")}>
+                style={[styles.touchable, gender === "2" ? styles.select : styles.unselect]}
+                onPress={() => setGender("2")}>
                 <Text> Male </Text>
               </TouchableOpacity>
             </View>
 
             <Text style={styles.text}>Body Information:</Text>
             <TextInput style={styles.input} placeholder="Height (cm)" value={height} keyboardType="numeric" 
-            onChangeText={(e) => setHeight(e)}/>
+              onChangeText={(e) => setHeight(e)}/>
 
             <TextInput style={styles.input} placeholder="Weight (kg)" value={weight} keyboardType="numeric"
               onChangeText={(e) => setWeight(e)}/>
 
             <Text style={styles.text}>Choose your diet:</Text>
-            <RadioGroup radioButtons={radioButtonsDiet} onPress={setDiet} selectedId={diet} />
+            <View style={styles.column}>
+              <TouchableOpacity 
+                style={[styles.touchable, diet === "Regular" ? styles.select : styles.unselect]}
+                onPress={() => setDiet("Regular")}>
+                <Text> Regular </Text>
+              </TouchableOpacity>
+              
+              <TouchableOpacity
+                style={[styles.touchable, diet === "Vegetarian" ? styles.select : styles.unselect]}
+                onPress={() => setDiet("Vegetarian")}>
+                <Text> Vegetarian </Text>
+              </TouchableOpacity>
+              
+              <TouchableOpacity
+                style={[styles.touchable, diet === "Vegan" ? styles.select : styles.unselect]}
+                onPress={() => setDiet("Vegan")}>
+                <Text> Vegan </Text>
+              </TouchableOpacity>
+            </View>
+            <Text style={styles.text}>How much do you exercise :</Text>
+            <View style={styles.column}>
+              <TouchableOpacity 
+                style={[styles.touchable, sport === "none" ? styles.select : styles.unselect]}
+                onPress={() => setSport("none")}>
+                <Text> Little to no exercise </Text>
+              </TouchableOpacity>
+              
+              <TouchableOpacity
+                style={[styles.touchable, sport === "light" ? styles.select : styles.unselect]}
+                onPress={() => setSport("light")}>
+                <Text> Light exercise</Text>
+              </TouchableOpacity>
+              
+              <TouchableOpacity
+                style={[styles.touchable, sport === "moderate" ? styles.select : styles.unselect]}
+                onPress={() => setSport("moderate")}>
+                <Text> Moderate exercise ( 3-5 days/week) </Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity
+                style={[styles.touchable, sport === "active" ? styles.select : styles.unselect]}
+                onPress={() => setSport("active")}>
+                <Text> Very active ( 6-7 days/week) </Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity
+                style={[styles.touchable, sport === "extra" ? styles.select : styles.unselect]}
+                onPress={() => setSport("extra")}>
+                <Text> Extra active (very active & physical job) </Text>
+              </TouchableOpacity>
+            </View>
+
+            
 
             <Text/>
 
-            <Button color="plum" title="Go to BodyInfos" onPress={() => { navigation.navigate('BodyInfos', {
-                  name, age, gender, height, weight, diet,});}}/>
+           
 
             <Text/>
 
-            <Button color="plum" title="Register and Go to Main" onPress={registerAndGoToMainFlow}/> // Call registration function
+            <Button color="plum" title="Register and go to connexion" onPress={registerAndGoToConnectFlow}/> 
             
           </View>
         </View>
@@ -177,6 +215,14 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     marginVertical: 10,
+  },
+  column: {
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignContent:'center',
+    alignItems: 'center',
+    padding:5,
+  
   },
   box: {
     backgroundColor: 'white',

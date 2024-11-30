@@ -1,8 +1,5 @@
 import { useState, useEffect } from 'react';
 import { View, Text, TextInput, Button, SafeAreaView, ScrollView } from 'react-native';
-import { Asset } from 'expo-asset';
-import * as FileSystem from 'expo-file-system';
-import xmlJs from 'xml-js';
 import { getDatabase, ref, get } from 'firebase/database'; // Import Firebase database functions
 
 export default function Connexion({ navigation }) {
@@ -72,7 +69,9 @@ export default function Connexion({ navigation }) {
 
   return (
     <SafeAreaView style={styles.container}>
+      <Text style={styles.header}> Welcome to the connexion page ! </Text>
       <View style={styles.box}>
+      <Text style={styles.text}>E-mail :</Text>
         <TextInput
           style={styles.input}
           value={email}
@@ -80,6 +79,7 @@ export default function Connexion({ navigation }) {
           placeholder="E-mail"
           keyboardType="email-address"
         />
+        <Text style={styles.text}>Password :</Text>
         <TextInput
           style={styles.input}
           value={password}
@@ -95,14 +95,13 @@ export default function Connexion({ navigation }) {
         {loading ? (
           <Text>Loading...</Text>
         ) : (
-          <Button title="Submit" onPress={handleLogin} />
+          <Button title="Submit" color="plum" onPress={handleLogin} />
         )}
+      
+        <Text/>
 
         <Text style={styles.text}>You don't have an account?</Text>
-        <Button
-          title="Register"
-          onPress={() => navigation.navigate('Registration')}
-        />
+        <Button title="Register" color="plum" onPress={() => navigation.navigate('Registration')}/>
       </View>
     </SafeAreaView>
   );
@@ -134,6 +133,7 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     padding: 15,
+    height:300,
 
     // ios shadows
     shadowColor: "#700070",
@@ -154,10 +154,6 @@ const styles = {
     marginBottom: 10,
     paddingLeft: 10,
     borderRadius: 5,
-  },
-  text: {
-    textAlign: 'center',
-    marginTop: 10,
   },
   error: {
     color: 'red',

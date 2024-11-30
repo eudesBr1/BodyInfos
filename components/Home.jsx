@@ -58,7 +58,7 @@ import s6_1 from '../assets/images/S6TOAST.jpg';
 export default function Home({ route }){
     const navigation = useNavigation(); 
 
-    const { diet,breakfast, lunch,dinner,snack} = route.params;
+    const { name, surname, age, gender, height, weight, diet, sport,breakfast, lunch,dinner,snack} = route.params;
     
     
 
@@ -374,11 +374,11 @@ export default function Home({ route }){
             
             <Text/>
             <Button title="My body informations" color="plum"
-                onPress={() => navigation.navigate('Meal', { diet })}
+                onPress={() => navigation.navigate('BodyInfos', { name, surname, age, gender, height, weight, diet, sport })}
             />
             <Text/>
             <Button title="Change my meal plan" color="plum"
-                onPress={() => navigation.navigate('Meal', { diet })}
+                onPress={() => navigation.navigate('Meal', { name, surname, age, gender, height, weight, diet, sport })}
             />
              </View>
 
@@ -421,6 +421,9 @@ const styles=StyleSheet.create({
         display: 'flex',
         flexDirection: 'column',
         padding: 15,
+        marginLeft:20,
+        marginBottom:20,
+        marginRight:20,
         // ios shadows
         shadowColor: "#700070",
         shadowOffset: {

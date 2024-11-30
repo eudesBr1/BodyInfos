@@ -14,7 +14,7 @@ export default function Index() {
   
   return (
     <NavigationContainer independent={true}>
-        <Drawer.Navigator initialRouteName="Registration">
+        <Drawer.Navigator initialRouteName="Connexion">
           <Drawer.Screen name="Home" component={Home}/>
           <Drawer.Screen name="BodyInfos" component={BodyInfos}/>
           <Drawer.Screen name="Meal" component={Meal}/>
