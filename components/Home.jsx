@@ -421,6 +421,9 @@ const styles=StyleSheet.create({
         display: 'flex',
         flexDirection: 'column',
         padding: 15,
+        marginLeft:20,
+        marginBottom:20,
+        marginRight:20,
         // ios shadows
         shadowColor: "#700070",
         shadowOffset: {
