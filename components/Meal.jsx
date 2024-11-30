@@ -61,18 +61,23 @@ import s6_1 from '../assets/images/S6TOAST.jpg';
 //IL FAUT QUE SI ON APPUIE SUR UN BOUTON IL NOUS EMMENE SUR LA PAGE DU MEAL TOUT SEUL 
 export default function ChoiceMeal({route}){
     
-    const {height1, width1} = useWindowDimensions();
+    //const {height1, width1} = useWindowDimensions();
 
     const navigation = useNavigation(); 
+    
 
     const{diet,kcal}=route.params;
+
+    
     
     const [breakfast,setBreakfast]=useState('Oatmeal and apples + Cucumber avocado toast (519 kcal)');
     const [lunch,setLunch]=useState("Quick and easy vegan ceasar salad + pineapple raspberry smoothie (527 kcal)");
     const [dinner,setDinner]=useState("Tempeh Strips with almond sauce + edamame slaw (527 kcal)");
     const [snack,setSnack]=useState("Raw Cauliflower tabouli (219 kcal)");
 
-    
+   
+
+   
 
     //radio buttons to select the Meal plan BREAKFAST
     const radioButtonsBreakfast = useMemo(()=>([

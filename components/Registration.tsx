@@ -18,6 +18,7 @@ export default function Home() {
   const [sport,setSport]=useState("");// Intensité de sport
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  let [userId, userInfo] = ""; 
   
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
 
@@ -33,7 +34,7 @@ export default function Home() {
     }
   };
 
-  const registerAndGoToMainFlow = async () => {
+  const registerAndGoToConnectFlow = async () => {
     if (email && password) {
       try {
         const response = await createUserWithEmailAndPassword(auth, email, password);
@@ -41,7 +42,8 @@ export default function Home() {
 
         if (user) {
           await createProfile(user);  // Enregistrer les informations utilisateur dans Firebase
-          navigation.navigate("Meal"); // Naviguer vers la page principale après l'inscription
+          
+          navigation.navigate("Connexion"); // Naviguer vers la page principale après l'inscription
         }
       } catch (error) {
         console.error("Registration error:", error);
@@ -151,12 +153,11 @@ export default function Home() {
 
             <Text/>
 
-            <Button color="plum" title="Go to BodyInfos" onPress={() => { navigation.navigate('BodyInfos', {
-                  name, age, gender, height, weight, diet,});}}/>
+           
 
             <Text/>
 
-            <Button color="plum" title="Register and Go to Main" onPress={registerAndGoToMainFlow}/> // Call registration function
+            <Button color="plum" title="Register and go to connexion" onPress={registerAndGoToConnectFlow}/> 
             
           </View>
         </View>
