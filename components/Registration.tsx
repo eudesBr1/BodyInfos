@@ -40,7 +40,7 @@ export default function Home() {
 
         if (user) {
           await createProfile(user);  // Enregistrer les informations utilisateur dans Firebase
-          navigation.navigate("Meal"); // Naviguer vers la page principale après l'inscription
+          navigation.navigate("Connexion"); // Naviguer vers la page principale après l'inscription
         }
       } catch (error) {
         console.error("Registration error:", error);
@@ -91,14 +91,14 @@ export default function Home() {
 
             <Text style={styles.text}>Choose your gender:</Text>
             <View style={styles.row}>
-              <TouchableOpacity style={[styles.touchable, gender === "Female" ? styles.select : styles.unselect]}
-                onPress={() => setGender("Female")}>
+              <TouchableOpacity style={[styles.touchable, gender === "1" ? styles.select : styles.unselect]}
+                onPress={() => setGender("1")}>
                 <Text> Female </Text>
               </TouchableOpacity>
 
               <TouchableOpacity
-                style={[styles.touchable, gender === "Male" ? styles.select : styles.unselect]}
-                onPress={() => setGender("Male")}>
+                style={[styles.touchable, gender === "2" ? styles.select : styles.unselect]}
+                onPress={() => setGender("2")}>
                 <Text> Male </Text>
               </TouchableOpacity>
             </View>
