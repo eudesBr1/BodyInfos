@@ -133,6 +133,7 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     padding: 15,
+    height:300,
 
     // ios shadows
     shadowColor: "#700070",

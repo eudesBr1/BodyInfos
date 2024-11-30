@@ -64,15 +64,15 @@ export default function BodyInfos({ navigation, route }) {
   // Kcal Calculation based on activity level
   const calculateKcal = (bmr, sport) => {
     if (sport === 'none') {
-      return (bmr * 1.2);  // Little to no exercise
+      return ((bmr * 1.2).toFixed(2));  // Little to no exercise
     } else if (sport === 'light') {
-      return (bmr * 1.375);  // Light exercise
+      return ((bmr * 1.375).toFixed(2));  // Light exercise
     } else if (sport === 'moderate') {
-      return (bmr * 1.55);  // Moderate exercise (3-5 days)
+      return ((bmr * 1.55).toFixed(2));  // Moderate exercise (3-5 days)
     } else if (sport === 'active') {
-      return (bmr * 1.725);  // Very active exercise (6-7 days)
+      return ((bmr * 1.725).toFixed(2));  // Very active exercise (6-7 days)
     } else if (sport === 'extra') {
-      return (bmr * 1.9);  // Extra active exercise
+      return ((bmr * 1.9).toFixed(2));  // Extra active exercise
     }
     return 0;
   };
@@ -107,8 +107,11 @@ export default function BodyInfos({ navigation, route }) {
 
           <Button
             color="plum"
-            title="Go Back to Registration"
-            onPress={() => navigation.navigate('Registration')}
+            title="Go to Home "
+            onPress={() => {navigation.navigate('Home', {
+              name, surname, age, gender, height, weight, diet, kcal,
+            });
+          }}
           />
           <Text> </Text>
           <Button

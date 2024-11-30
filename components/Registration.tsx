@@ -26,7 +26,7 @@ export default function Home() {
     try {
       // Enregistrer toutes les informations dans Firebase Realtime Database
       await set(ref(db, '/users/' + user.uid), {
-        name, age, gender, height, weight, diet, email, password });
+        name, age, gender, height, weight, diet, email, password,sport });
       console.log("Profile created successfully!");
     } catch (error) {
       console.error("Error creating profile:", error);
@@ -77,14 +77,14 @@ export default function Home() {
             <Text style={styles.text}>Choose your gender:</Text>
             <View style={styles.row}>
               <TouchableOpacity 
-                style={[styles.touchable, gender === "Female" ? styles.select : styles.unselect]}
-                onPress={() => setGender("Female")}>
+                style={[styles.touchable, gender === "1" ? styles.select : styles.unselect]}
+                onPress={() => setGender("1")}>
                 <Text> Female </Text>
               </TouchableOpacity>
 
               <TouchableOpacity
-                style={[styles.touchable, gender === "Male" ? styles.select : styles.unselect]}
-                onPress={() => setGender("Male")}>
+                style={[styles.touchable, gender === "2" ? styles.select : styles.unselect]}
+                onPress={() => setGender("2")}>
                 <Text> Male </Text>
               </TouchableOpacity>
             </View>
