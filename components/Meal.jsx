@@ -54,6 +54,7 @@ import s3_1 from '../assets/images/S3PLATE.jpg';
 import s4_1 from '../assets/images/S4TABOULI.jpg';
 import s5_1 from '../assets/images/S5MOUSSE.jpg';
 import s6_1 from '../assets/images/S6TOAST.jpg';
+import s7_1 from '../assets/images/S7NOTHING.jpg';
 
 
 
@@ -69,6 +70,8 @@ export default function ChoiceMeal({route}){
     const{diet,kcal}=route.params;
 
     
+
+    
     
     const [breakfast,setBreakfast]=useState('Oatmeal and apples + Cucumber avocado toast (519 kcal)');
     const [lunch,setLunch]=useState("Quick and easy vegan ceasar salad + pineapple raspberry smoothie (527 kcal)");
@@ -77,6 +80,8 @@ export default function ChoiceMeal({route}){
 
     
 
+
+    
    
 
     //radio buttons to select the Meal plan BREAKFAST
@@ -87,9 +92,10 @@ export default function ChoiceMeal({route}){
             value:'Scrambled Eggs with Onion Flakes + Toast with Pear, Cottage Cheese, and Honey (370 kcal)',
             imageLink1:b1_1,
             imageLink2:b1_2,
+            calo:370,
             veg:false,
             vege:true,
-            light:true,
+            
         },
         {
             id: '2',
@@ -97,9 +103,10 @@ export default function ChoiceMeal({route}){
             value:'Low Carb Pancakes + Toast with tomato, onion and hummus (370 kcal)',
             imageLink1:b2_1,
             imageLink2:b2_2,
+            calo:370,
             veg:false,
             vege:true,
-            light:true,
+            
         },
         {
             id:'3',
@@ -107,6 +114,7 @@ export default function ChoiceMeal({route}){
             value:'Canadian Bacon Breakfast Sandwich + Plum and Greek yogurt snack (443 kcal)',
             imageLink1:b3_1,
             imageLink2:b3_2,
+            calo:443,
             veg:false,
             vege:false,
             
@@ -117,6 +125,7 @@ export default function ChoiceMeal({route}){
             value:'Oatmeal and apples + Cucumber avocado toast (519 kcal)',
             imageLink1:b4_1,
             imageLink2:b4_2,
+            calo:519,
             veg:true,
             vege:true,
         },
@@ -126,9 +135,10 @@ export default function ChoiceMeal({route}){
             value:'Parsley and Tomato scramble + very berry cottage cheese (529 kcal)',
             imageLink1:b5_1,
             imageLink2:b5_2,
+            calo:529,
             veg:false,
             vege:true,
-            big:true,
+            
         },
         {
             id:'6',
@@ -136,10 +146,23 @@ export default function ChoiceMeal({route}){
             value:'Peanut butter banana English muffin + veggie apple smoothie (549 kcal)',
             imageLink1:b6_1,
             imageLink2:b6_2,
+            calo:549,
             veg:true,
             vege:true,
-            big:true,
+            
+        },
+        {
+            id:'7',
+            label:'Nothing',
+            value:'Nothing',
+            imageLink1:s7_1,
+            imageLink2:s7_1,
+            calo:0,
+            veg:true,
+            vege:true,
+            
         }
+        
     ]))
    
     const radioButtonsLunch = useMemo(()=>([
@@ -149,9 +172,10 @@ export default function ChoiceMeal({route}){
             value:'Simple Mixed Greens Salad + chocolate peanut butter oatmeal protein shake (424 kcal)',
             imageLink1:l1_1,
             imageLink2:l1_2,
+            calo:424,
             veg:false,
             vege:true,
-            light:true,
+            
         },
         {
             id: '2',
@@ -159,9 +183,10 @@ export default function ChoiceMeal({route}){
             value:'Banana Almond Shake + Mushroom and pepper tossed salad (387 kcal)',
             imageLink1:l2_1,
             imageLink2:l2_2,
+            calo:387,
             veg:false,
             vege:true,
-            light:true,
+           
         },
         {
             id:'3',
@@ -169,6 +194,7 @@ export default function ChoiceMeal({route}){
             value:'Sunrise smoothie + Cucumber salad (457 kcal)',
             imageLink1:l3_1,
             imageLink2:l3_2,
+            calo:457,
             veg:false,
             vege:true,
         },
@@ -178,6 +204,7 @@ export default function ChoiceMeal({route}){
             value:'Quick and easy vegan ceasar salad + pineapple raspberry smoothie (527 kcal)',
             imageLink1:l4_1,
             imageLink2:l4_2,
+            calo:527,
             veg:true,
             vege:true,
             
@@ -188,9 +215,10 @@ export default function ChoiceMeal({route}){
             value:'Tuna avocado salad + Peanut butter banana smoothie (541 kcal)',
             imageLink1:l5_1,
             imageLink2:l5_2,
+            calo:541,
             veg:false,
             vege:false,
-            big:true,
+            
         },
         {
             id:'6',
@@ -198,9 +226,21 @@ export default function ChoiceMeal({route}){
             value:'Tomato and hummus pocket sandwich + brussels sprout slaw (555 kcal)',
             imageLink1:l6_1,
             imageLink2:l6_2,
+            calo:555,
             veg:true,
             vege:true,
-            big:true,
+            
+        },
+        {
+            id:'7',
+            label:'Nothing',
+            value:'Nothing',
+            imageLink1:s7_1,
+            imageLink2:s7_1,
+            calo:0,
+            veg:true,
+            vege:true,
+            
         }
     ]))
 
@@ -211,9 +251,10 @@ export default function ChoiceMeal({route}){
             value:'Thai Basil Chicken + Brocccoli with hummus and sesame seeds (402 kcal)',
             imageLink1:d1_1,
             imageLink2:d1_2,
+            calo:402,
             veg:false,
             vege:false,
-            light:true,
+           
         },
         {
             id: '2',
@@ -221,9 +262,10 @@ export default function ChoiceMeal({route}){
             value:'Simple spicy garlic shrimp + Sour Cream and parsley mashed potatoes (448 kcal)',
             imageLink1:d2_1,
             imageLink2:d2_2,
+            calo:448,
             veg:false,
             vege:true,
-            light:true,
+            
         },
         {
             id:'3',
@@ -231,6 +273,7 @@ export default function ChoiceMeal({route}){
             value:'BBQ Chicken salad + easy sautéed spinach (634 kcal)',
             imageLink1:d3_1,
             imageLink2:d3_2,
+            calo:634,
             veg:false,
             vege:false,
             big:true,
@@ -241,6 +284,7 @@ export default function ChoiceMeal({route}){
             value:'Tempeh Strips with almond sauce + edamame slaw (527 kcal)',
             imageLink1:d4_1,
             imageLink2:d4_2,
+            calo:527,
             veg:true,
             vege:true,
         },
@@ -250,9 +294,10 @@ export default function ChoiceMeal({route}){
             value:'White bean and chicken Stir fry + green salad (730 kcal)',
             imageLink1:d5_1,
             imageLink2:d5_2,
+            calo:730,
             veg:false,
             vege:false,
-            big:true,
+            
             
         },
         {
@@ -261,9 +306,21 @@ export default function ChoiceMeal({route}){
             value:'Portobello steaks with avocado chimichurri + kale Avocado salad (684 kcal)',
             imageLink1:d6_1,
             imageLink2:d6_2,
+            calo:684,
             veg:true,
             vege:true,
-            big:true,
+            
+            
+        },
+        {
+            id:'7',
+            label:'Nothing',
+            value:'Nothing',
+            imageLink1:s7_1,
+            imageLink2:s7_1,
+            calo:0,
+            veg:true,
+            vege:true,
             
         }
     ]))
@@ -274,24 +331,27 @@ export default function ChoiceMeal({route}){
             label:'Peaches and almond butter on toast (198 kcal)',
             value:'Peaches and almond butter on toast (198 kcal)',
             imageLink1:s1_1,
+            calo:198,
             veg:true,
             vege:true,
-            light:true,
+           
         },
         {
             id: '2',
             label:'Avocado lettuce wrap (194 kcal)',
             value:'Avocado lettuce wrap (194 kcal)',
             imageLink1:s2_1,
+            calo:194,
             veg:true,
             vege:true,
-            light:true,
+            
         },
         {
             id:'3',
             label:'Fruit & Vegetable Plate with Almonds & Cheese (270 kcal)',
             value:'Fruit & Vegetable Plate with Almonds & Cheese (270) kcal)',
             imageLink1:s3_1,
+            calo:270,
             veg:false,
             vege:true,
         },
@@ -300,6 +360,7 @@ export default function ChoiceMeal({route}){
             label:'Raw Cauliflower tabouli (219 kcal)',
             value:'Raw Cauliflower tabouli (219 kcal)',
             imageLink1:s4_1,
+            calo:219,
             veg:true,
             vege:true,
         },
@@ -308,9 +369,10 @@ export default function ChoiceMeal({route}){
             label:'Light peanut butter mousse (301 kcal)',
             value:'Light peanut butter mousse (301) kcal)',
             imageLink1:s5_1,
+            calo:301,
             veg:false,
             vege:true,
-            big:true,
+           
             
         },
         {
@@ -318,13 +380,41 @@ export default function ChoiceMeal({route}){
             label:'Hummus avocado toast (306 kcal)',
             value:'Hummus avocado toast (306 kcal)',
             imageLink1:s6_1,
+            calo:306,
             veg:true,
             vege:true,
-            big:true,
+            
+            
+        },
+        {
+            id:'7',
+            label:'Nothing',
+            value:'Nothing',
+            imageLink1:s7_1,
+            calo:0,
+            veg:true,
+            vege:true,
             
         }
     ]))
-   
+
+    
+
+    const [bcalo,setBcalo]=useState(0);
+    const [lcalo,setLcalo]=useState(0);
+    const [dcalo,setDcalo]=useState(0);
+    const [scalo,setScalo]=useState(0);
+
+    const lesCals = [bcalo,lcalo,dcalo,scalo];
+
+    const [restKcal,setRestKcal]=useState(kcal)
+
+    
+
+
+
+
+
 
     const [showComponent1, setShowComponent1] = useState(true);
     const [showComponent2, setShowComponent2] = useState(false);
@@ -355,11 +445,18 @@ export default function ChoiceMeal({route}){
 
                 {showComponent1 && (<View style={styles.radioImagecolumn}>
                     {diet==='Regular' ?<View> {radioButtonsBreakfast.map((item)=> {
+                        const isDisabled = restKcal < item.calo;
                        return(
                         <Pressable
                         key={item.value}
-                        onPress={()=>setBreakfast(item.value)}
-                        style={styles.imageMain}>
+                        onPress={()=>{setBreakfast(item.value);
+                            setBcalo(item.calo);
+                            setRestKcal(lesCals.reduce(
+                                    (accumulator, currentValue) => accumulator - currentValue,
+                                    kcal,
+                                  ));
+                        }}
+                        style={[styles.imageMain,isDisabled && { opacity: 0.5 },]}>
                             {breakfast===item.value? <View style={styles.imageFontMain}>
                                 <FontAwesome name='check-circle' size={20} color="white"/>
                             </View>:null}
@@ -373,12 +470,19 @@ export default function ChoiceMeal({route}){
                         </Pressable>
                     )
                     })}</View>:null}
-                    {diet==='Vegan' ?<View> {radioButtonsBreakfast.filter(item=>item.veg).map((item)=> {
+                    {diet==='Vegan' ?<View> {radioButtonsBreakfast.filter(item=>{item.veg}).map((item)=> {
+                        const isDisabled = restKcal < item.calo;
                        return(
                         <Pressable
                         key={item.value}
-                        onPress={()=>setBreakfast(item.value)}
-                        style={styles.imageMain}>
+                        onPress={()=>{setBreakfast(item.value);
+                            setBcalo(item.calo);
+                            setRestKcal(lesCals.reduce(
+                                (accumulator, currentValue) => accumulator - currentValue,
+                                kcal,
+                              ));
+                        }}
+                        style={[styles.imageMain,isDisabled && { opacity: 0.5 },]}>
                             {breakfast===item.value? <View style={styles.imageFontMain}>
                                 <FontAwesome name='check-circle' size={20} color="white"/>
                             </View>:null}
@@ -393,11 +497,18 @@ export default function ChoiceMeal({route}){
                     )
                     })}</View>:null}
                     {diet==='Vegetarian' ?<View> {radioButtonsBreakfast.filter(item=>item.vege).map((item)=> {
+                        const isDisabled = restKcal < item.calo;
                        return(
                         <Pressable
                         key={item.value}
-                        onPress={()=>setBreakfast(item.value)}
-                        style={styles.imageMain}>
+                        onPress={()=>{setBreakfast(item.value);
+                            setBcalo(item.calo);
+                            setRestKcal(lesCals.reduce(
+                                (accumulator, currentValue) => accumulator - currentValue,
+                                kcal,
+                              ));
+                        }}
+                        style={[styles.imageMain,isDisabled && { opacity: 0.5 },]}>
                             {breakfast===item.value? <View style={styles.imageFontMain}>
                                 <FontAwesome name='check-circle' size={20} color="white"/>
                             </View>:null}
@@ -434,11 +545,18 @@ export default function ChoiceMeal({route}){
             
             {showComponent2 && (<View style={styles.radioImagecolumn}>
                 {diet==='Regular' ?<View> {radioButtonsLunch.map((item)=> {
+                    const isDisabled = restKcal < item.calo;
                         return(
                             <Pressable
                             key={item.value}
-                            onPress={()=>setLunch(item.value)}
-                            style={styles.imageMain}>
+                            onPress={()=>{setLunch(item.value);
+                                setLcalo(item.calo);
+                                setRestKcal(lesCals.reduce(
+                                    (accumulator, currentValue) => accumulator - currentValue,
+                                    kcal,
+                                  ));
+                            }}
+                            style={[styles.imageMain,isDisabled && { opacity: 0.5 },]}>
                                 {lunch===item.value? <View style={styles.imageFontMain}>
                                     <FontAwesome name='check-circle' size={20} color="white"/>
                                 </View>:null}
@@ -453,12 +571,19 @@ export default function ChoiceMeal({route}){
                             
                         )
                     })}</View>:null}
-                {diet==='Vegan' ?<View> {radioButtonsLunch.filter(item=>item.veg).map((item)=> {
+                {diet==='Vegan' ?<View> {radioButtonsLunch.filter(item=>item.veg).filter(item=>item.calo<restKcal).map((item)=> {
+                    const isDisabled = restKcal < item.calo;
                         return(
                             <Pressable
                             key={item.value}
-                            onPress={()=>setLunch(item.value)}
-                            style={styles.imageMain}>
+                            onPress={()=>{setLunch(item.value);
+                                setLcalo(item.calo);
+                                setRestKcal(lesCals.reduce(
+                                    (accumulator, currentValue) => accumulator - currentValue,
+                                    kcal,
+                                  ));
+                            }}
+                            style={[styles.imageMain,isDisabled && { opacity: 0.5 },]}>
                                 {lunch===item.value? <View style={styles.imageFontMain}>
                                     <FontAwesome name='check-circle' size={20} color="white"/>
                                 </View>:null}
@@ -474,11 +599,18 @@ export default function ChoiceMeal({route}){
                         )
                     })}</View>:null}
                     {diet==='Vegetarian' ?<View> {radioButtonsLunch.filter(item=>item.vege).map((item)=> {
+                        const isDisabled = restKcal < item.calo;
                         return(
                             <Pressable
                             key={item.value}
-                            onPress={()=>setLunch(item.value)}
-                            style={styles.imageMain}>
+                            onPress={()=>{setLunch(item.value);
+                                setLcalo(item.calo);
+                                setRestKcal(lesCals.reduce(
+                                    (accumulator, currentValue) => accumulator - currentValue,
+                                    kcal,
+                                  ));
+                            }}
+                            style={[styles.imageMain,isDisabled && { opacity: 0.5 },]}>
                                 {lunch===item.value? <View style={styles.imageFontMain}>
                                     <FontAwesome name='check-circle' size={20} color="white"/>
                                 </View>:null}
@@ -514,11 +646,18 @@ export default function ChoiceMeal({route}){
             </TouchableOpacity>
             {showComponent3 && (<View style={styles.radioImagecolumn}>
                 {diet==='Regular' ?<View> {radioButtonsDinner.map((item)=> {
+                    const isDisabled = restKcal < item.calo;
                         return(
                             <Pressable
                             key={item.value}
-                            onPress={()=>setDinner(item.value)}
-                            style={styles.imageMain}>
+                            onPress={()=>{setDinner(item.value);
+                                setDcalo(item.calo);
+                                setRestKcal(lesCals.reduce(
+                                    (accumulator, currentValue) => accumulator - currentValue,
+                                    kcal,
+                                  ));
+                            }}
+                            style={[styles.imageMain,isDisabled && { opacity: 0.5 },]}>
                                 {dinner===item.value? <View style={styles.imageFontMain}>
                                     <FontAwesome name='check-circle' size={20} color="white"/>
                                 </View>:null}
@@ -534,11 +673,18 @@ export default function ChoiceMeal({route}){
                         )
                     })}</View>:null}
                     {diet==='Vegan' ?<View> {radioButtonsDinner.filter(item=>item.veg).map((item)=> {
+                        const isDisabled = restKcal < item.calo;
                         return(
                             <Pressable
                             key={item.value}
-                            onPress={()=>setDinner(item.value)}
-                            style={styles.imageMain}>
+                            onPress={()=>{setDinner(item.value);
+                                setDcalo(item.calo);
+                                setRestKcal(lesCals.reduce(
+                                    (accumulator, currentValue) => accumulator - currentValue,
+                                    kcal,
+                                  ));
+                            }}
+                            style={[styles.imageMain,isDisabled && { opacity: 0.5 },]}>
                                 {dinner===item.value? <View style={styles.imageFontMain}>
                                     <FontAwesome name='check-circle' size={20} color="white"/>
                                 </View>:null}
@@ -554,11 +700,18 @@ export default function ChoiceMeal({route}){
                         )
                     })}</View>:null}
                     {diet==='Vegetarian' ?<View> {radioButtonsDinner.filter(item=>item.vege).map((item)=> {
+                        const isDisabled = restKcal < item.calo;
                         return(
                             <Pressable
                             key={item.value}
-                            onPress={()=>setDinner(item.value)}
-                            style={styles.imageMain}>
+                            onPress={()=>{setDinner(item.value);
+                                setDcalo(item.calo);
+                                setRestKcal(lesCals.reduce(
+                                    (accumulator, currentValue) => accumulator - currentValue,
+                                    kcal,
+                                  ));
+                            }}
+                            style={[styles.imageMain,isDisabled && { opacity: 0.5 },]}>
                                 {dinner===item.value? <View style={styles.imageFontMain}>
                                     <FontAwesome name='check-circle' size={20} color="white"/>
                                 </View>:null}
@@ -607,11 +760,18 @@ export default function ChoiceMeal({route}){
                 </TouchableOpacity>
                 {showComponent4 && ( <View style={styles.radioImagecolumn}>
                     {diet==='Regular' ?<View> {radioButtonsSnack.map((item)=> {
+                        const isDisabled = restKcal < item.calo;
                       return(
                         <Pressable
                         key={item.value}
-                        onPress={()=>setSnack(item.value)}
-                        style={styles.imageMain}>
+                        onPress={()=>{setSnack(item.value);
+                            setScalo(item.calo);
+                            setRestKcal(lesCals.reduce(
+                                (accumulator, currentValue) => accumulator - currentValue,
+                                kcal,
+                              ));
+                        }}
+                        style={[styles.imageMain,isDisabled && { opacity: 0.5 },]}>
                             {snack===item.value? <View style={styles.imageFontMain}>
                                 <FontAwesome name='check-circle' size={20} color="white"/>
                             </View>:null}
@@ -626,11 +786,18 @@ export default function ChoiceMeal({route}){
                     )
                     })}</View>:null}
                     {diet==='Vegan' ?<View> {radioButtonsSnack.filter(item=>item.veg).map((item)=> {
+                        const isDisabled = restKcal < item.calo;
                       return(
                         <Pressable
                         key={item.value}
-                        onPress={()=>setSnack(item.value)}
-                        style={styles.imageMain}>
+                        onPress={()=>{setSnack(item.value);
+                            setScalo(item.calo);
+                            setRestKcal(lesCals.reduce(
+                                (accumulator, currentValue) => accumulator - currentValue,
+                                kcal,
+                              ));
+                        }}
+                        style={[styles.imageMain,isDisabled && { opacity: 0.5 },]}>
                             {snack===item.value? <View style={styles.imageFontMain}>
                                 <FontAwesome name='check-circle' size={20} color="white"/>
                             </View>:null}
@@ -644,28 +811,46 @@ export default function ChoiceMeal({route}){
                         
                     )
                     })}</View>:null}
-                    {diet==='Vegetarian' ?<View> {radioButtonsSnack.filter(item=>item.vege).map((item)=> {
-                      return(
-                        <Pressable
-                        key={item.value}
-                        onPress={()=>setSnack(item.value)}
-                        style={styles.imageMain}>
-                            {snack===item.value? <View style={styles.imageFontMain}>
-                                <FontAwesome name='check-circle' size={20} color="white"/>
-                            </View>:null}
-                            <View style={{flexDirection:'row'}}>
-                                <Image source={item.imageLink1} style={styles.ImageStyle}/>
-                            </View>
+                    
+
+                    {diet === 'Vegetarian' ? (
+                    <View>
+                        {radioButtonsSnack.filter(item => item.vege).map((item) => {
                             
-                            <Text style={styles.titles}>{item.value}{`\n`}{`\n`}</Text>
-                            
-                        </Pressable>
-                        
-                    )
-                    })}</View>:null}
+                            const isDisabled = restKcal < item.calo;
+                            return (
+                            <Pressable
+                                key={item.value}
+                                onPress={() => { setSnack(item.value);
+                                setScalo(item.calo);
+                                setRestKcal(
+                                    lesCals.reduce(
+                                    (accumulator, currentValue) => accumulator - currentValue,
+                                    kcal,
+                                    )
+                                );
+                                }}
+                                style={[styles.imageMain,isDisabled && { opacity: 0.5 },]}
+                            >
+                                {snack === item.value ? (
+                                <View style={styles.imageFontMain}>
+                                    <FontAwesome name="check-circle" size={20} color="white" />
+                                </View>
+                                ) : null}
+                                <View style={{ flexDirection: 'row' }}>
+                                <Image source={item.imageLink1} style={styles.ImageStyle} />
+                                </View>
+                                <Text style={styles.titles}>{item.value}{`\n`}{`\n`}</Text>
+                            </Pressable>
+                            );
+                        })}
+                    </View>
+                    ) : null}
+
                         
                     </View>)}
                     <Text></Text>
+                    <Text style={styles.text}>{restKcal}</Text>
                
             </View>
             
@@ -676,7 +861,7 @@ export default function ChoiceMeal({route}){
                 onPress={() => navigation.navigate('Home', { breakfast,lunch,dinner,snack,diet})}
             />
             
-
+            <Text></Text>
             {/*<Button title="Submit" onPress={() => {navigation.navigate('BodyInfos',
                 {name:{name}})
             }}/>*/}
@@ -717,6 +902,12 @@ const styles=StyleSheet.create({
         borderRadius:15,
         margin:2,
        
+    },
+    text:{
+        backgroundColor:'white',
+        color:"plum",
+        fontSize : 30,
+        borderRadius: 5,
     },
     imageMain:{
         width:350,
