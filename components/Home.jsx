@@ -60,13 +60,13 @@ export default function Home({ route }){
     // Breakfast choices
     const theBreakfast = useMemo(()=>([
         {
-            id: '1',
-            label:'Scrambled Eggs with Onion Flakes + Toast with Pear, Cottage Cheese, and Honey (370 kcal)',
+            id: '1', // ID
+            label:'Scrambled Eggs with Onion Flakes + Toast with Pear, Cottage Cheese, and Honey (370 kcal)', // NAME OF THE MEAL
             value:'Scrambled Eggs with Onion Flakes + Toast with Pear, Cottage Cheese, and Honey (370 kcal)',
             imageLink1:b1_1,
-            imageLink2:b1_2,
-            veg:false,
-            vege:true,
+            imageLink2:b1_2,// PHOTOS
+            veg:false, //IF IT IS VEGAN
+            vege:true, // IF IT IS VEGETARIAN
         },
         {
             id: '2',
@@ -299,12 +299,17 @@ export default function Home({ route }){
             <View style={styles.box}>
 
             <Text style={styles.header}> My meal plan </Text>
+
+            {/* A .map of the breakfast option to find the one the customers choosed */}
             <Text style={styles.header}> Breakfast </Text>
+
+            
 
             <View> {theBreakfast.map((item)=> {
                        return(
                         <View>
                             {breakfast===item.value? <View style={styles.imageFontMain}>
+                                {/* showing the images in rows  */}
                                 <View style={{flexDirection:'row'}}>
                                     <Image source={item.imageLink1} style={styles.ImageStyle}/>
                                     <Image source={item.imageLink2} style={styles.ImageStyle}/>
@@ -315,6 +320,8 @@ export default function Home({ route }){
                     )
                     })}
             </View>
+
+            {/* A .map of the lunch option to find the one the customers choosed */}
             <Text style={styles.header}> Lunch </Text>
 
             <View> {theLunch.map((item)=> {
@@ -331,6 +338,8 @@ export default function Home({ route }){
                     )
                     })}
             </View>
+
+            {/* A .map of the dinner option to find the one the customers choosed */}
             <Text style={styles.header}> Dinner </Text>
 
             <View> {theDinner.map((item)=> {
@@ -347,6 +356,9 @@ export default function Home({ route }){
                     )
                     })}
             </View>
+
+            {/* A .map of the snack option to find the one the customers choosed */}
+
             <Text style={styles.header}>Snack</Text>
 
             <View> {theSnack.map((item)=> {
@@ -365,13 +377,17 @@ export default function Home({ route }){
             </View>
 
             
-            {/* Button to navigate to the "Meal" page */}
             
+            {/* Button to navigate to the "Bodyinfos" page */}
+
             <Text/>
             <Button title="My body informations" color="plum"
                 onPress={() => navigation.navigate('BodyInfos', { name, surname, age, gender, height, weight, diet, sport,breakfast, lunch,dinner,snack  })}
             />
             <Text/>
+
+            {/* Button to navigate to the "Meal" page */}
+
             <Button title="Change my meal plan" color="plum"
                 onPress={() => navigation.navigate('Meal', { name, surname, age, gender, height, weight, diet, sport,breakfast, lunch,dinner,snack })}
             />
@@ -380,6 +396,9 @@ export default function Home({ route }){
         </ScrollView>
     );
 }
+
+
+//CSS 
 
 const styles=StyleSheet.create({
     container :{

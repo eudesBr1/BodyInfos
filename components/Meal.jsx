@@ -90,14 +90,14 @@ export default function ChoiceMeal({route}){
     //radio buttons to select the Meal plan BREAKFAST
     const radioButtonsBreakfast = useMemo(()=>([
         {
-            id: '1',
-            label:'Scrambled Eggs with Onion Flakes + Toast with Pear, Cottage Cheese, and Honey (370 kcal)',
-            value:'Scrambled Eggs with Onion Flakes + Toast with Pear, Cottage Cheese, and Honey (370 kcal)',
-            imageLink1:b1_1,
-            imageLink2:b1_2,
-            calo:370,
-            veg:false,
-            vege:true,
+            id: '1', // ID 
+            label:'Scrambled Eggs with Onion Flakes + Toast with Pear, Cottage Cheese, and Honey (370 kcal)', // NAME OF THE MEAL WITH CALORIES
+            value:'Scrambled Eggs with Onion Flakes + Toast with Pear, Cottage Cheese, and Honey (370 kcal)', // NAME OF THE MEAL WITH CALORIES
+            imageLink1:b1_1, // PHOTOS
+            imageLink2:b1_2, // PHOTOS
+            calo:370, // NUMBER OF CALORIES
+            veg:false, // IF IT IS VEGAN
+            vege:true, // IF IT IS VEGETARIAN
             
         },
         {
@@ -445,8 +445,7 @@ export default function ChoiceMeal({route}){
                         setShowComponent3(false)
                         setShowComponent4(false)
                         }else {setShowComponent1(false)}
-                        }}
-                >
+                        }}>
                     <Text > Options for Breakfast </Text>
             </TouchableOpacity>
             
@@ -461,15 +460,15 @@ export default function ChoiceMeal({route}){
                         <Pressable
                         key={item.value}
                         onPress={()=>{setBreakfast(item.value);
-                            setBcalo(item.calo);
-                            setRestKcal(lesCals.reduce(
-                                    (accumulator, currentValue) => accumulator - currentValue,
-                                    kcal,
-                                  ));
+                                        setBcalo(item.calo);
+                                        setRestKcal(lesCals.reduce(
+                                        (accumulator, currentValue) => accumulator - currentValue,
+                                        kcal,
+                        ));
                         }}
                         style={[styles.imageMain,isDisabled && { opacity: 0.5 },]}>
                             {breakfast===item.value? <View style={styles.imageFontMain}>
-                                <FontAwesome name='check-circle' size={20} color="white"/>
+                            <FontAwesome name='check-circle' size={20} color="white"/>
                             </View>:null}
                             <View style={{flexDirection:'row'}}>
                                 <Image source={item.imageLink1} style={styles.ImageStyle}/>
@@ -481,6 +480,8 @@ export default function ChoiceMeal({route}){
                         </Pressable>
                     )
                     })}</View>:null}
+
+
                     {diet==='Vegan' ?<View> {radioButtonsBreakfast.filter(item=>{item.veg}).map((item)=> {
                         const isDisabled = restKcal < item.calo;
                        return(
@@ -507,6 +508,8 @@ export default function ChoiceMeal({route}){
                         </Pressable>
                     )
                     })}</View>:null}
+
+
                     {diet==='Vegetarian' ?<View> {radioButtonsBreakfast.filter(item=>item.vege).map((item)=> {
                         const isDisabled = restKcal < item.calo;
                        return(
@@ -551,8 +554,7 @@ export default function ChoiceMeal({route}){
                         setShowComponent3(false)
                         setShowComponent4(false)
                         }else {setShowComponent2(false)}
-                        }}
-                >
+                        }}>
                     <Text >Options for Lunch </Text>
             </TouchableOpacity>
             
@@ -584,6 +586,8 @@ export default function ChoiceMeal({route}){
                             
                         )
                     })}</View>:null}
+
+
                 {diet==='Vegan' ?<View> {radioButtonsLunch.filter(item=>item.veg).filter(item=>item.calo<restKcal).map((item)=> {
                     const isDisabled = restKcal < item.calo;
                         return(
@@ -611,6 +615,8 @@ export default function ChoiceMeal({route}){
                             
                         )
                     })}</View>:null}
+
+
                     {diet==='Vegetarian' ?<View> {radioButtonsLunch.filter(item=>item.vege).map((item)=> {
                         const isDisabled = restKcal < item.calo;
                         return(
@@ -659,6 +665,8 @@ export default function ChoiceMeal({route}){
                 >
                     <Text > Options for Dinner </Text>
             </TouchableOpacity>
+
+
             {showComponent3 && (<View style={styles.radioImagecolumn}>
                 {diet==='Regular' ?<View> {radioButtonsDinner.map((item)=> {
                     const isDisabled = restKcal < item.calo;
@@ -687,6 +695,8 @@ export default function ChoiceMeal({route}){
                             
                         )
                     })}</View>:null}
+
+
                     {diet==='Vegan' ?<View> {radioButtonsDinner.filter(item=>item.veg).map((item)=> {
                         const isDisabled = restKcal < item.calo;
                         return(
@@ -714,6 +724,8 @@ export default function ChoiceMeal({route}){
                             
                         )
                     })}</View>:null}
+
+
                     {diet==='Vegetarian' ?<View> {radioButtonsDinner.filter(item=>item.vege).map((item)=> {
                         const isDisabled = restKcal < item.calo;
                         return(
@@ -763,6 +775,8 @@ export default function ChoiceMeal({route}){
                             }}>
                         <Text > Options for Snack  </Text>
                 </TouchableOpacity>
+
+
                 {showComponent4 && ( <View style={styles.radioImagecolumn}>
                     {diet==='Regular' ?<View> {radioButtonsSnack.map((item)=> {
                         const isDisabled = restKcal < item.calo;
@@ -790,6 +804,8 @@ export default function ChoiceMeal({route}){
                         
                     )
                     })}</View>:null}
+
+                    
                     {diet==='Vegan' ?<View> {radioButtonsSnack.filter(item=>item.veg).map((item)=> {
                         const isDisabled = restKcal < item.calo;
                       return(
