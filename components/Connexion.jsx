@@ -13,7 +13,7 @@ export default function Connexion({ navigation }) {
   const loadUserData = async () => {
     try {
       const db = getDatabase();
-      const usersRef = ref(db, 'users');  // Reference to the users node in your Firebase database
+      const usersRef = ref(db, 'users');  // Reference to the users database in your Firebase realtime database
       const snapshot = await get(usersRef);
 
       if (snapshot.exists()) {
@@ -35,7 +35,7 @@ export default function Connexion({ navigation }) {
     loadUserData();
   }, []);
 
-  // Handle login logic
+  // Handle login logic password and user required 
   const handleLogin = () => {
     if (!email || !password) {
       alert('Please enter both email and password');
@@ -88,10 +88,10 @@ export default function Connexion({ navigation }) {
           placeholder="Password"
         />
         
-        {/* Display an error message if any */}
+        {/* Display error message*/}
         {error && <Text style={styles.error}>{error}</Text>}
 
-        {/* Loading state */}
+        {/* Loading state when waiting for connexion*/}
         {loading ? (
           <Text>Loading...</Text>
         ) : (
