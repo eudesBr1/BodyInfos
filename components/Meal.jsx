@@ -805,7 +805,7 @@ export default function ChoiceMeal({route}){
                     )
                     })}</View>:null}
 
-                    
+
                     {diet==='Vegan' ?<View> {radioButtonsSnack.filter(item=>item.veg).map((item)=> {
                         const isDisabled = restKcal < item.calo;
                       return(
@@ -879,6 +879,7 @@ export default function ChoiceMeal({route}){
             {/* Button to navigate to the "Meal" page */}
             <Button
                 title="See my meal plan"
+                color="pink"
                 onPress={() => navigation.navigate('Home', { breakfast,lunch,dinner,snack,diet})}
             />
             
