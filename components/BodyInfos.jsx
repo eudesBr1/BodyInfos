@@ -38,7 +38,7 @@ export default function BodyInfos({ navigation, route }) {
     );
   }
 
-  const { name, surname, age, gender, height, weight, diet, sport } = userData;
+  const { name, surname, age, gender, height, weight, diet, sport, breakfast, lunch,dinner,snack} = userData;
 
   // BMI Calculation
   const calculateBMI = (weight, height) => {
