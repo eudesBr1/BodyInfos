@@ -870,7 +870,7 @@ export default function ChoiceMeal({route}){
 
                         
                     </View>)}
-                    <Text></Text>
+                    <Text/>
                     <Text style={styles.text}>{restKcal}</Text>
                
             </View>

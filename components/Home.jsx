@@ -1,5 +1,5 @@
-//Home Page
-import {SafeAreaView, Text, TextInput, Button, View,Image,ScrollView} from "react-native"
+// Home Page
+import { SafeAreaView, Text, TextInput, Button, View, Image, ScrollView } from "react-native";
 import { useMemo, useState } from "react";
 import { StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
@@ -51,357 +51,349 @@ import s4_1 from '../assets/images/S4TABOULI.jpg';
 import s5_1 from '../assets/images/S5MOUSSE.jpg';
 import s6_1 from '../assets/images/S6TOAST.jpg';
 
+export default function Home({ route }) {
+    const navigation = useNavigation();
 
-export default function Home({ route }){
-    const navigation = useNavigation(); 
+    const { name, surname, age, gender, height, weight, diet, sport, breakfast, lunch, dinner, snack } = route.params;
 
-    const { name, surname, age, gender, height, weight, diet, sport,breakfast, lunch,dinner,snack} = route.params;
-    
     // Breakfast choices
-    const theBreakfast = useMemo(()=>([
+    const theBreakfast = useMemo(() => ([
         {
             id: '1', // ID
-            label:'Scrambled Eggs with Onion Flakes + Toast with Pear, Cottage Cheese, and Honey (370 kcal)', // NAME OF THE MEAL
-            value:'Scrambled Eggs with Onion Flakes + Toast with Pear, Cottage Cheese, and Honey (370 kcal)',
-            imageLink1:b1_1,
-            imageLink2:b1_2,// PHOTOS
-            veg:false, //IF IT IS VEGAN
-            vege:true, // IF IT IS VEGETARIAN
+            label: 'Scrambled Eggs with Onion Flakes + Toast with Pear, Cottage Cheese, and Honey (370 kcal)', // NAME OF THE MEAL
+            value: 'Scrambled Eggs with Onion Flakes + Toast with Pear, Cottage Cheese, and Honey (370 kcal)',
+            imageLink1: b1_1,
+            imageLink2: b1_2, // PHOTOS
+            veg: false, // IF IT IS VEGAN
+            vege: true, // IF IT IS VEGETARIAN
         },
         {
             id: '2',
-            label:'Low Carb Pancakes + Toast with tomato, onion and hummus (370 kcal)',
-            value:'Low Carb Pancakes + Toast with tomato, onion and hummus (370 kcal)',
-            imageLink1:b2_1,
-            imageLink2:b2_2,
-            veg:false,
-            vege:true,
+            label: 'Low Carb Pancakes + Toast with tomato, onion and hummus (370 kcal)',
+            value: 'Low Carb Pancakes + Toast with tomato, onion and hummus (370 kcal)',
+            imageLink1: b2_1,
+            imageLink2: b2_2,
+            veg: false,
+            vege: true,
         },
         {
-            id:'3',
-            label:'Canadian Bacon Breakfast Sandwich + Plum and Greek yogurt snack (443 kcal)',
-            value:'Canadian Bacon Breakfast Sandwich + Plum and Greek yogurt snack (443 kcal)',
-            imageLink1:b3_1,
-            imageLink2:b3_2,
-            veg:false,
-            vege:false,
+            id: '3',
+            label: 'Canadian Bacon Breakfast Sandwich + Plum and Greek yogurt snack (443 kcal)',
+            value: 'Canadian Bacon Breakfast Sandwich + Plum and Greek yogurt snack (443 kcal)',
+            imageLink1: b3_1,
+            imageLink2: b3_2,
+            veg: false,
+            vege: false,
         },
         {
-            id:'4',
-            label:'Oatmeal and apples + Cucumber avocado toast (519 kcal)',
-            value:'Oatmeal and apples + Cucumber avocado toast (519 kcal)',
-            imageLink1:b4_1,
-            imageLink2:b4_2,
-            veg:true,
-            vege:true,
+            id: '4',
+            label: 'Oatmeal and apples + Cucumber avocado toast (519 kcal)',
+            value: 'Oatmeal and apples + Cucumber avocado toast (519 kcal)',
+            imageLink1: b4_1,
+            imageLink2: b4_2,
+            veg: true,
+            vege: true,
         },
         {
-            id:'5',
-            label:'Parsley and Tomato scramble + very berry cottage cheese  (529 kcal)',
-            value:'Parsley and Tomato scramble + very berry cottage cheese (529 kcal)',
-            imageLink1:b5_1,
-            imageLink2:b5_2,
-            veg:false,
-            vege:true,
-            big:true,
+            id: '5',
+            label: 'Parsley and Tomato scramble + very berry cottage cheese (529 kcal)',
+            value: 'Parsley and Tomato scramble + very berry cottage cheese (529 kcal)',
+            imageLink1: b5_1,
+            imageLink2: b5_2,
+            veg: false,
+            vege: true,
+            big: true,
         },
         {
-            id:'6',
-            label:'Peanut butter banana English muffin + veggie apple smoothie (549 kcal)',
-            value:'Peanut butter banana English muffin + veggie apple smoothie (549 kcal)',
-            imageLink1:b6_1,
-            imageLink2:b6_2,
-            veg:true,
-            vege:true,
-            big:true,
+            id: '6',
+            label: 'Peanut butter banana English muffin + veggie apple smoothie (549 kcal)',
+            value: 'Peanut butter banana English muffin + veggie apple smoothie (549 kcal)',
+            imageLink1: b6_1,
+            imageLink2: b6_2,
+            veg: true,
+            vege: true,
+            big: true,
         }
-    ]))
-   
-    // Lunch choices
-    const theLunch = useMemo(()=>([
-        {
-            id: '1',
-            label:'Simple Mixed Greens Salad + chocolate peanut butter oatmeal protein shake (424 kcal)',
-            value:'Simple Mixed Greens Salad + chocolate peanut butter oatmeal protein shake (424 kcal)',
-            imageLink1:l1_1,
-            imageLink2:l1_2,
-            veg:false,
-            vege:true,
-        },
-        {
-            id: '2',
-            label:'Banana Almond Shake + Mushroom and pepper tossed salad (387 kcal)',
-            value:'Banana Almond Shake + Mushroom and pepper tossed salad (387 kcal)',
-            imageLink1:l2_1,
-            imageLink2:l2_2,
-            veg:false,
-            vege:true,
-        },
-        {
-            id:'3',
-            label:'Sunrise smoothie + Cucumber salad (457 kcal)',
-            value:'Sunrise smoothie + Cucumber salad (457 kcal)',
-            imageLink1:l3_1,
-            imageLink2:l3_2,
-            veg:false,
-            vege:true,
-        },
-        {
-            id:'4',
-            label:'Quick and easy vegan ceasar salad + pineapple raspberry smoothie (527 kcal)',
-            value:'Quick and easy vegan ceasar salad + pineapple raspberry smoothie (527 kcal)',
-            imageLink1:l4_1,
-            imageLink2:l4_2,
-            veg:true,
-            vege:true,
-        },
-        {
-            id:'5',
-            label:'Tuna avocado salad + Peanut butter banana smoothie (541 kcal)',
-            value:'Tuna avocado salad + Peanut butter banana smoothie (541 kcal)',
-            imageLink1:l5_1,
-            imageLink2:l5_2,
-            veg:false,
-            vege:false,
-            big:true,
-        },
-        {
-            id:'6',
-            label:'Tomato and hummus pocket sandwich + brussels sprout slaw (555 kcal)',
-            value:'Tomato and hummus pocket sandwich + brussels sprout slaw (555 kcal)',
-            imageLink1:l6_1,
-            imageLink2:l6_2,
-            veg:true,
-            vege:true,
-            big:true,
-        }
-    ]))
+    ]));
 
-    // Diner choices
-    const theDinner = useMemo(()=>([
+    // Lunch choices
+    const theLunch = useMemo(() => ([
         {
             id: '1',
-            label:'Thai Basil Chicken + Brocccoli with hummus and sesame seeds (402 kcal)',
-            value:'Thai Basil Chicken + Brocccoli with hummus and sesame seeds (402 kcal)',
-            imageLink1:d1_1,
-            imageLink2:d1_2,
-            veg:false,
-            vege:false,
+            label: 'Simple Mixed Greens Salad + chocolate peanut butter oatmeal protein shake (424 kcal)',
+            value: 'Simple Mixed Greens Salad + chocolate peanut butter oatmeal protein shake (424 kcal)',
+            imageLink1: l1_1,
+            imageLink2: l1_2,
+            veg: false,
+            vege: true,
         },
         {
             id: '2',
-            label:'Simple spicy garlic shrimp + Sour Cream and parsley mashed potatoes (448 kcal)',
-            value:'Simple spicy garlic shrimp + Sour Cream and parsley mashed potatoes (448 kcal)',
-            imageLink1:d2_1,
-            imageLink2:d2_2,
-            veg:false,
-            vege:true,
+            label: 'Banana Almond Shake + Mushroom and pepper tossed salad (387 kcal)',
+            value: 'Banana Almond Shake + Mushroom and pepper tossed salad (387 kcal)',
+            imageLink1: l2_1,
+            imageLink2: l2_2,
+            veg: false,
+            vege: true,
         },
         {
-            id:'3',
-            label:'BBQ Chicken salad + easy sautéed spinach (634 kcal)',
-            value:'BBQ Chicken salad + easy sautéed spinach (634 kcal)',
-            imageLink1:d3_1,
-            imageLink2:d3_2,
-            veg:false,
-            vege:false,
-            big:true,
+            id: '3',
+            label: 'Sunrise smoothie + Cucumber salad (457 kcal)',
+            value: 'Sunrise smoothie + Cucumber salad (457 kcal)',
+            imageLink1: l3_1,
+            imageLink2: l3_2,
+            veg: false,
+            vege: true,
         },
         {
-            id:'4',
-            label:'Tempeh Strips with almond sauce + edamame slaw (527 kcal)',
-            value:'Tempeh Strips with almond sauce + edamame slaw (527 kcal)',
-            imageLink1:d4_1,
-            imageLink2:d4_2,
-            veg:true,
-            vege:true,
+            id: '4',
+            label: 'Quick and easy vegan ceasar salad + pineapple raspberry smoothie (527 kcal)',
+            value: 'Quick and easy vegan ceasar salad + pineapple raspberry smoothie (527 kcal)',
+            imageLink1: l4_1,
+            imageLink2: l4_2,
+            veg: true,
+            vege: true,
         },
         {
-            id:'5',
-            label:'White bean and chicken Stir fry + green salad (730 kcal)',
-            value:'White bean and chicken Stir fry + green salad (730 kcal)',
-            imageLink1:d5_1,
-            imageLink2:d5_2,
-            veg:false,
-            vege:false,
-            big:true,
+            id: '5',
+            label: 'Tuna avocado salad + Peanut butter banana smoothie (541 kcal)',
+            value: 'Tuna avocado salad + Peanut butter banana smoothie (541 kcal)',
+            imageLink1: l5_1,
+            imageLink2: l5_2,
+            veg: false,
+            vege: false,
+            big: true,
         },
         {
-            id:'6',
-            label:'Portobello steaks with avocado chimichurri + kale Avocado salad (684 kcal)',
-            value:'Portobello steaks with avocado chimichurri + kale Avocado salad (684 kcal)',
-            imageLink1:d6_1,
-            imageLink2:d6_2,
-            veg:true,
-            vege:true,
-            big:true,
+            id: '6',
+            label: 'Tomato and hummus pocket sandwich + brussels sprout slaw (555 kcal)',
+            value: 'Tomato and hummus pocket sandwich + brussels sprout slaw (555 kcal)',
+            imageLink1: l6_1,
+            imageLink2: l6_2,
+            veg: true,
+            vege: true,
+            big: true,
         }
-    ]))
+    ]));
+
+    // Dinner choices
+    const theDinner = useMemo(() => ([
+        {
+            id: '1',
+            label: 'Thai Basil Chicken + Brocccoli with hummus and sesame seeds (402 kcal)',
+            value: 'Thai Basil Chicken + Brocccoli with hummus and sesame seeds (402 kcal)',
+            imageLink1: d1_1,
+            imageLink2: d1_2,
+            veg: false,
+            vege: false,
+        },
+        {
+            id: '2',
+            label: 'Simple spicy garlic shrimp + Sour Cream and parsley mashed potatoes (448 kcal)',
+            value: 'Simple spicy garlic shrimp + Sour Cream and parsley mashed potatoes (448 kcal)',
+            imageLink1: d2_1,
+            imageLink2: d2_2,
+            veg: false,
+            vege: true,
+        },
+        {
+            id: '3',
+            label: 'BBQ Chicken salad + easy sautéed spinach (634 kcal)',
+            value: 'BBQ Chicken salad + easy sautéed spinach (634 kcal)',
+            imageLink1: d3_1,
+            imageLink2: d3_2,
+            veg: false,
+            vege: false,
+            big: true,
+        },
+        {
+            id: '4',
+            label: 'Tempeh Strips with almond sauce + edamame slaw (527 kcal)',
+            value: 'Tempeh Strips with almond sauce + edamame slaw (527 kcal)',
+            imageLink1: d4_1,
+            imageLink2: d4_2,
+            veg: true,
+            vege: true,
+        },
+        {
+            id: '5',
+            label: 'White bean and chicken Stir fry + green salad (730 kcal)',
+            value: 'White bean and chicken Stir fry + green salad (730 kcal)',
+            imageLink1: d5_1,
+            imageLink2: d5_2,
+            veg: false,
+            vege: false,
+            big: true,
+        },
+        {
+            id: '6',
+            label: 'Portobello steaks with avocado chimichurri + kale Avocado salad (684 kcal)',
+            value: 'Portobello steaks with avocado chimichurri + kale Avocado salad (684 kcal)',
+            imageLink1: d6_1,
+            imageLink2: d6_2,
+            veg: true,
+            vege: true,
+            big: true,
+        }
+    ]));
 
     // Snack choices
-    const theSnack = useMemo(()=>([
+    const theSnack = useMemo(() => ([
         {
             id: '1',
-            label:'Peaches and almond butter on toast (198 kcal)',
-            value:'Peaches and almond butter on toast (198 kcal)',
-            imageLink1:s1_1,
-            veg:true,
-            vege:true,
+            label: 'Peaches and almond butter on toast (198 kcal)',
+            value: 'Peaches and almond butter on toast (198 kcal)',
+            imageLink1: s1_1,
+            veg: true,
+            vege: true,
         },
         {
             id: '2',
-            label:'Avocado lettuce wrap (194 kcal)',
-            value:'Avocado lettuce wrap (194 kcal)',
-            imageLink1:s2_1,
-            veg:true,
-            vege:true,
+            label: 'Avocado lettuce wrap (194 kcal)',
+            value: 'Avocado lettuce wrap (194 kcal)',
+            imageLink1: s2_1,
+            veg: true,
+            vege: true,
         },
         {
-            id:'3',
-            label:'Fruit & Vegetable Plate with Almonds & Cheese (270 kcal)',
-            value:'Fruit & Vegetable Plate with Almonds & Cheese (270) kcal)',
-            imageLink1:s3_1,
-            veg:false,
-            vege:true,
+            id: '3',
+            label: 'Fruit & Vegetable Plate with Almonds & Cheese (270 kcal)',
+            value: 'Fruit & Vegetable Plate with Almonds & Cheese (270 kcal)',
+            imageLink1: s3_1,
+            veg: false,
+            vege: true,
         },
         {
-            id:'4',
-            label:'Raw Cauliflower tabouli (219 kcal)',
-            value:'Raw Cauliflower tabouli (219 kcal)',
-            imageLink1:s4_1,
-            veg:true,
-            vege:true,
+            id: '4',
+            label: 'Raw Cauliflower tabouli (219 kcal)',
+            value: 'Raw Cauliflower tabouli (219 kcal)',
+            imageLink1: s4_1,
+            veg: true,
+            vege: true,
         },
         {
-            id:'5',
-            label:'Light peanut butter mousse (301 kcal)',
-            value:'Light peanut butter mousse (301) kcal)',
-            imageLink1:s5_1,
-            veg:false,
-            vege:true,
-            big:true,
+            id: '5',
+            label: 'Light peanut butter mousse (301 kcal)',
+            value: 'Light peanut butter mousse (301 kcal)',
+            imageLink1: s5_1,
+            veg: false,
+            vege: true,
+            big: true,
         },
         {
-            id:'6',
-            label:'Hummus avocado toast (306 kcal)',
-            value:'Hummus avocado toast (306 kcal)',
-            imageLink1:s6_1,
-            veg:true,
-            vege:true,
-            big:true,
+            id: '6',
+            label: 'Hummus avocado toast (306 kcal)',
+            value: 'Hummus avocado toast (306 kcal)',
+            imageLink1: s6_1,
+            veg: true,
+            vege: true,
+            big: true,
         }
-    ]))
+    ]));
 
-    return(
+    return (
         <ScrollView style={styles.container}>
-            <Text style={styles.header}> Welcome to the Home page ! </Text>
-            
+            <Text style={styles.header}> Welcome to the Home page! </Text>
+
             <View style={styles.box}>
 
-            <Text style={styles.header}> My meal plan </Text>
+                <Text style={styles.header}> My meal plan </Text>
 
-            {/* A .map of the breakfast option to find the one the customers choosed */}
-            <Text style={styles.header}> Breakfast </Text>
+                {/* A .map of the breakfast option to find the one the customers choosed */}
+                <Text style={styles.header}> Breakfast </Text>
 
-            
-
-            <View> {theBreakfast.map((item)=> {
-                       return(
-                        <View>
-                            {breakfast===item.value? <View style={styles.imageFontMain}>
-                                {/* showing the images in rows  */}
-                                <View style={{flexDirection:'row'}}>
-                                    <Image source={item.imageLink1} style={styles.ImageStyle}/>
-                                    <Image source={item.imageLink2} style={styles.ImageStyle}/>
-                                </View>
-                                <Text style={styles.titles}>{item.value}{`\n`}{`\n`}</Text>
-                            </View>:null}   
-                        </View> 
-                    )
+                <View>
+                    {theBreakfast.map((item) => {
+                        return (
+                            <View key={item.id}>
+                                {breakfast === item.value ? <View style={styles.imageFontMain}>
+                                    {/* showing the images in rows */}
+                                    <View style={{ flexDirection: 'row' }}>
+                                        <Image source={item.imageLink1} style={styles.ImageStyle} />
+                                        <Image source={item.imageLink2} style={styles.ImageStyle} />
+                                    </View>
+                                    <Text style={styles.titles}>{item.value}{`\n`}{`\n`}</Text>
+                                </View> : null}
+                            </View>
+                        )
                     })}
-            </View>
+                </View>
 
-            {/* A .map of the lunch option to find the one the customers choosed */}
-            <Text style={styles.header}> Lunch </Text>
+                {/* A .map of the lunch option to find the one the customers choosed */}
+                <Text style={styles.header}> Lunch </Text>
 
-            <View> {theLunch.map((item)=> {
-                       return(
-                        <View>
-                            {lunch===item.value? <View style={styles.imageFontMain}>
-                                <View style={{flexDirection:'row'}}>
-                                    <Image source={item.imageLink1} style={styles.ImageStyle}/>
-                                    <Image source={item.imageLink2} style={styles.ImageStyle}/>
-                                </View>
-                                <Text style={styles.titles}>{item.value}{`\n`}{`\n`}</Text>
-                            </View>:null}   
-                        </View> 
-                    )
+                <View>
+                    {theLunch.map((item) => {
+                        return (
+                            <View key={item.id}>
+                                {lunch === item.value ? <View style={styles.imageFontMain}>
+                                    <View style={{ flexDirection: 'row' }}>
+                                        <Image source={item.imageLink1} style={styles.ImageStyle} />
+                                        <Image source={item.imageLink2} style={styles.ImageStyle} />
+                                    </View>
+                                    <Text style={styles.titles}>{item.value}{`\n`}{`\n`}</Text>
+                                </View> : null}
+                            </View>
+                        )
                     })}
-            </View>
+                </View>
 
-            {/* A .map of the dinner option to find the one the customers choosed */}
-            <Text style={styles.header}> Dinner </Text>
+                {/* A .map of the dinner option to find the one the customers choosed */}
+                <Text style={styles.header}> Dinner </Text>
 
-            <View> {theDinner.map((item)=> {
-                       return(
-                        <View>
-                            {dinner===item.value? <View style={styles.imageFontMain}>
-                                <View style={{flexDirection:'row'}}>
-                                    <Image source={item.imageLink1} style={styles.ImageStyle}/>
-                                    <Image source={item.imageLink2} style={styles.ImageStyle}/>
-                                </View>
-                                <Text style={styles.titles}>{item.value}{`\n`}{`\n`}</Text>
-                            </View>:null}   
-                        </View> 
-                    )
+                <View>
+                    {theDinner.map((item) => {
+                        return (
+                            <View key={item.id}>
+                                {dinner === item.value ? <View style={styles.imageFontMain}>
+                                    <View style={{ flexDirection: 'row' }}>
+                                        <Image source={item.imageLink1} style={styles.ImageStyle} />
+                                        <Image source={item.imageLink2} style={styles.ImageStyle} />
+                                    </View>
+                                    <Text style={styles.titles}>{item.value}{`\n`}{`\n`}</Text>
+                                </View> : null}
+                            </View>
+                        )
                     })}
-            </View>
+                </View>
 
-            {/* A .map of the snack option to find the one the customers choosed */}
+                {/* A .map of the snack option to find the one the customers choosed */}
+                <Text style={styles.header}> Snack </Text>
 
-            <Text style={styles.header}>Snack</Text>
-
-            <View> {theSnack.map((item)=> {
-                       return(
-                        <View>
-                            {snack===item.value? <View style={styles.imageFontMain}>
-                                <View style={{flexDirection:'row'}}>
-                                    <Image source={item.imageLink1} style={styles.ImageStyle}/>
-                                    
-                                </View>
-                                <Text style={styles.titles}>{item.value}{`\n`}{`\n`}</Text>
-                            </View>:null}   
-                        </View> 
-                    )
+                <View>
+                    {theSnack.map((item) => {
+                        return (
+                            <View key={item.id}>
+                                {snack === item.value ? <View style={styles.imageFontMain}>
+                                    <View style={{ flexDirection: 'row' }}>
+                                        <Image source={item.imageLink1} style={styles.ImageStyle} />
+                                    </View>
+                                    <Text style={styles.titles}>{item.value}{`\n`}{`\n`}</Text>
+                                </View> : null}
+                            </View>
+                        )
                     })}
+                </View>
+
+                {/* Button to navigate to the "Bodyinfos" page */}
+                <Text />
+                <Button title="My body informations" color="plum"
+                    onPress={() => navigation.navigate('BodyInfos', { name, surname, age, gender, height, weight, diet, sport, breakfast, lunch, dinner, snack })}
+                />
+                <Text />
+
+                {/* Button to navigate to the "Meal" page */}
+                <Button title="Change my meal plan" color="plum"
+                    onPress={() => navigation.navigate('Meal', { name, surname, age, gender, height, weight, diet, sport, breakfast, lunch, dinner, snack })}
+                />
             </View>
-
-            
-            
-            {/* Button to navigate to the "Bodyinfos" page */}
-
-            <Text/>
-            <Button title="My body informations" color="plum"
-                onPress={() => navigation.navigate('BodyInfos', { name, surname, age, gender, height, weight, diet, sport,breakfast, lunch,dinner,snack  })}
-            />
-            <Text/>
-
-            {/* Button to navigate to the "Meal" page */}
-
-            <Button title="Change my meal plan" color="plum"
-                onPress={() => navigation.navigate('Meal', { name, surname, age, gender, height, weight, diet, sport,breakfast, lunch,dinner,snack })}
-            />
-             </View>
-
         </ScrollView>
     );
 }
 
-
-//CSS 
-
-const styles=StyleSheet.create({
-    container :{
+// CSS 
+const styles = StyleSheet.create({
+    container: {
         flex: 1,
         textAlign: 'center',
         marginBottom: 20,
@@ -414,11 +406,11 @@ const styles=StyleSheet.create({
         textAlign: 'center',
         marginBottom: 20,
     },
-    text:{
+    text: {
         fontSize: 14,
         fontWeight: 'bold',
     },
-    input:{
+    input: {
         borderWidth: 1,
         borderColor: 'gray',
         width: 200,
@@ -435,9 +427,9 @@ const styles=StyleSheet.create({
         display: 'flex',
         flexDirection: 'column',
         padding: 15,
-        marginLeft:20,
-        marginBottom:20,
-        marginRight:20,
+        marginLeft: 20,
+        marginBottom: 20,
+        marginRight: 20,
         // ios shadows
         shadowColor: "#700070",
         shadowOffset: {
@@ -450,11 +442,11 @@ const styles=StyleSheet.create({
         // android shadows
         elevation: 8,
     },
-    ImageStyle:{
-        width:150,
-        height:100,
-        borderRadius:5,
-        alignSelf:'center',
-        margin:3,
+    ImageStyle: {
+        width: 150,
+        height: 100,
+        borderRadius: 5,
+        alignSelf: 'center',
+        margin: 3,
     },
 });
