@@ -1,7 +1,6 @@
 import { SafeAreaView, Text, Alert, TextInput, Button, View, ScrollView, TouchableOpacity } from "react-native";
 import { useState } from "react";
 import { StyleSheet } from "react-native";
-import RadioGroup from 'react-native-radio-buttons-group';
 import { auth, db } from '../app/firebaseCongig'; 
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { ref, set } from 'firebase/database';
@@ -18,9 +17,7 @@ export default function Home() {
   const [sport,setSport]=useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  
-  let [userId, userInfo] = ""; 
-  
+    
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
 
   const createProfile = async (user: any) => {
@@ -63,6 +60,8 @@ export default function Home() {
 
           <View style={styles.box}>
             <Text style={styles.text}>Personal Information:</Text>
+
+            {/*Inputs for the informations we need : name,email,password,gender,height and weight to calculate the BMI and BMR */}
             
             <TextInput style={styles.input} value={name} placeholder="Name" onChangeText={(e) => setName(e)}/>
 
@@ -95,6 +94,9 @@ export default function Home() {
             <TextInput style={styles.input} placeholder="Weight (kg)" value={weight} keyboardType="numeric"
               onChangeText={(e) => setWeight(e)}/>
 
+
+
+            {/*Inputs for the complementary informations we need : the diet and if the customer exercize a lot */}
             <Text style={styles.text}>Choose your diet:</Text>
             <View style={styles.column}>
               <TouchableOpacity 
@@ -154,12 +156,7 @@ export default function Home() {
               </TouchableOpacity>
             </View>
 
-            
-
             <Text/>
-
-           
-
             <Text/>
 
             <Button color="plum" title="Register and go to connexion" onPress={registerAndGoToConnectFlow}/> 
@@ -171,6 +168,7 @@ export default function Home() {
   );
 }
 
+//CSS
 const styles = StyleSheet.create({
   container: {
     justifyContent: "center",
