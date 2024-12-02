@@ -84,8 +84,6 @@ export default function Home() {
               <TouchableOpacity
                 style={[styles.touchable, gender === "2" ? styles.select : styles.unselect]}
                 onPress={() => setGender("2")}>
-                style={[styles.touchable, gender === "2" ? styles.select : styles.unselect]}
-                onPress={() => setGender("2")}>
                 <Text> Male </Text>
               </TouchableOpacity>
             </View>
