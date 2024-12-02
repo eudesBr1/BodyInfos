@@ -80,13 +80,14 @@ export default function Home() {
 
             <Text style={styles.text}>Choose your gender:</Text>
             <View style={styles.row}>
-              <TouchableOpacity 
-                style={[styles.touchable, gender === "1" ? styles.select : styles.unselect]}
+              <TouchableOpacity style={[styles.touchable, gender === "1" ? styles.select : styles.unselect]}
                 onPress={() => setGender("1")}>
                 <Text> Female </Text>
               </TouchableOpacity>
 
               <TouchableOpacity
+                style={[styles.touchable, gender === "2" ? styles.select : styles.unselect]}
+                onPress={() => setGender("2")}>
                 style={[styles.touchable, gender === "2" ? styles.select : styles.unselect]}
                 onPress={() => setGender("2")}>
                 <Text> Male </Text>
