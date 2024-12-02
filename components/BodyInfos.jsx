@@ -85,7 +85,7 @@ export default function BodyInfos({ navigation, route }) {
     <ScrollView>
       <SafeAreaView style={styles.container}>
         <View style={styles.box}>
-          <Text style={styles.header}>Body Information</Text>
+          <Text style={styles.header}>Body Informations</Text>
           <Text style={styles.text}>Name:</Text>
           <Text style={styles.info}>{name} {surname}</Text>
           <Text style={styles.text}>Age:</Text>

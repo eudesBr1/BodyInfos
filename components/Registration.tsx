@@ -2,7 +2,7 @@ import { SafeAreaView, Text, Alert, TextInput, Button, View, ScrollView, Touchab
 import { useState } from "react";
 import { StyleSheet } from "react-native";
 import RadioGroup from 'react-native-radio-buttons-group';
-import { auth, db } from '../app/firebaseCongig'; // Importation des services Firebase
+import { auth, db } from '../app/firebaseCongig'; 
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { ref, set } from 'firebase/database';
 import { useNavigation } from "expo-router";
@@ -12,10 +12,10 @@ export default function Home() {
   const [name, setName] = useState("");  
   const [age, setAge] = useState("");
   const [gender, setGender] = useState("");
-  const [height, setHeight] = useState(""); // Taille
-  const [weight, setWeight] = useState(""); // Poids
-  const [diet, setDiet] = useState(""); // Régime
-  const [sport,setSport]=useState("");// Intensité de sport
+  const [height, setHeight] = useState("");
+  const [weight, setWeight] = useState(""); 
+  const [diet, setDiet] = useState(""); 
+  const [sport,setSport]=useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   
@@ -25,7 +25,7 @@ export default function Home() {
 
   const createProfile = async (user: any) => {
     try {
-      // Enregistrer toutes les informations dans Firebase Realtime Database
+      //Save all infos Firebase Realtime Database
       await set(ref(db, '/users/' + user.uid), {
         name, age, gender, height, weight, diet, email, password,sport});
       console.log("Profile created successfully!");
@@ -42,9 +42,9 @@ export default function Home() {
         const user = response.user;
 
         if (user) {
-          await createProfile(user);  // Enregistrer les informations utilisateur dans Firebase
+          await createProfile(user);  //Save a new user 
           
-          navigation.navigate("Connexion"); // Naviguer vers la page principale après l'inscription
+          navigation.navigate("Connexion"); // Navigate to connexion
         }
       } catch (error) {
         console.error("Registration error:", error);
@@ -64,7 +64,6 @@ export default function Home() {
           <View style={styles.box}>
             <Text style={styles.text}>Personal Information:</Text>
             
-            {/* Nouveau champ pour le nom */}
             <TextInput style={styles.input} value={name} placeholder="Name" onChangeText={(e) => setName(e)}/>
 
             <TextInput style={styles.input} value={email} placeholder="Email" onChangeText={(e) => setEmail(e)}/>
@@ -103,12 +102,14 @@ export default function Home() {
                 onPress={() => setDiet("Regular")}>
                 <Text> Regular </Text>
               </TouchableOpacity>
+              <Text/>
               
               <TouchableOpacity
                 style={[styles.touchable, diet === "Vegetarian" ? styles.select : styles.unselect]}
                 onPress={() => setDiet("Vegetarian")}>
                 <Text> Vegetarian </Text>
               </TouchableOpacity>
+              <Text/>
               
               <TouchableOpacity
                 style={[styles.touchable, diet === "Vegan" ? styles.select : styles.unselect]}
@@ -119,31 +120,35 @@ export default function Home() {
             <Text style={styles.text}>How much do you exercise :</Text>
             <View style={styles.column}>
               <TouchableOpacity 
-                style={[styles.touchable, sport === "none" ? styles.select : styles.unselect]}
+                style={[styles.touchable2, sport === "none" ? styles.select : styles.unselect]}
                 onPress={() => setSport("none")}>
                 <Text> Little to no exercise </Text>
               </TouchableOpacity>
+              <Text/>
               
               <TouchableOpacity
-                style={[styles.touchable, sport === "light" ? styles.select : styles.unselect]}
+                style={[styles.touchable2, sport === "light" ? styles.select : styles.unselect]}
                 onPress={() => setSport("light")}>
                 <Text> Light exercise</Text>
               </TouchableOpacity>
+              <Text/>
               
               <TouchableOpacity
-                style={[styles.touchable, sport === "moderate" ? styles.select : styles.unselect]}
+                style={[styles.touchable2, sport === "moderate" ? styles.select : styles.unselect]}
                 onPress={() => setSport("moderate")}>
                 <Text> Moderate exercise ( 3-5 days/week) </Text>
               </TouchableOpacity>
+              <Text/>
 
               <TouchableOpacity
-                style={[styles.touchable, sport === "active" ? styles.select : styles.unselect]}
+                style={[styles.touchable2, sport === "active" ? styles.select : styles.unselect]}
                 onPress={() => setSport("active")}>
                 <Text> Very active ( 6-7 days/week) </Text>
               </TouchableOpacity>
+              <Text/>
 
               <TouchableOpacity
-                style={[styles.touchable, sport === "extra" ? styles.select : styles.unselect]}
+                style={[styles.touchable2, sport === "extra" ? styles.select : styles.unselect]}
                 onPress={() => setSport("extra")}>
                 <Text> Extra active (very active & physical job) </Text>
               </TouchableOpacity>
@@ -198,6 +203,17 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     borderRadius: 20,
     width: 150,
+    paddingLeft: 8,
+    height: 30,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginHorizontal: 5,
+  },
+  touchable2: {
+    borderWidth: 1,
+    borderColor: 'black',
+    borderRadius: 20,
+    width: 300,
     paddingLeft: 8,
     height: 30,
     justifyContent: 'center',

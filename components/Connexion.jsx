@@ -68,42 +68,48 @@ export default function Connexion({ navigation }) {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
-      <Text style={styles.header}> Welcome to the connexion page ! </Text>
-      <View style={styles.box}>
-      <Text style={styles.text}>E-mail :</Text>
-        <TextInput
-          style={styles.input}
-          value={email}
-          onChangeText={setEmail}
-          placeholder="E-mail"
-          keyboardType="email-address"
-        />
-        <Text style={styles.text}>Password :</Text>
-        <TextInput
-          style={styles.input}
-          value={password}
-          onChangeText={setPassword}
-          secureTextEntry
-          placeholder="Password"
-        />
-        
+    <ScrollView>
+      <SafeAreaView style={styles.container}>
+      
+        <Text style={styles.header}> Welcome to the connexion page ! </Text>
+      
+        <View style={styles.box}>
+      
+        <Text style={styles.text}>E-mail :</Text>
+          <TextInput
+            style={styles.input}
+            value={email}
+            onChangeText={setEmail}
+            placeholder="E-mail"
+            keyboardType="email-address"
+          />
+          <Text style={styles.text}>Password :</Text>
+          <TextInput
+            style={styles.input}
+            value={password}
+            onChangeText={setPassword}
+            secureTextEntry
+            placeholder="Password"
+          />
+
         {/* Display error message*/}
-        {error && <Text style={styles.error}>{error}</Text>}
+          {error && <Text style={styles.error}>{error}</Text>}
 
         {/* Loading state when waiting for connexion*/}
-        {loading ? (
-          <Text>Loading...</Text>
-        ) : (
-          <Button title="Submit" color="plum" onPress={handleLogin} />
-        )}
+          {loading ? (
+            <Text>Loading...</Text>
+          ) : (
+            <Button title="Submit" color="plum" onPress={handleLogin} />
+          )}
       
-        <Text/>
+          <Text/>
 
-        <Text style={styles.text}>You don't have an account?</Text>
-        <Button title="Register" color="plum" onPress={() => navigation.navigate('Registration')}/>
-      </View>
-    </SafeAreaView>
+          <Text style={styles.text}>You don't have an account?</Text>
+          <Button title="Register" color="plum" onPress={() => navigation.navigate('Registration')}/>
+        
+        </View>
+      </SafeAreaView>
+    </ScrollView>
   );
 }
 
