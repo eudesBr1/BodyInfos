@@ -109,7 +109,7 @@ export default function BodyInfos({ navigation, route }) {
             color="plum"
             title="Go to Home "
             onPress={() => {navigation.navigate('Home', {
-              name, surname, age, gender, height, weight, diet, kcal,breakfast,lunch,dinner,snack
+              name, surname, age, gender, height, weight, diet, kcal
             });
           }}
           />
@@ -119,7 +119,7 @@ export default function BodyInfos({ navigation, route }) {
             title="Choose my meal plan"
             onPress={() => {
               navigation.navigate('Meal', {
-                name, surname, age, gender, height, weight, diet, kcal,breakfast,lunch,dinner,snack
+                name, surname, age, gender, height, weight, diet, kcal
               });
             }}
           />
