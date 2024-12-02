@@ -28,15 +28,35 @@ export default function Home() {
 
   const createProfile = async (user: any) => {
     try {
+      // Définir des valeurs par défaut si les champs sont vides
+      const defaultBreakfast = breakfast || "Oatmeal with fruits";
+      const defaultLunch = lunch || "Salad";
+      const defaultDinner = dinner || "Grilled vegetables";
+      const defaultSnack = snack || "Nuts";
+  
       // Enregistrer toutes les informations dans Firebase Realtime Database
       await set(ref(db, '/users/' + user.uid), {
-        name, age, gender, height, weight, diet, email, password,sport,breakfast,lunch,dinner,snack });
+        name, 
+        age, 
+        gender, 
+        height, 
+        weight, 
+        diet, 
+        email, 
+        password,
+        sport,
+        breakfast: defaultBreakfast, 
+        lunch: defaultLunch, 
+        dinner: defaultDinner, 
+        snack: defaultSnack 
+      });
       console.log("Profile created successfully!");
     } catch (error) {
       console.error("Error creating profile:", error);
       Alert.alert("Error", "Could not create profile. Please try again.");
     }
   };
+  
 
   const registerAndGoToConnectFlow = async () => {
     if (email && password) {
