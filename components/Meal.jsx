@@ -66,14 +66,14 @@ export default function ChoiceMeal({route}){
     const navigation = useNavigation(); 
     
 
-    const{diet,kcal}=route.params;
+    const{diet,kcal,breakfast,lunch,dinner,snack}=route.params;
 
     
     
-    const [breakfast,setBreakfast]=useState('Oatmeal and apples + Cucumber avocado toast (519 kcal)');
-    const [lunch,setLunch]=useState("Quick and easy vegan ceasar salad + pineapple raspberry smoothie (527 kcal)");
-    const [dinner,setDinner]=useState("Tempeh Strips with almond sauce + edamame slaw (527 kcal)");
-    const [snack,setSnack]=useState("Raw Cauliflower tabouli (219 kcal)");
+    const [Breakfast,setBreakfast]=useState('Oatmeal and apples + Cucumber avocado toast (519 kcal)');
+    const [Lunch,setLunch]=useState("Quick and easy vegan ceasar salad + pineapple raspberry smoothie (527 kcal)");
+    const [Dinner,setDinner]=useState("Tempeh Strips with almond sauce + edamame slaw (527 kcal)");
+    const [Snack,setSnack]=useState("Raw Cauliflower tabouli (219 kcal)");
 
    
 
@@ -360,7 +360,7 @@ export default function ChoiceMeal({route}){
                         key={item.value}
                         onPress={()=>setBreakfast(item.value)}
                         style={styles.imageMain}>
-                            {breakfast===item.value? <View style={styles.imageFontMain}>
+                            {Breakfast===item.value? <View style={styles.imageFontMain}>
                                 <FontAwesome name='check-circle' size={20} color="white"/>
                             </View>:null}
                             <View style={{flexDirection:'row'}}>
@@ -379,7 +379,7 @@ export default function ChoiceMeal({route}){
                         key={item.value}
                         onPress={()=>setBreakfast(item.value)}
                         style={styles.imageMain}>
-                            {breakfast===item.value? <View style={styles.imageFontMain}>
+                            {Breakfast===item.value? <View style={styles.imageFontMain}>
                                 <FontAwesome name='check-circle' size={20} color="white"/>
                             </View>:null}
                             <View style={{flexDirection:'row'}}>
@@ -398,7 +398,7 @@ export default function ChoiceMeal({route}){
                         key={item.value}
                         onPress={()=>setBreakfast(item.value)}
                         style={styles.imageMain}>
-                            {breakfast===item.value? <View style={styles.imageFontMain}>
+                            {Breakfast===item.value? <View style={styles.imageFontMain}>
                                 <FontAwesome name='check-circle' size={20} color="white"/>
                             </View>:null}
                             <View style={{flexDirection:'row'}}>
@@ -439,7 +439,7 @@ export default function ChoiceMeal({route}){
                             key={item.value}
                             onPress={()=>setLunch(item.value)}
                             style={styles.imageMain}>
-                                {lunch===item.value? <View style={styles.imageFontMain}>
+                                {Lunch===item.value? <View style={styles.imageFontMain}>
                                     <FontAwesome name='check-circle' size={20} color="white"/>
                                 </View>:null}
                                 <View style={{flexDirection:'row'}}>
@@ -459,7 +459,7 @@ export default function ChoiceMeal({route}){
                             key={item.value}
                             onPress={()=>setLunch(item.value)}
                             style={styles.imageMain}>
-                                {lunch===item.value? <View style={styles.imageFontMain}>
+                                {Lunch===item.value? <View style={styles.imageFontMain}>
                                     <FontAwesome name='check-circle' size={20} color="white"/>
                                 </View>:null}
                                 <View style={{flexDirection:'row'}}>
@@ -479,7 +479,7 @@ export default function ChoiceMeal({route}){
                             key={item.value}
                             onPress={()=>setLunch(item.value)}
                             style={styles.imageMain}>
-                                {lunch===item.value? <View style={styles.imageFontMain}>
+                                {Lunch===item.value? <View style={styles.imageFontMain}>
                                     <FontAwesome name='check-circle' size={20} color="white"/>
                                 </View>:null}
                                 <View style={{flexDirection:'row'}}>
@@ -519,7 +519,7 @@ export default function ChoiceMeal({route}){
                             key={item.value}
                             onPress={()=>setDinner(item.value)}
                             style={styles.imageMain}>
-                                {dinner===item.value? <View style={styles.imageFontMain}>
+                                {Dinner===item.value? <View style={styles.imageFontMain}>
                                     <FontAwesome name='check-circle' size={20} color="white"/>
                                 </View>:null}
                                 <View style={{flexDirection:'row'}}>
@@ -539,7 +539,7 @@ export default function ChoiceMeal({route}){
                             key={item.value}
                             onPress={()=>setDinner(item.value)}
                             style={styles.imageMain}>
-                                {dinner===item.value? <View style={styles.imageFontMain}>
+                                {Dinner===item.value? <View style={styles.imageFontMain}>
                                     <FontAwesome name='check-circle' size={20} color="white"/>
                                 </View>:null}
                                 <View style={{flexDirection:'row'}}>
@@ -559,7 +559,7 @@ export default function ChoiceMeal({route}){
                             key={item.value}
                             onPress={()=>setDinner(item.value)}
                             style={styles.imageMain}>
-                                {dinner===item.value? <View style={styles.imageFontMain}>
+                                {Dinner===item.value? <View style={styles.imageFontMain}>
                                     <FontAwesome name='check-circle' size={20} color="white"/>
                                 </View>:null}
                                 <View style={{flexDirection:'row'}}>
@@ -612,7 +612,7 @@ export default function ChoiceMeal({route}){
                         key={item.value}
                         onPress={()=>setSnack(item.value)}
                         style={styles.imageMain}>
-                            {snack===item.value? <View style={styles.imageFontMain}>
+                            {Snack===item.value? <View style={styles.imageFontMain}>
                                 <FontAwesome name='check-circle' size={20} color="white"/>
                             </View>:null}
                             <View style={{flexDirection:'row'}}>
@@ -631,7 +631,7 @@ export default function ChoiceMeal({route}){
                         key={item.value}
                         onPress={()=>setSnack(item.value)}
                         style={styles.imageMain}>
-                            {snack===item.value? <View style={styles.imageFontMain}>
+                            {Snack===item.value? <View style={styles.imageFontMain}>
                                 <FontAwesome name='check-circle' size={20} color="white"/>
                             </View>:null}
                             <View style={{flexDirection:'row'}}>
@@ -650,7 +650,7 @@ export default function ChoiceMeal({route}){
                         key={item.value}
                         onPress={()=>setSnack(item.value)}
                         style={styles.imageMain}>
-                            {snack===item.value? <View style={styles.imageFontMain}>
+                            {Snack===item.value? <View style={styles.imageFontMain}>
                                 <FontAwesome name='check-circle' size={20} color="white"/>
                             </View>:null}
                             <View style={{flexDirection:'row'}}>
