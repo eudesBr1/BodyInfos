@@ -295,8 +295,6 @@ export default function Home({ route }){
 
 
     //radio buttons to select the Dietary 
-    
-
     return(
         <ScrollView style={styles.container}>
             <Text style={styles.header}> Welcome to the Home page ! </Text>

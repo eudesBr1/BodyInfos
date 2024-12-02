@@ -103,12 +103,14 @@ export default function Home() {
                 onPress={() => setDiet("Regular")}>
                 <Text> Regular </Text>
               </TouchableOpacity>
+              <Text/>
               
               <TouchableOpacity
                 style={[styles.touchable, diet === "Vegetarian" ? styles.select : styles.unselect]}
                 onPress={() => setDiet("Vegetarian")}>
                 <Text> Vegetarian </Text>
               </TouchableOpacity>
+              <Text/>
               
               <TouchableOpacity
                 style={[styles.touchable, diet === "Vegan" ? styles.select : styles.unselect]}
@@ -119,31 +121,35 @@ export default function Home() {
             <Text style={styles.text}>How much do you exercise :</Text>
             <View style={styles.column}>
               <TouchableOpacity 
-                style={[styles.touchable, sport === "none" ? styles.select : styles.unselect]}
+                style={[styles.touchable2, sport === "none" ? styles.select : styles.unselect]}
                 onPress={() => setSport("none")}>
                 <Text> Little to no exercise </Text>
               </TouchableOpacity>
+              <Text/>
               
               <TouchableOpacity
-                style={[styles.touchable, sport === "light" ? styles.select : styles.unselect]}
+                style={[styles.touchable2, sport === "light" ? styles.select : styles.unselect]}
                 onPress={() => setSport("light")}>
                 <Text> Light exercise</Text>
               </TouchableOpacity>
+              <Text/>
               
               <TouchableOpacity
-                style={[styles.touchable, sport === "moderate" ? styles.select : styles.unselect]}
+                style={[styles.touchable2, sport === "moderate" ? styles.select : styles.unselect]}
                 onPress={() => setSport("moderate")}>
                 <Text> Moderate exercise ( 3-5 days/week) </Text>
               </TouchableOpacity>
+              <Text/>
 
               <TouchableOpacity
-                style={[styles.touchable, sport === "active" ? styles.select : styles.unselect]}
+                style={[styles.touchable2, sport === "active" ? styles.select : styles.unselect]}
                 onPress={() => setSport("active")}>
                 <Text> Very active ( 6-7 days/week) </Text>
               </TouchableOpacity>
+              <Text/>
 
               <TouchableOpacity
-                style={[styles.touchable, sport === "extra" ? styles.select : styles.unselect]}
+                style={[styles.touchable2, sport === "extra" ? styles.select : styles.unselect]}
                 onPress={() => setSport("extra")}>
                 <Text> Extra active (very active & physical job) </Text>
               </TouchableOpacity>
@@ -198,6 +204,17 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     borderRadius: 20,
     width: 150,
+    paddingLeft: 8,
+    height: 30,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginHorizontal: 5,
+  },
+  touchable2: {
+    borderWidth: 1,
+    borderColor: 'black',
+    borderRadius: 20,
+    width: 300,
     paddingLeft: 8,
     height: 30,
     justifyContent: 'center',
