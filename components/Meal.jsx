@@ -9,6 +9,9 @@ import { FontAwesome } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 
+
+
+// ALL THE PICTURES OF EACH MEAL
 import b1_1 from '../assets/images/B1SCRAMBLES.jpg';
 import b1_2 from '../assets/images/B1PEAR.jpg';
 import b2_1 from '../assets/images/B2PAN.jpg';
@@ -71,7 +74,7 @@ export default function ChoiceMeal({route}){
 
     
 
-    
+    // ALL THE POSSIBLE MEAL TIME
     
     const [breakfast,setBreakfast]=useState('Oatmeal and apples + Cucumber avocado toast (519 kcal)');
     const [lunch,setLunch]=useState("Quick and easy vegan ceasar salad + pineapple raspberry smoothie (527 kcal)");
@@ -165,6 +168,7 @@ export default function ChoiceMeal({route}){
         
     ]))
    
+    //radio buttons to select the Meal plan LUNCH
     const radioButtonsLunch = useMemo(()=>([
         {
             id: '1',
@@ -244,6 +248,7 @@ export default function ChoiceMeal({route}){
         }
     ]))
 
+    //radio buttons to select the Meal plan DINNER
     const radioButtonsDinner = useMemo(()=>([
         {
             id: '1',
@@ -325,6 +330,8 @@ export default function ChoiceMeal({route}){
         }
     ]))
 
+
+//radio buttons to select the Meal plan SNACK
     const radioButtonsSnack = useMemo(()=>([
         {
             id: '1',
@@ -399,7 +406,7 @@ export default function ChoiceMeal({route}){
     ]))
 
     
-
+// CONSTANT TO COUNT THE CALORI WITH EACH CHOICE
     const [bcalo,setBcalo]=useState(0);
     const [lcalo,setLcalo]=useState(0);
     const [dcalo,setDcalo]=useState(0);
@@ -414,12 +421,13 @@ export default function ChoiceMeal({route}){
 
 
 
-
+// To only show the components in each sections (breakfast,lunch...)
 
     const [showComponent1, setShowComponent1] = useState(true);
     const [showComponent2, setShowComponent2] = useState(false);
     const [showComponent3, setShowComponent3] = useState(false);
     const [showComponent4, setShowComponent4] = useState(false);
+
     return(
         <ScrollView>
            
@@ -428,7 +436,7 @@ export default function ChoiceMeal({route}){
             <View style={styles.container}>
             
 
-
+{/* equivalent to a button, to show the breakfast */}
             <TouchableOpacity
                     style={styles.topHeading}
                     onPress={() =>{if (showComponent1==false){
@@ -442,10 +450,13 @@ export default function ChoiceMeal({route}){
                     <Text > Options for Breakfast </Text>
             </TouchableOpacity>
             
+            {/* A .map to show all the choice for breakfast and 3 ifs, for different diet  */}
 
                 {showComponent1 && (<View style={styles.radioImagecolumn}>
                     {diet==='Regular' ?<View> {radioButtonsBreakfast.map((item)=> {
-                        const isDisabled = restKcal < item.calo;
+
+                // to defined which meals containes to much calories
+                        const isDisabled = restKcal < item.calo; 
                        return(
                         <Pressable
                         key={item.value}
@@ -528,6 +539,8 @@ export default function ChoiceMeal({route}){
                
                 
             </View>
+
+            {/* Same as previously but for LUNCH */}
 
             <View style={styles.container}>
             <TouchableOpacity
@@ -631,6 +644,8 @@ export default function ChoiceMeal({route}){
                 
             </View>
 
+            {/* Same as previously but for DINNER */}
+
             <View style={styles.container}>
             <TouchableOpacity
                     style={styles.topHeading}
@@ -731,22 +746,12 @@ export default function ChoiceMeal({route}){
                 
                 
             </View>
-            
+
+
+            {/* Same as previously but for SNACK */}
 
             <View style={styles.container}>
-                {/* <Text style={styles.topHeading}>Choose a Snack : </Text>
-                <View
-                                
-                            
-                    style={styles.imageMain}>
-                        <Text>Heloo</Text>
-                        * <View style={{flexDirection:'row'}}>
-                            <Image source={snack.imageLink1} style={styles.ImageStyle}/>
-                        </View>
-                        
-                        <Text style={styles.titles}>{snack.value}{`\n`}{`\n`}</Text> *
-                                    
-                </View>*/}
+               
                 <TouchableOpacity
                         style={styles.topHeading}
                         onPress={() =>{if (showComponent4==false){
@@ -871,7 +876,7 @@ export default function ChoiceMeal({route}){
 
 
 
-
+// CSS
 
 const styles=StyleSheet.create({
     container :{
