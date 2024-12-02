@@ -2,10 +2,9 @@
 import {SafeAreaView, Text, TextInput, Button, View,Image,ScrollView} from "react-native"
 import { useMemo, useState } from "react";
 import { StyleSheet } from "react-native";
-//import { RadioGroup } from "react-native-radio-buttons-group";
-import RadioGroup from 'react-native-radio-buttons-group';
 import { useNavigation } from "@react-navigation/native";
 
+// Importation of all our meal pictures
 import b1_1 from '../assets/images/B1SCRAMBLES.jpg';
 import b1_2 from '../assets/images/B1PEAR.jpg';
 import b2_1 from '../assets/images/B2PAN.jpg';
@@ -53,15 +52,12 @@ import s5_1 from '../assets/images/S5MOUSSE.jpg';
 import s6_1 from '../assets/images/S6TOAST.jpg';
 
 
-
-//IL FAUT QUE SI ON APPUYE SUR UN BOUTTON IL NOUS EMMENE SUR LA PAGE DE MEAL
 export default function Home({ route }){
     const navigation = useNavigation(); 
 
     const { name, surname, age, gender, height, weight, diet, sport,breakfast, lunch,dinner,snack} = route.params;
     
-    
-
+    // Breakfast choices
     const theBreakfast = useMemo(()=>([
         {
             id: '1',
@@ -121,6 +117,7 @@ export default function Home({ route }){
         }
     ]))
    
+    // Lunch choices
     const theLunch = useMemo(()=>([
         {
             id: '1',
@@ -180,6 +177,7 @@ export default function Home({ route }){
         }
     ]))
 
+    // Diner choices
     const theDinner = useMemo(()=>([
         {
             id: '1',
@@ -240,6 +238,7 @@ export default function Home({ route }){
         }
     ]))
 
+    // Snack choices
     const theSnack = useMemo(()=>([
         {
             id: '1',
@@ -293,8 +292,6 @@ export default function Home({ route }){
         }
     ]))
 
-
-    //radio buttons to select the Dietary 
     return(
         <ScrollView style={styles.container}>
             <Text style={styles.header}> Welcome to the Home page ! </Text>
