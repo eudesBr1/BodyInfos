@@ -14,7 +14,7 @@ export default function Home() {
   const [height, setHeight] = useState("");
   const [weight, setWeight] = useState(""); 
   const [diet, setDiet] = useState(""); 
-  const [sport,setSport]=useState("");
+  const [sport, setSport] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
     
@@ -22,9 +22,10 @@ export default function Home() {
 
   const createProfile = async (user: any) => {
     try {
-      //Save all infos Firebase Realtime Database
+      // Save all infos Firebase Realtime Database
       await set(ref(db, '/users/' + user.uid), {
-        name, age, gender, height, weight, diet, email, password,sport});
+        name, age, gender, height, weight, diet, email, password, sport
+      });
       console.log("Profile created successfully!");
     } catch (error) {
       console.error("Error creating profile:", error);
@@ -39,7 +40,7 @@ export default function Home() {
         const user = response.user;
 
         if (user) {
-          await createProfile(user);  //Save a new user 
+          await createProfile(user);  // Save a new user 
           
           navigation.navigate("Connexion"); // Navigate to connexion
         }
@@ -61,17 +62,16 @@ export default function Home() {
           <View style={styles.box}>
             <Text style={styles.text}>Personal Information:</Text>
 
-            {/*Inputs for the informations we need : name,email,password,gender,height and weight to calculate the BMI and BMR */}
-            
-            <TextInput style={styles.input} value={name} placeholder="Name" onChangeText={(e) => setName(e)}/>
+            {/* Inputs for the informations we need: name, email, password, gender, height and weight to calculate the BMI and BMR */}
+            <TextInput style={styles.input} value={name} placeholder="Name" onChangeText={(e) => setName(e)} />
 
-            <TextInput style={styles.input} value={email} placeholder="Email" onChangeText={(e) => setEmail(e)}/>
+            <TextInput style={styles.input} value={email} placeholder="Email" onChangeText={(e) => setEmail(e)} />
 
             <TextInput style={styles.input} value={password} placeholder="Password" secureTextEntry 
-            onChangeText={(e) => setPassword(e)}/>
+              onChangeText={(e) => setPassword(e)} />
 
             <TextInput style={styles.input} placeholder="Age" value={age} keyboardType="numeric" 
-            onChangeText={(e) => setAge(e)}/>
+              onChangeText={(e) => setAge(e)} />
 
             <Text style={styles.text}>Choose your gender:</Text>
             <View style={styles.row}>
@@ -83,20 +83,18 @@ export default function Home() {
               <TouchableOpacity
                 style={[styles.touchable, gender === "2" ? styles.select : styles.unselect]}
                 onPress={() => setGender("2")}>
-                 <Text> Male </Text>
+                <Text> Male </Text>
               </TouchableOpacity>
             </View>
 
             <Text style={styles.text}>Body Information:</Text>
             <TextInput style={styles.input} placeholder="Height (cm)" value={height} keyboardType="numeric" 
-              onChangeText={(e) => setHeight(e)}/>
+              onChangeText={(e) => setHeight(e)} />
 
             <TextInput style={styles.input} placeholder="Weight (kg)" value={weight} keyboardType="numeric"
-              onChangeText={(e) => setWeight(e)}/>
+              onChangeText={(e) => setWeight(e)} />
 
-
-
-            {/*Inputs for the complementary informations we need : the diet and if the customer exercize a lot */}
+            {/* Inputs for the complementary informations we need: the diet and if the customer exercises a lot */}
             <Text style={styles.text}>Choose your diet:</Text>
             <View style={styles.column}>
               <TouchableOpacity 
@@ -138,14 +136,14 @@ export default function Home() {
               <TouchableOpacity
                 style={[styles.touchable2, sport === "moderate" ? styles.select : styles.unselect]}
                 onPress={() => setSport("moderate")}>
-                <Text> Moderate exercise ( 3-5 days/week) </Text>
+                <Text> Moderate exercise (3-5 days/week) </Text>
               </TouchableOpacity>
               <Text/>
 
               <TouchableOpacity
                 style={[styles.touchable2, sport === "active" ? styles.select : styles.unselect]}
                 onPress={() => setSport("active")}>
-                <Text> Very active ( 6-7 days/week) </Text>
+                <Text> Very active (6-7 days/week) </Text>
               </TouchableOpacity>
               <Text/>
 
@@ -168,7 +166,7 @@ export default function Home() {
   );
 }
 
-//CSS
+// CSS
 const styles = StyleSheet.create({
   container: {
     justifyContent: "center",
@@ -232,10 +230,9 @@ const styles = StyleSheet.create({
   column: {
     flexDirection: 'column',
     justifyContent: 'center',
-    alignContent:'center',
+    alignContent: 'center',
     alignItems: 'center',
-    padding:5,
-  
+    padding: 5,
   },
   box: {
     backgroundColor: 'white',

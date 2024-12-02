@@ -70,49 +70,37 @@ export default function Connexion({ navigation }) {
   return (
     <ScrollView>
       <SafeAreaView style={styles.container}>
-      
         <Text style={styles.header}> Welcome to the connexion page ! </Text>
-      
         <View style={styles.box}>
-      
-        <Text style={styles.text}>E-mail :</Text>
-          <TextInput
-            style={styles.input}
-            value={email}
-            onChangeText={setEmail}
-            placeholder="E-mail"
-            keyboardType="email-address"
-          />
+
+          {/* Inputs to connect the customer to his account */}      
+          <Text style={styles.text}>E-mail :</Text>
+          <TextInput style={styles.input} value={email} onChangeText={setEmail} placeholder="E-mail" keyboardType="email-address"/>
           <Text style={styles.text}>Password :</Text>
-          <TextInput
-            style={styles.input}
-            value={password}
-            onChangeText={setPassword}
-            secureTextEntry
-            placeholder="Password"
-          />
-
-        {/* Display error message*/}
+          <TextInput style={styles.input} value={password} onChangeText={setPassword} secureTextEntry placeholder="Password"/>
+          
+          {/* Display error message*/}
           {error && <Text style={styles.error}>{error}</Text>}
-
-        {/* Loading state when waiting for connexion*/}
+          
+          {/* Loading state when waiting for connexion*/}
           {loading ? (
             <Text>Loading...</Text>
           ) : (
             <Button title="Submit" color="plum" onPress={handleLogin} />
           )}
-      
+          
           <Text/>
 
+          {/* Navigation button if the customer doesn't have an account */}
           <Text style={styles.text}>You don't have an account?</Text>
           <Button title="Register" color="plum" onPress={() => navigation.navigate('Registration')}/>
-        
         </View>
       </SafeAreaView>
     </ScrollView>
   );
 }
 
+// CSS
 const styles = {
   container: {
     justifyContent: "center",
@@ -140,7 +128,6 @@ const styles = {
     flexDirection: 'column',
     padding: 15,
     height:300,
-
     // ios shadows
     shadowColor: "#700070",
     shadowOffset: {
@@ -149,7 +136,6 @@ const styles = {
     },
     shadowOpacity: 0.3,
     shadowRadius: 4,
-
     // android shadows
     elevation: 8,
   },

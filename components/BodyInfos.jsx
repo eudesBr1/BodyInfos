@@ -6,7 +6,7 @@ export default function BodyInfos({ navigation, route }) {
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const { userId, breakfast,lunch,dinner,snack } = route.params;  // User ID passed from the previous screen
+  const { userId, breakfast, lunch, dinner, snack } = route.params;  // User ID passed from the previous screen
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -38,7 +38,7 @@ export default function BodyInfos({ navigation, route }) {
     );
   }
 
-  const { name, surname, age, gender, height, weight, diet, sport} = userData;
+  const { name, surname, age, gender, height, weight, diet, sport } = userData;
 
   // BMI Calculation
   const calculateBMI = (weight, height) => {
@@ -85,6 +85,8 @@ export default function BodyInfos({ navigation, route }) {
     <ScrollView>
       <SafeAreaView style={styles.container}>
         <View style={styles.box}>
+
+          {/* Customer informations */}
           <Text style={styles.header}>Body Informations</Text>
           <Text style={styles.text}>Name:</Text>
           <Text style={styles.info}>{name} {surname}</Text>
@@ -105,30 +107,27 @@ export default function BodyInfos({ navigation, route }) {
           <Text style={styles.text}>Total Daily Calorie Requirement:</Text>
           <Text style={styles.info}>{kcal} kcal</Text>
 
-          <Button
-            color="plum"
-            title="Go to Home "
-            onPress={() => {navigation.navigate('Home', {
-              name, surname, age, gender, height, weight, diet, kcal, breakfast,lunch,dinner,snack
+          <Button color="plum" title="Go to Home" onPress={() => {
+            navigation.navigate('Home', {
+              name, surname, age, gender, height, weight, diet, kcal, breakfast, lunch, dinner, snack
             });
-          }}
-          />
-          <Text> </Text>
-          <Button
-            color="plum"
-            title="Choose my meal plan"
-            onPress={() => {
-              navigation.navigate('Meal', {
-                name, surname, age, gender, height, weight, diet, kcal, breakfast,lunch,dinner,snack
-              });
-            }}
-          />
+          }} />
+
+          <Text />
+
+          
+          <Button color="plum" title="Choose my meal plan" onPress={() => {
+            navigation.navigate('Meal', {
+              name, surname, age, gender, height, weight, diet, kcal, breakfast, lunch, dinner, snack
+            });
+          }} />
         </View>
       </SafeAreaView>
     </ScrollView>
   );
 }
 
+// CSS
 const styles = StyleSheet.create({
   container: {
     flex: 1,
