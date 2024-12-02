@@ -18,6 +18,10 @@ export default function Home() {
   const [sport,setSport]=useState("");// Intensité de sport
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [breakfast, setBreakfast] = useState("");
+  const [lunch, setLunch] = useState("");
+  const [dinner, setDinner] = useState("");
+  const [snack, setSnack] = useState("");
   let [userId, userInfo] = ""; 
   
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
@@ -26,7 +30,7 @@ export default function Home() {
     try {
       // Enregistrer toutes les informations dans Firebase Realtime Database
       await set(ref(db, '/users/' + user.uid), {
-        name, age, gender, height, weight, diet, email, password,sport });
+        name, age, gender, height, weight, diet, email, password,sport,breakfast,lunch,dinner,snack });
       console.log("Profile created successfully!");
     } catch (error) {
       console.error("Error creating profile:", error);
