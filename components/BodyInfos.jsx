@@ -6,7 +6,7 @@ export default function BodyInfos({ navigation, route }) {
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const { userId } = route.params;  // User ID passed from the previous screen
+  const { userId, breakfast,lunch,dinner,snack } = route.params;  // User ID passed from the previous screen
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -38,7 +38,7 @@ export default function BodyInfos({ navigation, route }) {
     );
   }
 
-  const { name, surname, age, gender, height, weight, diet, sport, breakfast, lunch,dinner,snack} = userData;
+  const { name, surname, age, gender, height, weight, diet, sport} = userData;
 
   // BMI Calculation
   const calculateBMI = (weight, height) => {
@@ -109,7 +109,7 @@ export default function BodyInfos({ navigation, route }) {
             color="plum"
             title="Go to Home "
             onPress={() => {navigation.navigate('Home', {
-              name, surname, age, gender, height, weight, diet, kcal
+              name, surname, age, gender, height, weight, diet, kcal, breakfast,lunch,dinner,snack
             });
           }}
           />
@@ -119,7 +119,7 @@ export default function BodyInfos({ navigation, route }) {
             title="Choose my meal plan"
             onPress={() => {
               navigation.navigate('Meal', {
-                name, surname, age, gender, height, weight, diet, kcal
+                name, surname, age, gender, height, weight, diet, kcal, breakfast,lunch,dinner,snack
               });
             }}
           />

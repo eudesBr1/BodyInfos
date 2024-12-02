@@ -374,11 +374,11 @@ export default function Home({ route }){
             
             <Text/>
             <Button title="My body informations" color="plum"
-                onPress={() => navigation.navigate('BodyInfos', { name, surname, age, gender, height, weight, diet, sport })}
+                onPress={() => navigation.navigate('BodyInfos', { name, surname, age, gender, height, weight, diet, sport,breakfast, lunch,dinner,snack  })}
             />
             <Text/>
             <Button title="Change my meal plan" color="plum"
-                onPress={() => navigation.navigate('Meal', { name, surname, age, gender, height, weight, diet, sport })}
+                onPress={() => navigation.navigate('Meal', { name, surname, age, gender, height, weight, diet, sport,breakfast, lunch,dinner,snack })}
             />
              </View>
 

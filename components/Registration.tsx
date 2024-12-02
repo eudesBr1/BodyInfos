@@ -18,45 +18,22 @@ export default function Home() {
   const [sport,setSport]=useState("");// Intensité de sport
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [breakfast, setBreakfast] = useState("");
-  const [lunch, setLunch] = useState("");
-  const [dinner, setDinner] = useState("");
-  const [snack, setSnack] = useState("");
+  
   let [userId, userInfo] = ""; 
   
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
 
   const createProfile = async (user: any) => {
     try {
-      // Définir des valeurs par défaut si les champs sont vides
-      const defaultBreakfast = breakfast || "Oatmeal with fruits";
-      const defaultLunch = lunch || "Salad";
-      const defaultDinner = dinner || "Grilled vegetables";
-      const defaultSnack = snack || "Nuts";
-  
       // Enregistrer toutes les informations dans Firebase Realtime Database
       await set(ref(db, '/users/' + user.uid), {
-        name, 
-        age, 
-        gender, 
-        height, 
-        weight, 
-        diet, 
-        email, 
-        password,
-        sport,
-        breakfast: defaultBreakfast, 
-        lunch: defaultLunch, 
-        dinner: defaultDinner, 
-        snack: defaultSnack 
-      });
+        name, age, gender, height, weight, diet, email, password,sport});
       console.log("Profile created successfully!");
     } catch (error) {
       console.error("Error creating profile:", error);
       Alert.alert("Error", "Could not create profile. Please try again.");
     }
   };
-  
 
   const registerAndGoToConnectFlow = async () => {
     if (email && password) {
@@ -108,7 +85,7 @@ export default function Home() {
               <TouchableOpacity
                 style={[styles.touchable, gender === "2" ? styles.select : styles.unselect]}
                 onPress={() => setGender("2")}>
-                <Text> Male </Text>
+                 <Text> Male </Text>
               </TouchableOpacity>
             </View>
 
