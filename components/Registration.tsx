@@ -9,7 +9,7 @@ import { useNavigation } from "expo-router";
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
 export default function Home() {
-  const [name, setName] = useState("");  // Ajout du champ name
+  const [name, setName] = useState("");  
   const [age, setAge] = useState("");
   const [gender, setGender] = useState("");
   const [height, setHeight] = useState(""); // Taille
